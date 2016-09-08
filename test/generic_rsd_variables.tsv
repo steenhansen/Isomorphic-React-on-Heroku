@@ -1,0 +1,16 @@
+Variables	Values	Explanations
+media_title	Reading, Short and Deep	blah
+media_web_page	https://podcasts-readingshortdeep.rhcloud.com/rsd/rss	blah
+media_directory_url	http://www.canadianquotations.ca/rsd/	Where the MP3s are stored
+media_description	Two friends discovering together the subtle riches of stories and poems.	blah
+media_copyright	2016 SFFaudio	blah
+media_rss_location	https://podcasts-readingshortdeep.rhcloud.com/rsd/rss	blah
+itunes_category	Arts	blah
+itunes_sub_category	Literature	blah
+itunes_explicit	no	blah
+itunes_image	http://www.sffaudio.com/images/ReadingShortAndDeepLogoREDO1700X1700C1.jpg	blah
+itunes_name	Eric S. Rabkin and Jesse Willis	http://lists.apple.com/archives/syndication-dev/2005/Nov/msg00002.html
+itunes_email	jessewillis@yahoo.com	http://www.feedforall.com/itune-tutorial-tags.htm
+itunes_description 	Share the joys-and sharpen the skills-of deep reading. In each weekly half-hour podcast, Eric Rabkin and Jesse Willis mine together the riches of another marvelous short story, poem, or video.  Each work, freely available on the RSD website, can be read in half an hour or less, and discussed for hours.	blah
+hours_offset	-2	as openshift has New York time, and sffAudio is Utah, there is -2 hours difference
+post_early_min_rss	10	blah

@@ -1,0 +1,20 @@
+Variables	Values	Explanations	
+media_title	Reading, Short and Deep		
+media_web_page	https://podcasts-readingshortdeep.rhcloud.com/rsd/rss		
+media_directory_url	http://www.coquitlamwebsolutions.ca/rsd/	Where the data is stored 	
+media_description	Profound, yet brief, discussions of SFF stories and poems		
+media_copyright	2016 SFFaudio		
+media_rss_location	https://podcasts-readingshortdeep.rhcloud.com/rsd/rss		
+itunes_category	Arts		
+itunes_sub_category	Literature		
+itunes_explicit	yes		
+itunes_image	http://www.sffaudio.com/images/ReadingShortAndDeepLogoREDO1700X1700C1.jpg		
+itunes_name	Jesse Willis and Guests		http://lists.apple.com/archives/syndication-dev/2005/Nov/msg00002.html
+itunes_email	jessewillis@yahoo.com		http://www.feedforall.com/itune-tutorial-tags.htm
+			
+automatic_upload	yes		ALWAYS DO THIS CONTINUALLY !!!!!
+			
+			
+			
+			
+			https://validator.w3.org/feed/check.cgi

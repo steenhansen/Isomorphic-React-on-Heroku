@@ -1,0 +1,48 @@
+
+
+<div class="podPress_content podPress_content_audio_mp3">
+    <div class="podpress_playerspace" style="display:block;">
+        <div id="podPressPlayerSpace_1" style="display: block;"><a
+                id="podpress_html5_play_1"
+                href="javascript:void(null);"
+                onclick="podPressenprintHTML5audio('1', '{{ mp3_url }}', true);"
+                class="podpress_play_button"
+                title="Play >"
+                style="background-image:url(http://www.sffaudio.com/wp-content/plugins/podpress/images/play_button_dyn_v4_32.png);"></a>
+        </div>
+    </div>
+    <div class="podPress_downloadlinks podPress_downloadlinks_audio_mp3">
+        <a href="{{ mp3_url }}"
+           target="new"
+           title="Download: Reading, Short and Deep Podcast #{{ id_3_digits }} - {{ podcast_description }}"
+           class="podpress_downloadimglink podpress_downloadimglink_audio_mp3">
+            <img src="//www.sffaudio.com/wp-content/plugins/podpress/images/audio_mp3_button.png" class="podPress_imgicon podpress_imgicon_audio_mp3" alt=""></a>
+        <span class="podpress_mediafile_title podpress_mediafile_title_audio_mp3">Reading, Short and Deep Podcast #{{id_3_digits}} - {{ podcast_description }}</span>
+
+        <span class="podpress_mediafile_dursize podpress_mediafile_dursize_audio_mp3">[ {{ hh_mm_ss_length }} | {{ mb_size }}  MB ]</span>
+
+        <a href="#podPressPlayerSpace_1"
+           class="podpress_playlink podpress_playlink_audio_mp3"
+           onclick="javascript:podPressShowHidePlayer('1', 'http://www.jerkersearcher.com/rsd_podcasts/{{ mp3_file_name }}',
+           290,
+            24,
+            'false',
+            'http://www.sffaudio.com/wp-content/plugins/podpress/images/vpreview_center.png',
+            'Reading, Short and Deep Podcast #{{ id_3_digits }}: {{ book_title }} by {{ book_author }}',
+            'Jesse Willis and Guests'); return false;"><span id="podPressPlayerSpace_1_PlayLink"
+                                                             class="podPress_playerspace_playlink">Hide Player</span></a>
+        <input type="hidden" id="podPressPlayerSpace_1_OrigURL" value="{{ mp3_url }}"> |
+        <a href="#podPressPlayerSpace_1"
+           class="podpress_playinpopup podpress_playinpopup_audio_mp3"
+           onclick="javascript:podPressPopupPlayer('1',
+         '{{ mp3_url }}',
+         290,
+         24,
+         'SFFaudio',
+         '55765',
+          'Reading, Short and Deep Podcast #{{ id_3_digits }}: {{ book_title }} by {{ book_author }}',
+         'Jesse Willis and Guests'); return false;"
+                >Play in Popup</a> |
+        <a href="{{ mp3_url }}" target="new" class="podpress_downloadlink podpress_downloadlink_audio_mp3">Download</a>
+    </div>
+</div>

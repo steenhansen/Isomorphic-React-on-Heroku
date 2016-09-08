@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>Reading, Short and Deep</title>
+        <link>https://podcasts-readingshortdeep.rhcloud.com/rsd/rss</link>
+        <description>Profound, yet brief, discussions of SFF stories and poems</description>
+        <copyright>2016 SFFaudio</copyright>
+        <language>en-US</language>
+        <atom:link href="https://podcasts-readingshortdeep.rhcloud.com/rsd/rss" rel="self" type="application/rss+xml" />
+        <itunes:category text="Arts">
+            <itunes:category text="Literature" />
+        </itunes:category>
+        <itunes:explicit>yes</itunes:explicit>
+        <itunes:image href="http://www.sffaudio.com/images/ReadingShortAndDeepLogoREDO1700X1700C1.jpg" />
+        <itunes:owner>
+            <itunes:name>Jesse Willis and Guests</itunes:name>
+            <itunes:email>jessewillis@yahoo.com</itunes:email>
+        </itunes:owner>
+        <itunes:author>Jesse Willis and Guests</itunes:author>
+        <itunes:summary>0</itunes:summary>
+
+        <item>
+            <title>002 Rapunzel by The Brothers Grimm</title>
+            <link>http://www.sffaudio.com/2</link>
+            <guid>http://www.sffaudio.com/2</guid>
+
+
+            <enclosure url="http://www.coquitlamwebsolutions.ca/rsd/ReadingShortDeepRapunzel.mp3" length="29352408" type="audio/mpeg" />
+
+            <description>Rapunzel by The Brothers Grimm is feed to children</description>
+
+            <pubDate>Sat, 1 Jan 2022 14:00:00 MDT</pubDate>
+
+
+            <the_date>2022-01-01 14:00</the_date>
+        </item><item>
+        <title>001 Zero Hour by Ray Bradbury</title>
+        <link>http://www.sffaudio.com/1</link>
+        <guid>http://www.sffaudio.com/1</guid>
+
+
+        <enclosure url="http://www.coquitlamwebsolutions.ca/rsd/ReadingShortDeepZeroHour.mp3" length="32972064" type="audio/mpeg" />
+
+        <description>Eric and Jesse talk about Ray Bradbury&#39;s short story Zero Hour</description>
+
+        <pubDate>Fri, 1 Jan 2016 14:00:00 MDT</pubDate>
+
+
+        <the_date>2016-01-01 14:00</the_date>
+    </item>
+
+    </channel>
+</rss>
