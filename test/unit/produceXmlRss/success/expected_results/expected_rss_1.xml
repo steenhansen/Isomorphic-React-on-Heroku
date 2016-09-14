@@ -33,6 +33,7 @@
 
 
             <the_date>2022-01-01 14:00</the_date>
+            <itunes:duration>0:14:13</itunes:duration>
         </item><item>
         <title>001 Zero Hour by Ray Bradbury</title>
         <link>http://www.sffaudio.com/1</link>
@@ -47,6 +48,7 @@
 
 
         <the_date>2016-01-01 14:00</the_date>
+        <itunes:duration>0:34:12</itunes:duration>
     </item>
 
     </channel>

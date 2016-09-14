@@ -1,0 +1,77 @@
+
+------ test ------
+    Check configEnvironment.js
+        NODE_DATABASE: 'mongodb://localhost/media_server_db'
+
+    $ gulp verify
+    $ gulp all
+
+------ local dev ------
+    Check configEnvironment.js
+        NODE_DATABASE: 'mongodb://localhost/media_server_db'
+        RSD_GOOGLE_DATA: "https://docs.google.com/spreadsheets/d/1uWtJWX6ZqRmw7ThEpXA1Jww6QUxWrYqdn5jyfK5HYDY/export?format=tsv"
+
+    $ gulp dev
+
+    Check isomorphic
+        javascript off
+        http://localhost:5000/rsd/table
+        buttons should be already created
+
+    Check from FireFox with console visible
+        http://localhost:5000/rsd/rss
+        http://localhost:5000/rsd/table
+        http://localhost:5000/rsd/mobile
+        http://localhost:5000/rsd/1
+        http://localhost:5000/rsd/
+        http://localhost:5000/
+
+------ local prod ------
+
+    $ gulp prod
+
+    Check isomorphic
+        ...
+
+    Check from FireFox with console visible
+        ...
+
+------ staging ------
+
+   Check configEnvironment.js
+        NODE_DATABASE : "mongodb://heroku_abcdefgh:12345678901234567890123456@ab123456.mlab.com:12345/heroku_abcdefgh"
+        RSD_GOOGLE_DATA: "https://docs.google.com/spreadsheets/d/1uWtJWX6ZqRmw7ThEpXA1Jww6QUxWrYqdn5jyfK5HYDY/export?format=tsv":
+
+    git push to staging
+
+    if app crashes
+         heroku logs --tail --app sffaudio_staging
+
+    Check from FireFox with console visible
+        ...
+
+    Check isomorphic
+        ...
+
+------ production ------
+
+    git push to production
+
+    if app crashes
+        heroku logs --tail --app sffaudio_production
+
+    Check from FireFox with console visible
+        ...
+
+    Check isomorphic
+        ...
+
+------ after ------
+    Check itunes
+        https://itunes.apple.com/ca/podcast/reading-short-and-deep/id1091911684
+
+
+
+
+
+
