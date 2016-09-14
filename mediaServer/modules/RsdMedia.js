@@ -95,6 +95,7 @@ RsdMedia.prototype._itemTemplateVars = function (data_row) {
         media_post_link: data_row['post link'],
         itunes_pubDate: data_row['itunes_pubDate'],
         publish_date: data_row['publish date'],
+        item_duration: data_row['hh:mm:ss'],
         media_type: this._media_type
     }
     return item_template_vars
