@@ -6,7 +6,6 @@ var fs = require('fs')
 var validUrl = require('valid-url')
 var zlib = require('zlib')
 var moment = require('moment-timezone')
-//var jstz = require('jstimezonedetect')
 var swig = require('swig')
 var basicAuth = require('basic-auth')
 var mongoose = require('mongoose')
@@ -44,27 +43,24 @@ var miscMethods = {
     },
 
     ignoreFutureItems: function (rsd_rss_xml, now_yyyy_mm_dd_hh_mm) {
-        var deleted_item = false
         var rsd_entries = rsd_rss_xml.split('<item>')
-        for (var i = rsd_entries.length - 1; i > 0; i--) {
+        var number_entries = rsd_entries.length
+        for (var i = 1; i < number_entries; i++) {
             var entry_values = rsd_entries[i].split('<the_date>')
             var rsd_date_extra = entry_values[1]
             var date_values = rsd_date_extra.split('</the_date>')
             var rsd_date = date_values[0]
             if (rsd_date > now_yyyy_mm_dd_hh_mm) {
-                deleted_item = true
                 delete rsd_entries[i]
+            } else if (i===0){             /// if first item viewable, then all are
+                return false
             }
         }
-        if (deleted_item) {
-            var current_rss = rsd_entries.shift()
-            for (var i in rsd_entries) {
-                current_rss += '<item>' + rsd_entries[i]
-            }
-            return current_rss
-        } else {
-            return false
+        var current_rss = rsd_entries.shift()
+        for (var i in rsd_entries) {
+            current_rss += '<item>' + rsd_entries[i]
         }
+        return current_rss
     },
 
     // A utility function to safely escape JSON for embedding in a <script> tag
