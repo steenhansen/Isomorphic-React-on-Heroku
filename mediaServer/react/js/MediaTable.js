@@ -64,14 +64,8 @@ var MediaTable = function (_React$Component) {
         _this._updateTableSize = _this._updateTableSize.bind(_this);
         _this.getRowHeight = _this.getRowHeight.bind(_this);
         _this.deriveIconCellWidth = _this.deriveIconCellWidth.bind(_this);
-        //   this.componentWillMount= this.componentWillMount.bind(this)
         return _this;
     }
-
-    //componentWillMount() {
-    //    this._updateTableSize()
-    //}
-
 
     _createClass(MediaTable, [{
         key: 'componentDidMount',

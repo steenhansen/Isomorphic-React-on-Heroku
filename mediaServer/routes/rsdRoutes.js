@@ -2,6 +2,7 @@
 
 
 var send_table = rootAppRequire('mediaServer/react/js/sendTable')
+var react_constants = rootAppRequire('mediaServer/react/js/reactConstants')
 
 var media_constants = rootAppRequire('mediaServer/modules/base/MediaConstants')
 
@@ -106,15 +107,6 @@ module.exports = function (app) {
                 }
 
                 miscMethods.serveGzipContent(req, res, "application/rss+xml", current_rss)
-                //if (miscMethods.acceptGzip(req)) {
-                //    res.writeHead(200, {'Content-Type': 'text/html', 'Content-Encoding': 'gzip'})
-                //    miscMethods.serveGzipString(res, current_rss)
-                //} else {
-                //    res.header("Content-Type", "application/rss+xml")
-                //    res.send(current_rss)
-                //}
-
-
             },
             function onRejected(err) {
                 global.Method_logger.chronicle('error', 'URL_XML_ADMIN_VIEW_REAL_IFRAME_P3', module.filename, 'err', err)
@@ -138,7 +130,7 @@ module.exports = function (app) {
 
     app.get(media_url_dirs.URL_HTML_PUBLIC_TABLE, function (req, res) {
         var rsd_media = di_factory.RsdMediaCreate()
-        rsd_media.currentList().then(
+        rsd_media.currentList(react_constants.MAX_DESKTOP_ITEMS).then(
             function onFulfilled(props_array) {
                 var host_url = 'http://' + req.headers.host
                 var table_html = send_table.marshallServerHtml('rsd', props_array, media_url_dirs.PUBLIC_SHOW_EXPLAIN, 'desktop_device', host_url)
@@ -154,7 +146,7 @@ module.exports = function (app) {
 
     app.get(media_url_dirs.URL_HTML_MOBILE_TABLE, function (req, res) {
         var rsd_media = di_factory.RsdMediaCreate()
-        rsd_media.currentList().then(
+        rsd_media.currentList(react_constants.MAX_MOBILE_ITEMS).then(
             function onFulfilled(props_array) {
                 var host_url = 'http://' + req.headers.host
                 var table_html = send_table.marshallServerHtml('rsd', props_array, media_url_dirs.MOBILE_EXPLAIN, 'mobile_device', host_url)

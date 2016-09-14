@@ -139,7 +139,7 @@ RsdMedia.prototype.playerTemplateVars = function (data_row) {
 }
 
 
-RsdMedia.prototype.currentList = function () {
+RsdMedia.prototype.currentList = function (max_records) {
     var deferred = Q.defer()
     var now_yyyy_mm_dd_hh_mm = miscMethods.serverYYYYMMDDHHmm()
     var valid_episodes = {
@@ -148,10 +148,13 @@ RsdMedia.prototype.currentList = function () {
         "publish date": {$lt: now_yyyy_mm_dd_hh_mm}
     }
     rsd_items_db.collection.find(valid_episodes, function (err, cursor) {
+        if (max_records>0){
+            cursor.sort({'episode number': -1}).limit(max_records)        // Mobile cannot handle big datasets until Facebook fixes fixed-data-table
+        }else{
         cursor.sort({'episode number': -1})
+        }
         cursor.toArray().then(
             function onFulfilled(collection_arr) {
-
                 deferred.resolve(collection_arr)
             }, function onRejected(err_cond) {
                 deferred.reject(err_cond)

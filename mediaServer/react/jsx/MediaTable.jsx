@@ -31,13 +31,8 @@ class MediaTable extends React.Component {
         this._updateTableSize = this._updateTableSize.bind(this)
         this.getRowHeight = this.getRowHeight.bind(this)
         this.deriveIconCellWidth = this.deriveIconCellWidth.bind(this)
-     //   this.componentWillMount= this.componentWillMount.bind(this)
     }
 
-
-    //componentWillMount() {
-    //    this._updateTableSize()
-    //}
     componentDidMount() {
         this._updateTableSize()
         if (window.addEventListener) {
