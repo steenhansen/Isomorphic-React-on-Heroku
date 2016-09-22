@@ -43,7 +43,7 @@ describe('test/integration/saveTestToDb/failure/saveTestToDb.js', function () {
         beforeEach(function (doneCallback) {
             var parser_tsv = di_factory.ParserTsvFileCreate(bad_data)
             var variables_tsv = di_factory.VariablesTsvFileCreate(generic_rsd_variables)
-            screenOutput.htmlAdminSaveTestP1(variables_tsv, parser_tsv, rsd_media, media_constants.TEST_DATA, the_information, media_file_loc).then(
+            screenOutput.html_saveTestToDb_P1(variables_tsv, parser_tsv, rsd_media, media_constants.TEST_DATA, the_information, media_file_loc).then(
                 function onFulfilled() {
                     doneCallback()
                 },
@@ -85,7 +85,7 @@ describe('test/integration/saveTestToDb/failure/saveTestToDb.js', function () {
         beforeEach(function (doneCallback) {
             var parser_tsv = di_factory.ParserTsvFileCreate(bad_data)
             var variables_tsv = di_factory.VariablesTsvFileCreate(generic_rsd_variables)
-            screenOutput.htmlAdminSaveTestP1(variables_tsv, parser_tsv, rsd_media, media_constants.TEST_DATA, the_information, media_file_loc).then(
+            screenOutput.html_saveTestToDb_P1(variables_tsv, parser_tsv, rsd_media, media_constants.TEST_DATA, the_information, media_file_loc).then(
                 function onFulfilled() {
                     doneCallback()
                 },
@@ -126,7 +126,7 @@ describe('test/integration/saveTestToDb/failure/saveTestToDb.js', function () {
         beforeEach(function (doneCallback) {
             var parser_tsv = di_factory.ParserTsvFileCreate(bad_data)
             var variables_tsv = di_factory.VariablesTsvFileCreate(generic_rsd_variables)
-            screenOutput.htmlAdminSaveTestP1(variables_tsv, parser_tsv, rsd_media, media_constants.TEST_DATA, the_information, media_file_loc).then(
+            screenOutput.html_saveTestToDb_P1(variables_tsv, parser_tsv, rsd_media, media_constants.TEST_DATA, the_information, media_file_loc).then(
                 function onFulfilled() {
                     doneCallback()
                 },
@@ -167,7 +167,7 @@ describe('test/integration/saveTestToDb/failure/saveTestToDb.js', function () {
         beforeEach(function (doneCallback) {
             var parser_tsv = di_factory.ParserTsvFileCreate(bad_data)
             var variables_tsv = di_factory.VariablesTsvFileCreate(generic_rsd_variables)
-            screenOutput.htmlAdminSaveTestP1(variables_tsv, parser_tsv, rsd_media, media_constants.TEST_DATA, the_information, media_file_loc).then(
+            screenOutput.html_saveTestToDb_P1(variables_tsv, parser_tsv, rsd_media, media_constants.TEST_DATA, the_information, media_file_loc).then(
                 function onFulfilled() {
                     doneCallback()
                 },
@@ -207,7 +207,7 @@ describe('test/integration/saveTestToDb/failure/saveTestToDb.js', function () {
         beforeEach(function (doneCallback) {
             var parser_tsv = di_factory.ParserTsvFileCreate(bad_data)
             var variables_tsv = di_factory.VariablesTsvFileCreate(generic_rsd_variables)
-            screenOutput.htmlAdminSaveTestP1(variables_tsv, parser_tsv, rsd_media, media_constants.TEST_DATA, the_information, media_file_loc).then(
+            screenOutput.html_saveTestToDb_P1(variables_tsv, parser_tsv, rsd_media, media_constants.TEST_DATA, the_information, media_file_loc).then(
                 function onFulfilled() {
                     doneCallback()
                 },
@@ -247,7 +247,7 @@ describe('test/integration/saveTestToDb/failure/saveTestToDb.js', function () {
         beforeEach(function (doneCallback) {
             var parser_tsv = di_factory.ParserTsvFileCreate(bad_data)
             var variables_tsv = di_factory.VariablesTsvFileCreate(generic_rsd_variables)
-            screenOutput.htmlAdminSaveTestP1(variables_tsv, parser_tsv, rsd_media, media_constants.TEST_DATA, the_information, media_file_loc).then(
+            screenOutput.html_saveTestToDb_P1(variables_tsv, parser_tsv, rsd_media, media_constants.TEST_DATA, the_information, media_file_loc).then(
                 function onFulfilled() {
                     doneCallback()
                 },
@@ -286,7 +286,7 @@ describe('test/integration/saveTestToDb/failure/saveTestToDb.js', function () {
         beforeEach(function (doneCallback) {
             var parser_tsv = di_factory.ParserTsvFileCreate(bad_data)
             var variables_tsv = di_factory.VariablesTsvFileCreate(generic_rsd_variables)
-            screenOutput.htmlAdminSaveTestP1(variables_tsv, parser_tsv, rsd_media, media_constants.TEST_DATA, the_information, media_file_loc).then(
+            screenOutput.html_saveTestToDb_P1(variables_tsv, parser_tsv, rsd_media, media_constants.TEST_DATA, the_information, media_file_loc).then(
                 function onFulfilled() {
                     doneCallback()
                 },
@@ -325,7 +325,7 @@ describe('test/integration/saveTestToDb/failure/saveTestToDb.js', function () {
         beforeEach(function (doneCallback) {
             var parser_tsv = di_factory.ParserTsvFileCreate(bad_data)
             var variables_tsv = di_factory.VariablesTsvFileCreate(generic_rsd_variables)
-            screenOutput.htmlAdminSaveTestP1(variables_tsv, parser_tsv, rsd_media, media_constants.TEST_DATA, the_information, media_file_loc).then(
+            screenOutput.html_saveTestToDb_P1(variables_tsv, parser_tsv, rsd_media, media_constants.TEST_DATA, the_information, media_file_loc).then(
                 function onFulfilled() {
                     doneCallback()
                 },
@@ -361,7 +361,7 @@ describe('test/integration/saveTestToDb/failure/saveTestToDb.js', function () {
         beforeEach(function (doneCallback) {
             var parser_tsv = di_factory.ParserTsvFileCreate(bad_data)
             var variables_tsv = di_factory.VariablesTsvFileCreate(generic_rsd_variables)
-            screenOutput.htmlAdminSaveTestP1(variables_tsv, parser_tsv, rsd_media, media_constants.TEST_DATA, the_information, media_file_loc).then(
+            screenOutput.html_saveTestToDb_P1(variables_tsv, parser_tsv, rsd_media, media_constants.TEST_DATA, the_information, media_file_loc).then(
                 function onFulfilled() {
                     doneCallback()
                 },
@@ -397,7 +397,7 @@ describe('test/integration/saveTestToDb/failure/saveTestToDb.js', function () {
         beforeEach(function (doneCallback) {
             var parser_tsv = di_factory.ParserTsvFileCreate(bad_data)
             var variables_tsv = di_factory.VariablesTsvFileCreate(generic_rsd_variables)
-            screenOutput.htmlAdminSaveTestP1(variables_tsv, parser_tsv, rsd_media, media_constants.TEST_DATA, the_information, media_file_loc).then(
+            screenOutput.html_saveTestToDb_P1(variables_tsv, parser_tsv, rsd_media, media_constants.TEST_DATA, the_information, media_file_loc).then(
                 function onFulfilled() {
                     console.log('1111')
                     doneCallback()
@@ -434,7 +434,7 @@ describe('test/integration/saveTestToDb/failure/saveTestToDb.js', function () {
         beforeEach(function (doneCallback) {
             var parser_tsv = di_factory.ParserTsvFileCreate(bad_data)
             var variables_tsv = di_factory.VariablesTsvFileCreate(generic_rsd_variables)
-            screenOutput.htmlAdminSaveTestP1(variables_tsv, parser_tsv, rsd_media, media_constants.TEST_DATA, the_information, media_file_loc).then(
+            screenOutput.html_saveTestToDb_P1(variables_tsv, parser_tsv, rsd_media, media_constants.TEST_DATA, the_information, media_file_loc).then(
                 function onFulfilled() {
                     doneCallback()
                 },
@@ -469,7 +469,7 @@ describe('test/integration/saveTestToDb/failure/saveTestToDb.js', function () {
         beforeEach(function (doneCallback) {
             var parser_tsv = di_factory.ParserTsvFileCreate(bad_data)
             var variables_tsv = di_factory.VariablesTsvFileCreate(generic_rsd_variables)
-            screenOutput.htmlAdminSaveTestP1(variables_tsv, parser_tsv, rsd_media, media_constants.TEST_DATA, the_information, media_file_loc).then(
+            screenOutput.html_saveTestToDb_P1(variables_tsv, parser_tsv, rsd_media, media_constants.TEST_DATA, the_information, media_file_loc).then(
                 function onFulfilled() {
                     doneCallback()
                 },

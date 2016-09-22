@@ -52,7 +52,7 @@ var miscMethods = {
             var rsd_date = date_values[0]
             if (rsd_date > now_yyyy_mm_dd_hh_mm) {
                 delete rsd_entries[i]
-            } else if (i===0){             /// if first item viewable, then all are
+            } else if (i === 0) {             /// if first item viewable, then all are
                 return false
             }
         }
@@ -90,7 +90,9 @@ var miscMethods = {
             function onRejected(err_cond) {
                 deferred.reject(err_cond)
             }
-        )
+        ).catch(function (error) {
+            miscMethods.serverError(error.stack)
+        })
         return deferred.promise
     },
 
@@ -203,15 +205,24 @@ var miscMethods = {
             function onRejected(err_cond) {
                 deferred.reject(err_cond)
             }
-        )
+        ).catch(function (error) {
+            miscMethods.serverError(error.stack)
+        })
         return deferred.promise
     },
 
-    consoleUncaughtException: function () {
+
+    serverError: function (error_stack, res) {
+        global.Method_logger.chronicle('error', 'try-catch', '', 'error.stack', error_stack)
+        if (res) {
+            res.send(media_constants.SERVER_ERROR)
+        }
+    },
+
+    testingUncaughtException: function () {
         process.on('uncaughtException', function (err) {
-            console.error((new Date).toUTCString() + ' uncaughtException:', err.message)
-            console.error(err.stack)
-            process.exit(1)
+            var log_message = err.message + ' - ' + err.stack
+            global.Method_logger.chronicle('error', 'server-onerror', module.filename, 'log_message', log_message)
         })
     },
 

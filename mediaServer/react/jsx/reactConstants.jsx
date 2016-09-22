@@ -15,7 +15,6 @@ var react_constants = {
     , DOWN_ARROW_CHAR: String.fromCharCode(8595)
 
 
-
 }
 
 module.exports = react_constants

@@ -186,7 +186,7 @@ body[dir="rtl"] .fixedDataTableColumnResizerLineLayout_main,.fixedDataTableColum
 }
 
 .public_fixedDataTableCell_cellContent {
-    padding: 8px 6px 8px 6px
+    padding: 8px 2px 8px 2px
 }
 
 .public_fixedDataTableColumnResizerLine_main {
@@ -236,12 +236,6 @@ a {
     text-decoration: none;
     cursor: pointer
 }
-
-/*.story-link {*/
-    /*width: 32px;*/
-    /*height: 23px;*/
-    /*vertical-align: middle;*/
-/*}*/
 
 #media-container{
     padding-bottom: 10px

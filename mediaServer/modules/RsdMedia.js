@@ -1,6 +1,8 @@
 'use strict'
 
-var sharedMethods = require('../react/sharedMethods')
+var shared_methods = require('../react/sharedMethods')
+
+
 var moment = require('moment-timezone')
 var Q = require('q')
 var media_constants = require('./base/MediaConstants')
@@ -83,10 +85,9 @@ RsdMedia.prototype.deriveData = function (data_columns, offset_minutes) {
     }
 }
 
-
-RsdMedia.prototype._itemTemplateVars = function (data_row) {
+RsdMedia.prototype._itemTemplateVars = function (data_row, rsd_episode_digits) {
     var episode_number = data_row['episode number']
-    var episode_digit = sharedMethods.leadingZerosDigits(episode_number)
+    var episode_digit = shared_methods.leadingZerosDigits(rsd_episode_digits, episode_number)
     var item_template_vars = {
         media_item_title: episode_digit + ' ' + data_row['book title'] + ' by ' + data_row['book author'],
         media_item_link: data_row['mp3_url'],
@@ -124,7 +125,7 @@ RsdMedia.prototype._pageTemplateVars = function (rsd_items_html, tsv_variable_in
 RsdMedia.prototype.playerTemplateVars = function (data_row) {
     var number_bytes = data_row['byte_size']
     var number_mbs = Math.floor(number_bytes / 1000000)
-    var id_digits = sharedMethods.leadingZerosDigits(data_row['_id'])
+    var id_digits = data_row['_id']
     var player_template_vars = {
         rsd_id: data_row['_id'],
         id_3_digits: id_digits,
@@ -151,7 +152,7 @@ RsdMedia.prototype.currentList = function (max_records) {
         if (max_records>0){
             cursor.sort({'episode number': -1}).limit(max_records)        // Mobile cannot handle big datasets until Facebook fixes fixed-data-table
         }else{
-        cursor.sort({'episode number': -1})
+            cursor.sort({'episode number': -1})
         }
         cursor.toArray().then(
             function onFulfilled(collection_arr) {
@@ -159,7 +160,9 @@ RsdMedia.prototype.currentList = function (max_records) {
             }, function onRejected(err_cond) {
                 deferred.reject(err_cond)
             }
-        )
+        ).catch(function (error) {
+            miscMethods.serverError(error.stack)
+        })
     })
     return deferred.promise
 }

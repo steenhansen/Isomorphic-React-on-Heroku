@@ -76,7 +76,7 @@
 /******/ 			script.charset = 'utf-8';
 /******/ 			script.async = true;
 
-/******/ 			script.src = __webpack_require__.p + "" + {"1":"b4517d65c9487d9f4101"}[chunkId] + ".js";
+/******/ 			script.src = __webpack_require__.p + "" + {"1":"d5ec4ba09e7fce2ce334"}[chunkId] + ".js";
 /******/ 			head.appendChild(script);
 /******/ 		}
 /******/ 	};
@@ -28770,14 +28770,8 @@
 	        _this._updateTableSize = _this._updateTableSize.bind(_this);
 	        _this.getRowHeight = _this.getRowHeight.bind(_this);
 	        _this.deriveIconCellWidth = _this.deriveIconCellWidth.bind(_this);
-	        //   this.componentWillMount= this.componentWillMount.bind(this)
 	        return _this;
 	    }
-
-	    //componentWillMount() {
-	    //    this._updateTableSize()
-	    //}
-
 
 	    _createClass(MediaTable, [{
 	        key: 'componentDidMount',
@@ -28885,8 +28879,12 @@
 
 	    RSD_SFFAUDIO_CONTAINER_WIDTH: 570,
 
+	    MAX_MOBILE_ITEMS: 100 // NB, fixed-data-table does not scroll correctly in mobile, therefore just show newest items, not all or too slow
+	    , MAX_DESKTOP_ITEMS: 0,
+
 	    UP_ARROW_CHAR: String.fromCharCode(8593),
 	    DOWN_ARROW_CHAR: String.fromCharCode(8595)
+
 	};
 
 	module.exports = react_constants;

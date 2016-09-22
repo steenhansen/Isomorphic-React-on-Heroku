@@ -1,7 +1,7 @@
 'use strict'
 
 var DataList = require('../DataList')
-var sharedMethods = require('../../sharedMethods')
+var shared_methods = require('../../sharedMethods')
 
 class RsdList extends DataList {
     constructor(props, search_columns) {
@@ -23,12 +23,17 @@ class RsdList extends DataList {
     prepareIndexSet(default_sort_indexes) {
         var index_number = 0
         var start_articles_reg_ex = new RegExp(/^(a|an|the) /i)
+        var rsd_episode_digits = 0
         for (var media_record of this._indexed_access_table) {
             default_sort_indexes.push(index_number)
             this.bookTitleSort(media_record, start_articles_reg_ex)
             this.bookAuthorSort(media_record)
             this.timeLengthShorten(media_record)
-            var id_digits = sharedMethods.leadingZerosDigits(media_record['episode number'])
+            if (rsd_episode_digits === 0) {
+                var first_id = media_record['episode number']
+                rsd_episode_digits = shared_methods.sizeOfLargestId(first_id)
+            }
+            var id_digits = shared_methods.leadingZerosDigits(rsd_episode_digits, media_record['episode number'])
             media_record['episode_number'] = id_digits
             index_number++
         }

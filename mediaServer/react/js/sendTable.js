@@ -11,6 +11,7 @@ var send_table = {
         var chunkhash_url = '//' + host_url + '/' + bundle_name + '.' + js_file_parts[bundle_name] + '.js';
         return chunkhash_url;
     },
+
     encaseTable: function encaseTable(table_html, host_url, device_type) {
         var rev_css_chunks = fromAppRoot('rev-manifest_css.json');
         var css_file_parts = jsonfile.readFileSync(rev_css_chunks);
@@ -30,7 +31,7 @@ var send_table = {
         return page_html;
     },
 
-    marshallServerHtml: function marshallServerHtml(media_type, props_array, desk_mobile_template, device_type) {
+    marshallServerHtml: function marshallServerHtml(media_type, props_array, desk_mobile_template, device_type, host_url) {
         var DOM = React.DOM;
         var div = DOM.div;
         var script = DOM.script;
@@ -43,7 +44,7 @@ var send_table = {
         //        var data_imgs = fromAppRoot('img_data_uris.json')
         //        var data_img_parts = jsonfile.readFileSync(data_imgs)
         //    var rsd_logo_url = data_img_parts['ReadingShortAndDeepLogo200x200.jpg'] // dataUri
-        var rsd_logo_url = '/' + react_constants.IMG_LOGO;
+        var rsd_logo_url = '//' + host_url + '/' + react_constants.IMG_LOGO;
         var media_description = miscMethods.getFillSwig(expected_file, { rsd_logo_url: rsd_logo_url });
         var props = {
             data_list: props_array,

@@ -1,4 +1,9 @@
 
+Javascript was not completely compiled errors
+    Unexpected token <
+    webpackJsonp is not defined
+
+
 ------ test ------
     Check configEnvironment.js
         NODE_DATABASE: 'mongodb://localhost/media_server_db'
@@ -42,10 +47,11 @@
         NODE_DATABASE : "mongodb://heroku_abcdefgh:12345678901234567890123456@ab123456.mlab.com:12345/heroku_abcdefgh"
         RSD_GOOGLE_DATA: "https://docs.google.com/spreadsheets/d/1uWtJWX6ZqRmw7ThEpXA1Jww6QUxWrYqdn5jyfK5HYDY/export?format=tsv":
 
-    git push to staging
+   git push to staging
 
-    if app crashes
-         heroku logs --tail --app sffaudio_staging
+   if app crashes
+        heroku logs --tail --app calm-dusk-45367
+        heroku restart --app calm-dusk-45367
 
     Check from FireFox with console visible
         ...
@@ -58,7 +64,8 @@
     git push to production
 
     if app crashes
-        heroku logs --tail --app sffaudio_production
+        heroku logs --tail --app sffaudio
+        heroku restart --app sffaudio
 
     Check from FireFox with console visible
         ...

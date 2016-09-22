@@ -193,7 +193,6 @@ var RsdComponent = function (_React$Component) {
         value: function _cssGeneration() {
             var dark_blue = react_constants.SFF_DARK_BLUE;
             var column_sort_css = '\n      .sort-by-episode_number { color: #' + dark_blue + '; font-weight: bold; }\n      .sort-by-hh-mm-ss       { color: #' + dark_blue + '; font-weight: bold; }\n      .search-highlight       { color: #' + dark_blue + '; font-weight: bold; }\n\n      .first-book-author      { color: #' + dark_blue + '; font-weight: bold; }\n      .last-book-author       { color: #' + dark_blue + '; font-weight: bold; font-size: 120%; }\n\n      .start-book-title       { color: #' + dark_blue + '; font-weight: bold; }\n      .end-book-title         { color: #' + dark_blue + '; font-weight: bold; font-size: 120%; }\n\n       ';
-            //      .story-link {vertical-align:middle; margin-top: -4 }  `
             return column_sort_css;
         }
     }, {

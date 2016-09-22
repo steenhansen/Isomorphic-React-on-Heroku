@@ -1,6 +1,5 @@
 "use strict"
 
-
 var React = require('react')
 
 class RsdDescription extends React.Component {
@@ -25,11 +24,8 @@ class RsdDescription extends React.Component {
         this._updateTimer = setTimeout(this._updateTableSize, 16)
     }
 
-
     _updateTableSize() {
-
     }
-
 
     render() {
         var rsd_description = this.rsd_description
@@ -38,6 +34,5 @@ class RsdDescription extends React.Component {
         )
     }
 }
-
 
 module.exports = RsdDescription

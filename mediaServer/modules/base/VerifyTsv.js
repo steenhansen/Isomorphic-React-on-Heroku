@@ -30,11 +30,12 @@ VerifyTsv.prototype.headersMatch = function (the_titles) {
             titles_length++
         }
     }
-    var heading_length = this._heading_vars.length
+   var heading_length = this._heading_vars.length
     if (titles_length !== heading_length) {
         global.Method_logger.chronicle('error', 'VerifyTsv differing lengths', module.filename, 'titles_length', titles_length, 'heading_length', heading_length)
         return false
     }
+
     for (var key in this._heading_vars) {
         var heading_value = this._heading_vars[key]
         if (!used_titles[heading_value]) {

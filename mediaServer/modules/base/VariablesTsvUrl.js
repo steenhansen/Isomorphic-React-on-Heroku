@@ -29,7 +29,9 @@ VariablesTsvUrl.prototype._getTsvText = function () {
             deferred.resolve(local_file_data)
         }, function onRejected(err_cond) {
             deferred.reject(err_cond)
-        })
+        }).catch(function (error) {
+        miscMethods.serverError(error.stack)
+    })
     return deferred.promise
 }
 

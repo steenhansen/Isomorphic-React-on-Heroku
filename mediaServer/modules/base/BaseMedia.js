@@ -5,6 +5,8 @@ var Q = require('q')
 var swig = require('swig')
 var miscMethods = require('./miscMethods')
 var media_constants = require('./MediaConstants')
+var miscMethods = require('./miscMethods')
+var shared_methods = require('../../react/sharedMethods')
 
 var BaseMedia = function (index_field/*:string*/, test_id_prefix/*:string*/) {
     this._index_field = index_field
@@ -68,7 +70,6 @@ BaseMedia.prototype.deriveData = function (data_columns) {
     return data_columns
 }
 
-//BaseMedia.prototype.deriveVersions = function (data_rows) {
 BaseMedia.prototype.deriveVersions = function (media_rows/*:Array<MediaRows>*/) {
     return media_rows
 }
@@ -78,10 +79,9 @@ BaseMedia.prototype.databaseItem = function () {
 }
 
 BaseMedia.prototype.saveItem = function (data_columns, real_or_test/*:string*/) {
-    var deferred = Q.defer()
     if ((data_columns instanceof Array) || (!(data_columns instanceof Object))) {
         var the_error = new Error("data_columns not object :" + data_columns)
-        deferred.reject(the_error)
+        global.Method_logger.chronicle('error', 'BaseMedia.prototype.saveItem', module.filename, 'the_error', the_error)
     }
     if (media_constants.TEST_DATA === real_or_test) {
         data_columns._id = this._test_id_prefix + data_columns[this._index_field]
@@ -91,19 +91,17 @@ BaseMedia.prototype.saveItem = function (data_columns, real_or_test/*:string*/) 
     data_columns.real_or_test = real_or_test
     var derived_columns = this.deriveData(data_columns)
     if (derived_columns instanceof Error) {
-        deferred.reject(derived_columns)
+        global.Method_logger.chronicle('error', 'BaseMedia.prototype.saveItem', module.filename, 'derived_columns', derived_columns)
     }
     var media_item = this.databaseItem(derived_columns)
     if (media_item instanceof Error) {
-        deferred.reject(media_item)
+        global.Method_logger.chronicle('error', 'BaseMedia.prototype.saveItem', module.filename, 'media_item', media_item)
     }
     media_item.save(function (err_cond) {
         if (err_cond) {
-            deferred.reject(err_cond)
+            global.Method_logger.chronicle('error', 'BaseMedia.prototype.saveItem', module.filename, 'err_cond', err_cond)
         }
-        deferred.resolve()
     })
-    return deferred.promise
 }
 
 BaseMedia.prototype.deleteDocument = function (itemsDb, document_name/*:string*/) {
@@ -125,7 +123,9 @@ BaseMedia.prototype.saveDescription = function (itemsDb, description_text/*:stri
         }, function onRejected(err_cond) {
             deferred.reject(err_cond)
         }
-    )
+    ).catch(function (error) {
+        miscMethods.serverError(error.stack)
+    })
     return deferred.promise
 }
 
@@ -147,7 +147,9 @@ BaseMedia.prototype.upsertDocument = function (itemsDb, document_name, variable_
             }, function onRejected(err_cond) {
                 deferred.reject(err_cond)
             }
-        )
+        ).catch(function (error) {
+            miscMethods.serverError(error.stack)
+        })
     })
     return deferred.promise
 }
@@ -176,13 +178,15 @@ BaseMedia.prototype.saveDocument = function (_id, key, value, real_or_test) {
 BaseMedia.prototype.rssItems = function (data_rows, item_template_file) {
     var swig_item_template = swig.compileFile(item_template_file)
     var rsd_items_html = ''
-    for (var row_index in data_rows) {
-        if (data_rows.hasOwnProperty(row_index)) {
-            var the_row = data_rows[row_index]
-            var template_vars = this._itemTemplateVars(the_row)
-            var item_html = swig_item_template(template_vars)
-            rsd_items_html += item_html
+    var rsd_episode_digits = 0
+    for (var the_row of data_rows) {
+        if (rsd_episode_digits === 0) {
+            var first_id = the_row['episode number']
+            rsd_episode_digits = shared_methods.sizeOfLargestId(first_id)
         }
+        var template_vars = this._itemTemplateVars(the_row, rsd_episode_digits)
+        var item_html = swig_item_template(template_vars)
+        rsd_items_html += item_html
     }
     return rsd_items_html
 }
@@ -212,7 +216,9 @@ BaseMedia.prototype.collectionAsString = function (itemsDb) {
             }, function onRejected(err_cond) {
                 deferred.reject(err_cond)
             }
-        )
+        ).catch(function (error) {
+            miscMethods.serverError(error.stack)
+        })
     })
     return deferred.promise
 }

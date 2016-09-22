@@ -138,7 +138,6 @@ class RsdComponent extends React.Component {
       .end-book-title         { color: #${dark_blue}; font-weight: bold; font-size: 120%; }
 
        `
-//      .story-link {vertical-align:middle; margin-top: -4 }  `
         return column_sort_css
     }
 

@@ -37,7 +37,7 @@ describe('test/unit/upsertMedia/success/upsertMedia.js', function () {
             var variables_tsv = di_factory.VariablesTsvFileCreate(tsv_var_1)
             var parser_tsv = di_factory.ParserTsvFileCreate(tsv_data_1)
 
-            var verify_tsv = di_factory.VerifyTsvCreate()
+            var verify_tsv = di_factory.VerifyTsvDataRowsCreate()
             save_rss.upsertMedia(variables_tsv, parser_tsv, the_media, media_constants.TEST_DATA, verify_tsv).then(
                 function onFulfilled() {
                     the_media.collectionAsString().then(

@@ -35,7 +35,7 @@ module.exports = function (log_dir, environment_type) {
     var debug_log = log_path + 'debug_' + environment_type + '.log'
     var info_log = log_path + 'info_' + environment_type + '.log'
     var error_log = log_path + 'error_' + environment_type + '.log'
-    var exception_log = log_path + 'exception_' + environment_type + '.log'
+
 
     var Method_Logger = new (winston.Logger)({
         transports: [
@@ -53,17 +53,9 @@ module.exports = function (log_dir, environment_type) {
                 name: 'debug-file',
                 filename: debug_log,
                 level: 'debug'
-            }),
-            new (winston.transports.File)({
-                name: 'exception-file',
-                filename: exception_log,
-                handleExceptions: true,
-                humanReadableUnhandledException: true,
-                level: 'exception'
             })
         ]
     })
-
 
     var functionLogger = {
         chronicle: function (log_type, method_name, method_file) {  //, var1_name, var1_value, var2_name, var2_value, var3_name, var3_value
@@ -79,12 +71,9 @@ module.exports = function (log_dir, environment_type) {
                 var variable_value = arguments[i + 1]
                 log_message += variableData(variable_name, variable_value, caller_location)
             }
-            if ((  log_type === 'error') || ( log_type === 'exception')) {
+            if (log_type === 'error') {
                 console.log(log_type, log_message)
             }
-
-            // log_message = '****' + log_message
-
             Method_Logger.log(log_type, log_message, callbackFunction)
             return new Error(log_type + ' ' + log_message)
         }

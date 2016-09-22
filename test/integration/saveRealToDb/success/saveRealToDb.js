@@ -46,13 +46,20 @@ describe('test/integration/saveRealToDb/success/saveRealToDb.js', function () {
         beforeEach(function (doneCallback) {
             var parser_tsv = di_factory.ParserTsvFileCreate(good_data)
             var variables_tsv = di_factory.VariablesTsvFileCreate(generic_rsd_variables)
-            screenOutput.htmlAdminSaveRealP3(variables_tsv, parser_tsv, rsd_media, media_constants.REAL_DATA, the_information, media_file_loc).then(
+            screenOutput.html_saveRealToDb_P4(variables_tsv, parser_tsv, rsd_media, media_constants.REAL_DATA, the_information, media_file_loc).then(
                 function onFulfilled(html) {
                     correct_test_path = true
-                    miscMethods.saveLocalFile(produced_file, html).then(
+                    screenOutput.html_saveRealToRss_P5(variables_tsv, parser_tsv, rsd_media, media_constants.REAL_DATA, the_information, media_file_loc).then(
                         function onFulfilled() {
-                            doneCallback()
-                        }, function onRejected() {
+                            miscMethods.saveLocalFile(produced_file, html).then(
+                                function onFulfilled() {
+                                    doneCallback()
+                                }, function onRejected() {
+                                    doneCallback()
+                                }
+                            )
+                        },
+                        function onRejected() {
                             doneCallback()
                         }
                     )
@@ -85,7 +92,6 @@ describe('test/integration/saveRealToDb/success/saveRealToDb.js', function () {
         beforeEach(function (doneCallback) {
             screenOutput.xmlAdminViewRealIframeP3(rsd_media).then(
                 function onFulfilled(rsd_rss_xml) {
-
                     miscMethods.saveLocalFile(produced_file, rsd_rss_xml).then(
                         function onFulfilled() {
                             correct_test_path = true

@@ -1,8 +1,6 @@
 'use strict'
 
 
-
-
 var validUrl = require('valid-url')
 var csv_parse = require('csv-parse')
 
@@ -20,6 +18,8 @@ var media_constants = require('./MediaConstants')
 
 var PdfMedia = require('../PdfMedia')
 var RsdMedia = require('../RsdMedia')
+
+var variables_information = require('../variablesInformation')
 
 module.exports = function (media_information) {
 
@@ -92,7 +92,20 @@ module.exports = function (media_information) {
             }
         },
 
-        VerifyTsvCreate: function () {
+        VerifyTsvVariablesCreate: function () {
+            var heading_vars = variables_information.heading_vars
+            var must_contain = variables_information.must_contain
+            var contain_errors = variables_information.contain_errors
+            var tsv_variables = variables_information.tsv_variables
+            if ((heading_vars instanceof Array) && (must_contain instanceof Object) && (contain_errors instanceof Object) && (tsv_variables instanceof Array)) {
+                var verify_vars_tsv = new VerifyTsv(heading_vars, must_contain, contain_errors, tsv_variables)
+                return verify_vars_tsv
+            } else {
+                return global.Method_logger.chronicle('error', 'VerifyTsvVariablesCreate-ERROR-1', module.filename)
+            }
+        },
+
+        VerifyTsvDataRowsCreate: function () {
             var heading_vars = media_information.heading_vars
             var must_contain = media_information.must_contain
             var contain_errors = media_information.contain_errors
@@ -101,7 +114,7 @@ module.exports = function (media_information) {
                 var verify_tsv = new VerifyTsv(heading_vars, must_contain, contain_errors, tsv_variables)
                 return verify_tsv
             } else {
-                return global.Method_logger.chronicle('error', 'VerifyTsvCreate-ERROR-1', module.filename)
+                return global.Method_logger.chronicle('error', 'VerifyTsvDataRowsCreate-ERROR-1', module.filename)
             }
         },
 

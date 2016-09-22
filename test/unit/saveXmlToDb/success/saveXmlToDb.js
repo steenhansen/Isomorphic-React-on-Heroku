@@ -13,8 +13,6 @@ var media_constants = rootAppRequire('mediaServer/modules/base/MediaConstants')
 var test_directory = __dirname + '/'
 var actual_results = 'actual_results/'
 
-var media_file_loc = rootAppRequire('mediaServer/modules/base/mediaFileLoc')(the_information)
-
 var actual_directory = test_directory + actual_results
 var media_directory = test_directory + 'media_data/'
 var expected_directory = test_directory + 'expected_results/'
@@ -35,7 +33,7 @@ describe('test/unit/saveXmlToDb/success/saveXmlToDb.js', function () {
         beforeEach(function (doneCallback) {
             var variables_tsv = di_factory.VariablesTsvFileCreate(tsv_var_1)
             var parser_tsv = di_factory.ParserTsvFileCreate(tsv_data_1)
-            save_rss.saveXmlToDb(variables_tsv, parser_tsv, the_media, media_constants.TEST_DATA, the_information, media_file_loc).then(
+                save_rss.saveXmlToDb(variables_tsv, parser_tsv, the_media, media_constants.TEST_DATA, the_information).then(
                 function onFulfilled() {
                     doneCallback()
                 }, function onRejected() {

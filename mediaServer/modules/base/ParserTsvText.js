@@ -35,11 +35,11 @@ ParserTsvText.prototype._getTsvText = function () {
 }
 
 ParserTsvText.prototype.getTitles = function () {
-
     var deferred = Q.defer()
     var this_ParserTsvText = this
     this._csv_parse(this._tsv_text, this._parser_options, function (err_cond, output_array) {
         if (err_cond) {
+            console.log(err_cond)
             deferred.reject(err_cond)
         }
         var title_array = this_ParserTsvText._firstRow(output_array)
@@ -101,7 +101,7 @@ ParserTsvText.prototype.allRows = function (verify_tsv) {
             this_ParserTsvText.getTitles().then(
                 function onSucces(the_titles) {
                     if (typeof verify_tsv === 'object') {
-                        if (!verify_tsv.headersMatch(the_titles)) {
+                            if (!verify_tsv.headersMatch(the_titles)) {
                             var err_cond = new Error("error_1000 Spreadsheet Headers don't match database")
                             err_cond.information = 'the_titles = ' + the_titles
                             deferred.reject(err_cond)
@@ -112,13 +112,17 @@ ParserTsvText.prototype.allRows = function (verify_tsv) {
                             deferred.resolve(the_rows)
                         }, function onRejected(err_cond) {
                             deferred.reject(err_cond)
-                        })
+                        }).catch(function (error) {
+                        miscMethods.serverError(error.stack)
+                    })
                 }, function onRejected(err_cond) {
                     deferred.reject(err_cond)
                 })
         }, function onRejected(err_cond) {
             deferred.reject(err_cond)
-        })
+        }).catch(function (error) {
+        miscMethods.serverError(error.stack)
+    })
     return deferred.promise
 }
 

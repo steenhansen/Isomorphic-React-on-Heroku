@@ -9,7 +9,7 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 var DataList = require('../DataList');
-var sharedMethods = require('../../sharedMethods');
+var shared_methods = require('../../sharedMethods');
 
 var RsdList = function (_DataList) {
     _inherits(RsdList, _DataList);
@@ -38,6 +38,7 @@ var RsdList = function (_DataList) {
         value: function prepareIndexSet(default_sort_indexes) {
             var index_number = 0;
             var start_articles_reg_ex = new RegExp(/^(a|an|the) /i);
+            var rsd_episode_digits = 0;
             var _iteratorNormalCompletion = true;
             var _didIteratorError = false;
             var _iteratorError = undefined;
@@ -50,7 +51,11 @@ var RsdList = function (_DataList) {
                     this.bookTitleSort(media_record, start_articles_reg_ex);
                     this.bookAuthorSort(media_record);
                     this.timeLengthShorten(media_record);
-                    var id_digits = sharedMethods.leadingZerosDigits(media_record['episode number']);
+                    if (rsd_episode_digits === 0) {
+                        var first_id = media_record['episode number'];
+                        rsd_episode_digits = shared_methods.sizeOfLargestId(first_id);
+                    }
+                    var id_digits = shared_methods.leadingZerosDigits(rsd_episode_digits, media_record['episode number']);
                     media_record['episode_number'] = id_digits;
                     index_number++;
                 }

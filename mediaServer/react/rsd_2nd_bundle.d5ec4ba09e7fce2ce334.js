@@ -5,6 +5,17 @@ webpackJsonp([1],{
 
 	'use strict'
 
+	window.onerror = function (msg, url, lineNo, columnNo, error) {
+	    var message = ['Message: ' + msg,
+	        'URL: ' + url,
+	        'Line: ' + lineNo,
+	        'Column: ' + columnNo,
+	        'Error object: ' + JSON.stringify(error)
+	    ].join(' - ')
+	    console.log(message)
+	    return true
+	}
+
 	var React = __webpack_require__(5)
 	var shared_constants = __webpack_require__(224)
 	var ReactDOM = __webpack_require__(54)
@@ -17,6 +28,8 @@ webpackJsonp([1],{
 
 	ReactDOM.render(browser_rsd_component, react_element_container)
 
+
+
 /***/ },
 
 /***/ 224:
@@ -24,11 +37,9 @@ webpackJsonp([1],{
 
 	'use strict';
 
-	// NB, tests rely on EPISODE_DIGITS: 3
-
 
 	var shared_constants = {
-	    EPISODE_DIGITS: 3,                          // #001   OR #1000 OR #12345
+
 	    RSD_REACT_CONTAINTER: 'react-container'
 	}
 
@@ -234,7 +245,6 @@ webpackJsonp([1],{
 	        value: function _cssGeneration() {
 	            var dark_blue = react_constants.SFF_DARK_BLUE;
 	            var column_sort_css = '\n      .sort-by-episode_number { color: #' + dark_blue + '; font-weight: bold; }\n      .sort-by-hh-mm-ss       { color: #' + dark_blue + '; font-weight: bold; }\n      .search-highlight       { color: #' + dark_blue + '; font-weight: bold; }\n\n      .first-book-author      { color: #' + dark_blue + '; font-weight: bold; }\n      .last-book-author       { color: #' + dark_blue + '; font-weight: bold; font-size: 120%; }\n\n      .start-book-title       { color: #' + dark_blue + '; font-weight: bold; }\n      .end-book-title         { color: #' + dark_blue + '; font-weight: bold; font-size: 120%; }\n\n       ';
-	            //      .story-link {vertical-align:middle; margin-top: -4 }  `
 	            return column_sort_css;
 	        }
 	    }, {
@@ -970,7 +980,7 @@ webpackJsonp([1],{
 	}
 
 	var DataList = __webpack_require__(221);
-	var sharedMethods = __webpack_require__(230);
+	var shared_methods = __webpack_require__(230);
 
 	var RsdList = function (_DataList) {
 	    _inherits(RsdList, _DataList);
@@ -999,6 +1009,7 @@ webpackJsonp([1],{
 	        value: function prepareIndexSet(default_sort_indexes) {
 	            var index_number = 0;
 	            var start_articles_reg_ex = new RegExp(/^(a|an|the) /i);
+	            var rsd_episode_digits = 0;
 	            var _iteratorNormalCompletion = true;
 	            var _didIteratorError = false;
 	            var _iteratorError = undefined;
@@ -1011,7 +1022,11 @@ webpackJsonp([1],{
 	                    this.bookTitleSort(media_record, start_articles_reg_ex);
 	                    this.bookAuthorSort(media_record);
 	                    this.timeLengthShorten(media_record);
-	                    var id_digits = sharedMethods.leadingZerosDigits(media_record['episode number']);
+	                    if (rsd_episode_digits === 0) {
+	                        var first_id = media_record['episode number'];
+	                        rsd_episode_digits = shared_methods.sizeOfLargestId(first_id);
+	                    }
+	                    var id_digits = shared_methods.leadingZerosDigits(rsd_episode_digits, media_record['episode number']);
 	                    media_record['episode_number'] = id_digits;
 	                    index_number++;
 	                }
@@ -1102,15 +1117,27 @@ webpackJsonp([1],{
 /***/ },
 
 /***/ 230:
-/***/ function(module, exports, __webpack_require__) {
+/***/ function(module, exports) {
 
 	'use strict'
-	var shared_constants = __webpack_require__(224)
+	//var shared_constants = require('./sharedConstants')
 
 	var shared_methods = {
 
-	    leadingZerosDigits: function (int_id) {
-	        var digits_from_end = -1 * shared_constants.EPISODE_DIGITS
+	    sizeOfLargestId: function (first_id){
+	       var first_number = 0 + first_id
+	          if (first_number>9999){
+	            var episode_digits = 5
+	        }else if (first_number>999){
+	            var episode_digits = 4
+	        } else{
+	           var episode_digits = 3
+	        }
+	        return episode_digits
+	    },
+
+	    leadingZerosDigits: function (episode_digits, int_id) {
+	        var digits_from_end = -1 * episode_digits
 	        var id_digits = String("00000" + int_id).slice(digits_from_end)
 	        return id_digits
 	    },

@@ -17,14 +17,16 @@ module.exports = function (the_information, di_factory, the_media) {
         miscMethods.setTimeZone(config_environment.TIME_ZONE)
         miscMethods.connectToMongoose(config_environment.NODE_DATABASE)
 
-        screenOutput.htmlAdminSaveTestP1(variables_tsv, parser_tsv, the_media, media_constants.TEST_DATA, the_information, media_file_loc).then(
+        screenOutput.html_saveTestToDb_P1(variables_tsv, parser_tsv, the_media, media_constants.TEST_DATA, the_information, media_file_loc).then(
             function onFulfilled() {
                 global.Method_logger.chronicle('info', 'cron end', module.filename, exitCallback)
             },
             function onRejected() {
                 global.Method_logger.chronicle('info', 'cron end ERROR', module.filename, exitCallback)
             }
-        )
+        ).catch(function (error) {
+            miscMethods.serverError(error.stack)
+        })
 
     }
 

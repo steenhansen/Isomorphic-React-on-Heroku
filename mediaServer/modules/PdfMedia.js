@@ -9,8 +9,6 @@ var PDF_USA_DIR_NOT_READ_IN_YET = media_constants.PDF_USA_DIR_NOT_READ_IN_YET
 
 var objectAssign = require('object-assign')
 
-///    https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Object/create
-
 var BaseMedia = require('./base/BaseMedia')
 var pdf_items_db = require('../models/pdfItemsDb')
 

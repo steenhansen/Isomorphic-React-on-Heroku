@@ -34,7 +34,7 @@ VariablesTsvText.prototype.deriveAll = function (the_rows, current_media, offset
 VariablesTsvText.prototype.allVariables = function (verify_tsv) {
     var deferred = Q.defer()
     var this_allVariables = this
-    this.allRows('Dont_check_variable_header_titles_quebert').then(
+     this.allRows(verify_tsv).then(
         function onFulfilled(variable_rows) {
             var tsv_variables = []
             for (var value_key in variable_rows) {
@@ -46,18 +46,14 @@ VariablesTsvText.prototype.allVariables = function (verify_tsv) {
                     }
                 }
             }
-            if (typeof verify_tsv === 'object') {
-                var extra_tsv_var = verify_tsv.extraTsvVariables(tsv_variables)
-                if (extra_tsv_var !== '') {
-                    deferred.reject(extra_tsv_var)
-                }
-            }
             this_allVariables._captured_variables = tsv_variables
             deferred.resolve(tsv_variables)
         }, function onRejected(err_cond) {
             deferred.reject(err_cond)
         }
-    )
+    ).catch(function (error) {
+         miscMethods.serverError(error.stack)
+     })
     return deferred.promise
 }
 
