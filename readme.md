@@ -18,12 +18,16 @@ Load db ( user/pass ):
 
 View:
     http://localhost:5000/
+
     http://localhost:5000/rsd/rss    === https://sffaudio.herokuapp.com/rsd/rss
+
     http://localhost:5000/rsd/table  === https://sffaudio.herokuapp.com/rsd/table
+
     http://localhost:5000/rsd/mobile === https://sffaudio.herokuapp.com/rsd/mobile
 
 Examples:
     https://calm-dusk-45367.herokuapp.com/rsd/table          // 10,000 test records
+
     https://sffaudio.herokuapp.com/rsd/table                 // 35 real records
 
 
