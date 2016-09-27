@@ -17,7 +17,7 @@ module.exports = function (_di_factory) {
                     deferred.reject(err_cond)
                 }
             ).catch(function (error) {
-                miscMethods.serverError(error.stack)
+                miscMethods.serverError(error)
             })
             return deferred.promise
         },
@@ -31,7 +31,7 @@ module.exports = function (_di_factory) {
                     deferred.reject(err_cond)
                 }
             ).catch(function (error) {
-                miscMethods.serverError(error.stack)
+                miscMethods.serverError(error)
             })
             return deferred.promise
         },
@@ -55,18 +55,18 @@ module.exports = function (_di_factory) {
                                     deferred.reject(err_cond)
                                 }
                             ).catch(function (error) {
-                                miscMethods.serverError(error.stack)
+                                miscMethods.serverError(error)
                             })
                         }, function onRejected(err_cond) {
                             deferred.reject(err_cond)
                         }
                     ).catch(function (error) {
-                        miscMethods.serverError(error.stack)
+                        miscMethods.serverError(error)
                     })
                 }, function onRejected(err_cond) {
                     deferred.reject(err_cond)
                 }).catch(function (error) {
-                miscMethods.serverError(error.stack)
+                miscMethods.serverError(error)
             })
             return deferred.promise
         },
@@ -108,14 +108,14 @@ module.exports = function (_di_factory) {
                             deferred.reject(err_cond)
                         }
                     ).catch(function (error) {
-                        miscMethods.serverError(error.stack)
+                        miscMethods.serverError(error)
                     })
                 },
                 function onRejected(err_cond) {
                     deferred.reject(err_cond)
                 }
             ).catch(function (error) {
-                miscMethods.serverError(error.stack)
+                miscMethods.serverError(error)
             })
             return deferred.promise
         },
@@ -130,7 +130,7 @@ module.exports = function (_di_factory) {
                     deferred.reject(err_cond)
                 }
             ).catch(function (error) {
-                miscMethods.serverError(error.stack)
+                miscMethods.serverError(error)
             })
             return deferred.promise
         },
@@ -147,7 +147,7 @@ module.exports = function (_di_factory) {
                     deferred.reject(err_cond)
                 }
             ).catch(function (error) {
-                miscMethods.serverError(error.stack)
+                miscMethods.serverError(error)
             })
             return deferred.promise
         }

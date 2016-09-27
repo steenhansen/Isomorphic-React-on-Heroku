@@ -27,7 +27,7 @@ module.exports = function (save_rss, media_url_dirs) {
                     deferred.reject(page_html)
                 }
             ).catch(function (error) {
-                miscMethods.serverError(error.stack)
+                miscMethods.serverError(error)
             })
             return deferred.promise
         },
@@ -52,7 +52,7 @@ module.exports = function (save_rss, media_url_dirs) {
                     deferred.reject(page_html)
                 }
             ).catch(function (error) {
-                miscMethods.serverError(error.stack)
+                miscMethods.serverError(error)
             })
             return deferred.promise
         },
@@ -74,7 +74,7 @@ module.exports = function (save_rss, media_url_dirs) {
                     deferred.reject(page_html)
                 }
             ).catch(function (error) {
-                miscMethods.serverError(error.stack)
+                miscMethods.serverError(error)
             })
             return deferred.promise
         },
@@ -94,13 +94,14 @@ module.exports = function (save_rss, media_url_dirs) {
                     deferred.reject(page_html)
                 }
             ).catch(function (error) {
-                miscMethods.serverError(error.stack)
+                miscMethods.serverError(error)
             })
             return deferred.promise
         },
 
         htmlPublicShowPlayer: function (id, the_media, the_information, media_file_loc) {
             var deferred = Q.defer()
+
             var podpress_html = media_file_loc.htmlFiles(media_url_dirs.PUBLIC_SHOW_PLAYER)
             if (miscMethods.isInteger(id)) {
                 the_media.getDocument(id, media_constants.ENTIRE_DOCUMENT, media_constants.REAL_DATA).then(
@@ -117,7 +118,7 @@ module.exports = function (save_rss, media_url_dirs) {
                         deferred.reject(page_html)
                     }
                 ).catch(function (error) {
-                    miscMethods.serverError(error.stack)
+                    miscMethods.serverError(error)
                 })
             } else {
                 deferred.reject('get id value is not integer')
@@ -135,7 +136,7 @@ module.exports = function (save_rss, media_url_dirs) {
                     deferred.reject(err_cond)
                 }
             ).catch(function (error) {
-                miscMethods.serverError(error.stack)
+                miscMethods.serverError(error)
             })
             return deferred.promise
         },
@@ -150,7 +151,7 @@ module.exports = function (save_rss, media_url_dirs) {
                     deferred.reject(err_cond)
                 }
             ).catch(function (error) {
-                miscMethods.serverError(error.stack)
+                miscMethods.serverError(error)
             })
             return deferred.promise
         },

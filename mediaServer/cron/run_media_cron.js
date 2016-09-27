@@ -25,7 +25,7 @@ module.exports = function (the_information, di_factory, the_media) {
                 global.Method_logger.chronicle('info', 'cron end ERROR', module.filename, exitCallback)
             }
         ).catch(function (error) {
-            miscMethods.serverError(error.stack)
+            miscMethods.serverError(error)
         })
 
     }

@@ -35,7 +35,7 @@ module.exports = function (app) {
                     res.send(page_html)
                 }
             ).catch(function (error) {
-                miscMethods.serverError(error.stack, res)
+                miscMethods.serverError(error, res)
             })
         }
     })
@@ -51,7 +51,7 @@ module.exports = function (app) {
                 res.send(page_html)
             }
         ).catch(function (error) {
-            miscMethods.serverError(error.stack, res)
+            miscMethods.serverError(error, res)
         })
     })
 
@@ -72,7 +72,7 @@ module.exports = function (app) {
                 res.send(err)
             }
         ).catch(function (error) {
-            miscMethods.serverError(error.stack, res)
+            miscMethods.serverError(error, res)
         })
     })
 
@@ -87,7 +87,7 @@ module.exports = function (app) {
                 res.send(page_html)
             }
         ).catch(function (error) {
-            miscMethods.serverError(error.stack, res)
+            miscMethods.serverError(error, res)
         })
     })
 
@@ -102,7 +102,7 @@ module.exports = function (app) {
                 res.send(page_html)
             }
         ).catch(function (error) {
-            miscMethods.serverError(error.stack, res)
+            miscMethods.serverError(error, res)
         })
     })
 
@@ -117,7 +117,7 @@ module.exports = function (app) {
                 res.send(player_html)
             }
         ).catch(function (error) {
-            miscMethods.serverError(error.stack, res)
+            miscMethods.serverError(error, res)
         })
     })
 
@@ -137,7 +137,7 @@ module.exports = function (app) {
                 res.send(err)
             }
         ).catch(function (error) {
-            miscMethods.serverError(error.stack, res)
+            miscMethods.serverError(error, res)
         })
     })
 
@@ -160,7 +160,7 @@ module.exports = function (app) {
                 res.send(page_html)
             }
         ).catch(function (error) {
-            miscMethods.serverError(error.stack, res)
+            miscMethods.serverError(error, res)
         })
     })
 
@@ -177,7 +177,7 @@ module.exports = function (app) {
                 res.send(page_html)
             }
         ).catch(function (error) {
-            miscMethods.serverError(error.stack, res)
+            miscMethods.serverError(error, res)
         })
     })
 

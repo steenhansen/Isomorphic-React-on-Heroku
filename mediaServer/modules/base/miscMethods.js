@@ -91,7 +91,7 @@ var miscMethods = {
                 deferred.reject(err_cond)
             }
         ).catch(function (error) {
-            miscMethods.serverError(error.stack)
+            miscMethods.serverError(error)
         })
         return deferred.promise
     },
@@ -206,14 +206,17 @@ var miscMethods = {
                 deferred.reject(err_cond)
             }
         ).catch(function (error) {
-            miscMethods.serverError(error.stack)
+            miscMethods.serverError(error)
         })
         return deferred.promise
     },
 
-
-    serverError: function (error_stack, res) {
-        global.Method_logger.chronicle('error', 'try-catch', '', 'error.stack', error_stack)
+    serverError: function (error, res) {
+        if (error.stack) {
+            global.Method_logger.chronicle('error', 'try-catch', '', 'error.stack', error.stack)
+        }else {
+            global.Method_logger.chronicle('error', 'try-catch', '', 'error', error)
+        }
         if (res) {
             res.send(media_constants.SERVER_ERROR)
         }

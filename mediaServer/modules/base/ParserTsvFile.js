@@ -26,7 +26,7 @@ ParserTsvFile.prototype._getTsvText = function () {
             deferred.reject(err_cond)
         }
     ).catch(function (error) {
-        miscMethods.serverError(error.stack)
+        miscMethods.serverError(error)
     })
     return deferred.promise
 }

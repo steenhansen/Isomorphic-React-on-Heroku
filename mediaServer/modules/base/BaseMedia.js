@@ -124,7 +124,7 @@ BaseMedia.prototype.saveDescription = function (itemsDb, description_text/*:stri
             deferred.reject(err_cond)
         }
     ).catch(function (error) {
-        miscMethods.serverError(error.stack)
+        miscMethods.serverError(error)
     })
     return deferred.promise
 }
@@ -148,7 +148,7 @@ BaseMedia.prototype.upsertDocument = function (itemsDb, document_name, variable_
                 deferred.reject(err_cond)
             }
         ).catch(function (error) {
-            miscMethods.serverError(error.stack)
+            miscMethods.serverError(error)
         })
     })
     return deferred.promise
@@ -217,7 +217,7 @@ BaseMedia.prototype.collectionAsString = function (itemsDb) {
                 deferred.reject(err_cond)
             }
         ).catch(function (error) {
-            miscMethods.serverError(error.stack)
+            miscMethods.serverError(error)
         })
     })
     return deferred.promise

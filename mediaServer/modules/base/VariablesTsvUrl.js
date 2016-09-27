@@ -30,7 +30,7 @@ VariablesTsvUrl.prototype._getTsvText = function () {
         }, function onRejected(err_cond) {
             deferred.reject(err_cond)
         }).catch(function (error) {
-        miscMethods.serverError(error.stack)
+        miscMethods.serverError(error)
     })
     return deferred.promise
 }
