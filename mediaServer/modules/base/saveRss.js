@@ -100,7 +100,7 @@ module.exports = function (_di_factory) {
                                         deferred.resolve(err_cond)
                                     }
                                 ).catch(function (error) {
-                                    miscMethods.serverError(error.stack)
+                                    miscMethods.serverError(error)
                                 })
                             }
                         },

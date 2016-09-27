@@ -113,7 +113,7 @@ ParserTsvText.prototype.allRows = function (verify_tsv) {
                         }, function onRejected(err_cond) {
                             deferred.reject(err_cond)
                         }).catch(function (error) {
-                        miscMethods.serverError(error.stack)
+                        miscMethods.serverError(error)
                         })
                 }, function onRejected(err_cond) {
                     deferred.reject(err_cond)
