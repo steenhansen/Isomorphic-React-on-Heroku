@@ -1,0 +1,17 @@
+Variables	Values	Explanations	
+media_title	Reading, Short and Deep		
+media_web_page	https://sffaudio.herokuapp.com/rsd/rss		
+media_directory_url	http://www.canadianquotations.ca/rsd/	Where the MP3s are stored	
+media_description	Two friends discovering together the subtle riches of stories and poems.		
+media_copyright	2016 SFFaudio		
+itunes_category	Arts		
+itunes_sub_category	Literature		
+itunes_explicit	no		
+itunes_image	http://www.sffaudio.com/images/ReadingShortAndDeepLogoREDO1700X1700C1.jpg		
+itunes_name	Eric S. Rabkin and Jesse Willis		http://lists.apple.com/archives/syndication-dev/2005/Nov/msg00002.html
+itunes_email	jessewillis@yahoo.com		http://www.feedforall.com/itune-tutorial-tags.htm
+itunes_description 	Share the joys-and sharpen the skills-of deep reading. In each weekly half-hour podcast, Eric Rabkin and Jesse Willis mine together the riches of another marvelous short story, poem, or video. Each work, freely available on the RSD website, can be read in half an hour or less, and discussed for hours.		https://validator.w3.org/feed/check.cgi
+post_early_min_rss	10		So SffAudio can read data when stories are auto-posted
+hours_offset	-6		as Heroku has gmt0, and sffAudio is Utah, there is -6 hours difference
+			so if a publish date is '2016-8-17 21:15 then the entry becomes alive
+			at  '2016-8-17 21:15 - 0:10 ===  '2016-8-17 21:05 Utah time, at 9:05pm, or 8:05pm Vancouver

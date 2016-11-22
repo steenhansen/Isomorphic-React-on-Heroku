@@ -33,17 +33,20 @@ function _inherits(subClass, superClass) {
 var react_constants = require('../reactConstants');
 var RsdTable = require('./RsdTable');
 var RsdList = require('./RsdList');
-var React = require('react');
+var MediaComponent = require('../MediaComponent');
 var GenreSelect = require('./GenreSelect');
 var RsdTitles = require('./RsdTitles');
 var RsdDescription = require('./RsdDescription');
 
-var RsdComponent = function (_React$Component) {
-    _inherits(RsdComponent, _React$Component);
+var React = require('react');
+
+var RsdComponent = function (_MediaComponent) {
+    _inherits(RsdComponent, _MediaComponent);
 
     _createClass(RsdComponent, [{
         key: '_pass_lint_',
         value: function _pass_lint_() {
+            React;
             RsdTable;
             GenreSelect;
             RsdTitles;
@@ -58,27 +61,17 @@ var RsdComponent = function (_React$Component) {
 
         _this.search_columns = ['episode_number', 'book author', 'book title'];
         var props_array = props['data_list'];
-        _this.media_description = props['media_description'];
-        _this.device_type = props['device_type'];
-        _this.record_cell_order_testing = props['record_cell_order_testing'];
         _this.rsd_list = new RsdList(props_array, _this.search_columns);
-        _this.filter_text = '';
         _this.genre_choice_filter = '';
-        _this.sort_column = '';
-        _this.sort_dir = '';
-        _this.search_matches = [];
         _this.displayed_columns = {
-            'rsd_id_cell': ['episode_number', 'file name', 'mm_ss'],
-            'rsd_text_cell': ['episode_number', 'book author', 'first_name', 'last_name', 'book title', 'start_title', 'end_title', 'hh:mm:ss', 'mm_ss', 'post link', 'file name', 'genre type', 'pdf link', 'video link']
+            'rsd_id_cell': ['episode_number', 'hh_mm', 'mp3_url'],
+            'rsd_text_cell': ['episode_number', 'book author', 'first_name', 'last_name', 'book title', 'start_title', 'end_title', 'hh:mm:ss', 'hh_mm', 'post link', 'file name', 'genre type', 'pdf link', 'video link']
         };
         _this.rsd_list.initialOrder();
         _this.state = {
             associated_rsd_list: _this.rsd_list
         };
-        _this.clearAllFilters = _this.clearAllFilters.bind(_this); //<button onClick={this.clearAllFilters} >
-        _this._onFilterChange = _this._onFilterChange.bind(_this); // <input onChange={this._onFilterChange}
         _this.filterByGenre = _this.filterByGenre.bind(_this); // <GenreSelect cb_RsdComponent_filterByGenre={this.filterByGenre}
-        _this._onSortChange = _this._onSortChange.bind(_this); // <RsdTitles cb_RsdComponent_titleSort={this._onSortChange}
         return _this;
     }
 
@@ -138,6 +131,9 @@ var RsdComponent = function (_React$Component) {
                 table_width: this.table_width,
                 table_height: this.table_height
             });
+
+            var number_matches = sortIndexes.length;
+            return number_matches;
         }
     }, {
         key: 'saveRestrictions',
@@ -170,23 +166,10 @@ var RsdComponent = function (_React$Component) {
                 sort_column: '',
                 sort_dir: ''
             };
-            this.changeGrid(changed_data);
+            this.number_matches = this.changeGrid(changed_data);
             var fn_updateTableSize = this.refs.the_rsd_table._updateTableSize;
             clearTimeout(this._updateTimer);
-            this._updateTimer = setTimeout(fn_updateTableSize(), 16);
-        }
-    }, {
-        key: '_onFilterChange',
-        value: function _onFilterChange(e) {
-            if (!e.target.value) {
-                var filter_text = '';
-            } else {
-                filter_text = e.target.value;
-            }
-            var changed_data = {
-                filter_text: filter_text
-            };
-            this.changeGrid(changed_data);
+            this._updateTimer = setTimeout(fn_updateTableSize, react_constants.REACT_UPDATE_DELAY);
         }
     }, {
         key: '_cssGeneration',
@@ -201,38 +184,30 @@ var RsdComponent = function (_React$Component) {
             var changed_data = {
                 genre_choice_filter: genre_choice_filter
             };
-            this.changeGrid(changed_data);
-        }
-    }, {
-        key: '_onSortChange',
-        value: function _onSortChange(columnKey, sortDir) {
-            var changed_data = {
-                sort_column: columnKey,
-                sort_dir: sortDir
-            };
-            this.changeGrid(changed_data);
+            this.number_matches = this.changeGrid(changed_data);
         }
     }, {
         key: 'render',
         value: function render() {
-            var rsd_clear_css = { cursor: 'pointer', padding: 0, margin: 3 };
-            var dark_blue = react_constants.SFF_DARK_BLUE;
-            var light_blue = react_constants.SFF_LIGHT_BLUE;
-            var clear_hover_css = ' .rsd-clear      { color: #' + light_blue + '; font-size:1em }\n                               .rsd-clear:hover { color: #' + dark_blue + ' } ';
-            var column_sort_css = this._cssGeneration();
+            var _generateCss = this.generateCss();
+
+            var rsd_clear_css = _generateCss.rsd_clear_css;
+            var clear_hover_css = _generateCss.clear_hover_css;
+            var column_sort_css = _generateCss.column_sort_css;
+
             var my_searches = this.search_matches;
-            return React.createElement('div', { id: 'media-container' }, React.createElement(RsdDescription, { rsd_description: this.media_description }), React.createElement('style', { scoped: true, dangerouslySetInnerHTML: { __html: clear_hover_css } }), React.createElement('button', { onClick: this.clearAllFilters, style: rsd_clear_css, className: 'rsd-clear CLEAR-TEXT' }, 'Clear'), React.createElement('input', { onChange: this._onFilterChange,
-                id: 'filter-text',
-                className: 'TEXT-FILTER',
+            var match_message = this.numberMatchesShort();
+            return React.createElement('div', { id: 'rsd-media-container' }, React.createElement(RsdDescription, { rsd_description: this.media_description }), React.createElement('style', { scoped: true, dangerouslySetInnerHTML: { __html: clear_hover_css } }), React.createElement('button', { onClick: this.clearAllFilters, style: rsd_clear_css, className: 'rsd-clear CLEAR-TEXT' }, 'Reset'), React.createElement('input', { onChange: this._onFilterChange,
+                className: 'TEXT-FILTER filter-text',
                 value: this.filter_text,
                 autoComplete: 'off',
-                placeholder: 'Filter ...' }), React.createElement(GenreSelect, { cb_RsdComponent_filterByGenre: this.filterByGenre,
+                placeholder: 'Search ...' }), '     ', match_message, React.createElement(GenreSelect, { cb_RsdComponent_filterByGenre: this.filterByGenre,
                 className: 'RSD-SELECT',
                 category_choice: this.genre_choice_filter }), React.createElement('style', { scoped: true, dangerouslySetInnerHTML: { __html: column_sort_css } }), React.createElement(RsdTitles, { cb_RsdComponent_titleSort: this._onSortChange }), React.createElement(RsdTable, { data: this.rsd_list,
                 filter_text: this.filter_text,
                 search_matches: my_searches,
                 ref: 'the_rsd_table',
-                device_type: this.device_type,
+                media_container_name: 'rsd-media-container',
                 search_columns: this.search_columns,
                 displayed_columns: this.displayed_columns,
                 sort_column: this.sort_column }), React.createElement('div', { className: 'TEST-EPISODE-ORDER' }, this.TEST_EPISODE_ORDER));
@@ -240,6 +215,6 @@ var RsdComponent = function (_React$Component) {
     }]);
 
     return RsdComponent;
-}(React.Component);
+}(MediaComponent);
 
 module.exports = RsdComponent;

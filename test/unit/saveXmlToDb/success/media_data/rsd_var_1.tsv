@@ -4,7 +4,6 @@ media_web_page	https://podcasts-readingshortdeep.rhcloud.com/rsd/rss
 media_directory_url	http://www.coquitlamwebsolutions.ca/rsd/	Where the data is stored 	
 media_description	Profound, yet brief, discussions of SFF stories and poems		
 media_copyright	2016 SFFaudio		
-media_rss_location	https://podcasts-readingshortdeep.rhcloud.com/rsd/rss		
 itunes_category	Arts		
 itunes_sub_category	Literature		
 itunes_explicit	yes		
@@ -19,4 +18,4 @@ Reading, Short and Deep (RSD) offers just such conversations, each of about half
 			
 			
 			
-			https://validator.w3.org/feed/check.cgi
+			https://validator.w3.org/feed/check.cgic

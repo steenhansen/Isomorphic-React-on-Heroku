@@ -1,5 +1,7 @@
 'use strict';
 
+// jsx to ensure es6 to js compile, even though no ui
+
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -107,9 +109,18 @@ var DataList = function () {
                         for (var _iterator2 = this.search_columns[Symbol.iterator](), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
                             var search_column = _step2.value;
 
-                            var search_index = media_object[search_column].toLowerCase().indexOf(search_for);
-                            column_matches[search_column] = search_index;
-                            row_search_index_accum += search_index;
+                            if (media_object[search_column]) {
+                                var column_value = media_object[search_column];
+                                if (typeof column_value === 'number') {
+                                    var column_value = column_value.toString();
+                                }
+                                var column_lowercase = column_value.toLowerCase();
+                                var search_index = column_lowercase.indexOf(search_for);
+                                column_matches[search_column] = search_index;
+                                row_search_index_accum += search_index;
+                            } else {
+                                row_search_index_accum += -1; // not found
+                            }
                         }
                     } catch (err) {
                         _didIteratorError2 = true;

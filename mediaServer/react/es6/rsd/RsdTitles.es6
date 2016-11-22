@@ -83,12 +83,9 @@ var RsdTitles = function (_React$Component) {
         key: 'render',
         value: function render() {
             var rsd_sort_css = { cursor: 'pointer', padding: 0, margin: 3 };
-
             var dark_blue = react_constants.SFF_DARK_BLUE;
             var light_blue = react_constants.SFF_LIGHT_BLUE;
-
             var sort_hover_css = ' .rsd-sort { color: #' + light_blue + '; font-size:1em }\n                     .rsd-sort:hover { color: #' + dark_blue + ' }          ';
-
             var _current_titles = this.current_titles;
             var title_episode_number = _current_titles['episode_number'];
             var title_book_author = _current_titles['book author_'];
@@ -101,25 +98,25 @@ var RsdTitles = function (_React$Component) {
                 React.createElement('style', { scoped: true, dangerouslySetInnerHTML: { __html: sort_hover_css } }),
                 React.createElement(
                     'button',
-                    { className: 'EPISODE-SORT rsd-sort', id: 'episode-number', onClick: this.clickEpisodeNumber,
+                    { className: 'EPISODE-SORT rsd-sort', onClick: this.clickEpisodeNumber,
                         style: rsd_sort_css },
                     title_episode_number
                 ),
                 React.createElement(
                     'button',
-                    { className: 'TIME-SORT rsd-sort', id: 'hh-mm-ss', onClick: this.clickHhMmSs,
+                    { className: 'TIME-SORT rsd-sort', onClick: this.clickHhMmSs,
                         style: rsd_sort_css },
                     title_hh_mm_ss
                 ),
                 React.createElement(
                     'button',
-                    { className: 'TITLE-SORT rsd-sort', id: 'book-title', onClick: this.clickBookTitle,
+                    { className: 'TITLE-SORT rsd-sort', onClick: this.clickBookTitle,
                         style: rsd_sort_css },
                     title_book_title
                 ),
                 React.createElement(
                     'button',
-                    { className: 'AUTHOR-SORT rsd-sort', id: 'book-author', onClick: this.clickBookAuthor,
+                    { className: 'AUTHOR-SORT rsd-sort', onClick: this.clickBookAuthor,
                         style: rsd_sort_css },
                     title_book_author
                 )

@@ -50,8 +50,8 @@
 
 .ScrollbarLayout_faceVertical:after {
     height: 100%;
-    left: 4px;
-    right: 4px;
+    left: 0px;
+    right: 1px;
     top: 0
 }
 
@@ -237,7 +237,13 @@ a {
     cursor: pointer
 }
 
-#media-container{
+#rsd-media-container{
+    padding-bottom: 10px
+}
+#pdf-media-container{
+    padding-bottom: 10px
+}
+#podcast-media-container{
     padding-bottom: 10px
 }
 
@@ -249,6 +255,7 @@ a>.my-mp3{
     font-size:24px;
     color:red;
     vertical-align:middle;
+    margin-right: 2px;
 }
 
 a>.my-pdf{
@@ -268,6 +275,20 @@ a>.my-you{
     margin: 0px;
 }
 
+#pdf-explain{
+    color: #202020;
+    font-size: 12px;
+    font-family: Arial, Tahoma, Verdana;
+    margin: 0px;
+}
+
+#podcast-explain{
+    color: #202020;
+    font-size: 12px;
+    font-family: Arial, Tahoma, Verdana;
+    margin: 0px;
+}
+
 #rsd-mobile{
     color: #4183c4;
     font-size: 20px;
@@ -280,4 +301,32 @@ a>.my-you{
 #rsd-logo{
     float:left;
     padding-right:10px;
+}
+
+#pdf-logo{
+    float:left;
+    padding-right:10px;
+}
+
+#podcast-logo{
+    float:left;
+    padding-right:10px;
+}
+
+.country-flag{
+    width:12px;
+     vertical-align: text-top;
+     margin-right:4px
+}
+
+.no-info{
+ color: #626466;
+}
+
+.has-info{
+ color: #4183c4;
+}
+
+.filter-text{
+    width:118px
 }

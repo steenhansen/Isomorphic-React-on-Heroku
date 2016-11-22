@@ -6,14 +6,20 @@ var react_constants = {
 
     , IMG_LOGO: 'ReadingShortAndDeepLogo200x200.jpg'
 
-    , RSD_SFFAUDIO_CONTAINER_WIDTH : 570
+    , RSD_SFFAUDIO_CONTAINER_WIDTH: 570
 
-    ,MAX_MOBILE_ITEMS : 100         // NB, fixed-data-table does not scroll correctly in mobile, therefore just show newest items, not all or too slow
-    ,MAX_DESKTOP_ITEMS :0
+    , MAX_MOBILE_ITEMS: 0
+    , MAX_DESKTOP_ITEMS: 0
 
     , UP_ARROW_CHAR: String.fromCharCode(8593)
     , DOWN_ARROW_CHAR: String.fromCharCode(8595)
 
+    , START_UI_LINE_HEIGHT: 36
+
+
+    , REACT_UPDATE_DELAY: 16
+    , VERTICAL_TABLE_MARGIN: 100
+    , HORIZONTAL_TABLE_MARGIN: 20
 
 }
 

@@ -2,14 +2,19 @@
 var react_constants = require('../reactConstants')
 var RsdTable = require('./RsdTable')
 var RsdList = require('./RsdList')
-var React = require('react')
+var MediaComponent = require('../MediaComponent')
 var GenreSelect = require('./GenreSelect')
 var RsdTitles = require('./RsdTitles')
 var RsdDescription = require('./RsdDescription')
 
-class RsdComponent extends React.Component {
+
+var React = require('react')
+
+
+class RsdComponent extends MediaComponent {
 
     _pass_lint_() {
+    React
         RsdTable
         GenreSelect
         RsdTitles
@@ -20,31 +25,21 @@ class RsdComponent extends React.Component {
         super(props)
         this.search_columns = ['episode_number', 'book author', 'book title']
         var props_array = props['data_list']
-        this.media_description = props['media_description']
-        this.device_type = props['device_type']
-        this.record_cell_order_testing = props['record_cell_order_testing']
         this.rsd_list = new RsdList(props_array, this.search_columns)
-        this.filter_text = ''
         this.genre_choice_filter = ''
-        this.sort_column = ''
-        this.sort_dir = ''
-        this.search_matches = []
         this.displayed_columns = {
-            'rsd_id_cell': ['episode_number', 'file name', 'mm_ss'],
+            'rsd_id_cell': ['episode_number', 'hh_mm', 'mp3_url'],
             'rsd_text_cell': ['episode_number',
                 'book author', 'first_name', 'last_name',
                 'book title', 'start_title', 'end_title',
-                'hh:mm:ss', 'mm_ss', 'post link', 'file name', 'genre type', 'pdf link', 'video link'
+                'hh:mm:ss', 'hh_mm', 'post link', 'file name', 'genre type', 'pdf link', 'video link'
             ]
         }
         this.rsd_list.initialOrder()
         this.state = {
             associated_rsd_list: this.rsd_list,
         }
-        this.clearAllFilters = this.clearAllFilters.bind(this)   //<button onClick={this.clearAllFilters} >
-        this._onFilterChange = this._onFilterChange.bind(this)  // <input onChange={this._onFilterChange}
         this.filterByGenre = this.filterByGenre.bind(this)    // <GenreSelect cb_RsdComponent_filterByGenre={this.filterByGenre}
-        this._onSortChange = this._onSortChange.bind(this)    // <RsdTitles cb_RsdComponent_titleSort={this._onSortChange}
     }
 
     changeGrid(changed_data) {
@@ -76,6 +71,9 @@ class RsdComponent extends React.Component {
             table_width: this.table_width,
             table_height: this.table_height
         })
+        
+        let number_matches = sortIndexes.length
+        return number_matches
     }
 
     saveRestrictions(changed_data) {
@@ -106,23 +104,13 @@ class RsdComponent extends React.Component {
             sort_column: '',
             sort_dir: ''
         }
-        this.changeGrid(changed_data)
+        this.number_matches =this.changeGrid(changed_data)
         var fn_updateTableSize = this.refs.the_rsd_table._updateTableSize
         clearTimeout(this._updateTimer)
-        this._updateTimer = setTimeout(fn_updateTableSize(), 16)
+        this._updateTimer = setTimeout(fn_updateTableSize, react_constants.REACT_UPDATE_DELAY)
     }
 
-    _onFilterChange(e) {
-        if (!e.target.value) {
-            var filter_text = ''
-        } else {
-            filter_text = e.target.value
-        }
-        var changed_data = {
-            filter_text: filter_text
-        }
-        this.changeGrid(changed_data)
-    }
+
 
     _cssGeneration() {
         var dark_blue = react_constants.SFF_DARK_BLUE
@@ -145,37 +133,25 @@ class RsdComponent extends React.Component {
         var changed_data = {
             genre_choice_filter: genre_choice_filter
         }
-        this.changeGrid(changed_data)
+        this.number_matches =this.changeGrid(changed_data)
     }
 
-    _onSortChange(columnKey, sortDir) {
-        var changed_data = {
-            sort_column: columnKey,
-            sort_dir: sortDir
-        }
-        this.changeGrid(changed_data)
-    }
 
     render() {
-        var rsd_clear_css = {cursor: 'pointer', padding: 0, margin: 3}
-        var dark_blue = react_constants.SFF_DARK_BLUE
-        var light_blue = react_constants.SFF_LIGHT_BLUE
-        var clear_hover_css = ` .rsd-clear      { color: #${light_blue}; font-size:1em }
-                               .rsd-clear:hover { color: #${dark_blue} } `
-        var column_sort_css = this._cssGeneration()
+           var {rsd_clear_css, clear_hover_css, column_sort_css}=this.generateCss()
         var my_searches = this.search_matches
+           let match_message = this.numberMatchesShort()
         return (
-            <div id="media-container">
+            <div id="rsd-media-container">
                 <RsdDescription rsd_description={this.media_description}/>
                 <style scoped dangerouslySetInnerHTML={{__html: clear_hover_css}}/>
-                <button onClick={this.clearAllFilters} style={rsd_clear_css} className="rsd-clear CLEAR-TEXT">Clear
+                <button onClick={this.clearAllFilters} style={rsd_clear_css} className="rsd-clear CLEAR-TEXT">Reset
                 </button>
                 <input onChange={this._onFilterChange}
-                       id="filter-text"
-                       className="TEXT-FILTER"
+                       className="TEXT-FILTER filter-text"
                        value={this.filter_text}
                        autoComplete="off"
-                       placeholder="Filter ..."/>
+                       placeholder="Search ..."/>     {match_message}
                 <GenreSelect cb_RsdComponent_filterByGenre={this.filterByGenre}
                              className="RSD-SELECT"
                              category_choice={this.genre_choice_filter}/>
@@ -185,7 +161,7 @@ class RsdComponent extends React.Component {
                           filter_text={this.filter_text}
                           search_matches={my_searches}
                           ref="the_rsd_table"
-                          device_type={this.device_type}
+                          media_container_name="rsd-media-container"
                           search_columns={this.search_columns}
                           displayed_columns={this.displayed_columns}
                           sort_column={this.sort_column}/>

@@ -27,6 +27,8 @@ gulp.task('REACT_init', function () {
         '../mediaServer/react/js/**/*.js',
         '../mediaServer/react/media_1st_bundle.*.js',
         '../mediaServer/react/rsd_2nd_bundle.*.js',
+        '../mediaServer/react/podcast_3rd_bundle.*.js',
+        '../mediaServer/react/pdf_4th_bundle.*.js',
     ], {"force": "true"})
 })
 
@@ -53,10 +55,20 @@ gulp.task('BUNDLE_rsd_bundle', function () {
                 media_1st_bundle: [
                     ,"fixed-data-table-2"
                     ,"../mediaServer/react/js/DataList"
+                    ,"../mediaServer/react/js/MediaComponent"
+                    ,"../mediaServer/react/js/MediaDescription"
+                    ,"../mediaServer/react/js/MediaIdCell"
+                    ,"../mediaServer/react/js/MediaTextCell"
+                    ,"../mediaServer/react/js/MediaList"
                     ,"../mediaServer/react/js/MediaTable"
+                    ,"../mediaServer/react/js/Option"
                     ,"../mediaServer/react/js/reactConstants"
+                    ,"../mediaServer/react/sharedConstants"
+                    ,"../mediaServer/react/sharedMethods"
                 ],
-                rsd_2nd_bundle: "../mediaServer/react/rsd_browser.js"
+                rsd_2nd_bundle: "../mediaServer/react/rsd_browser.js",
+                podcast_3rd_bundle: "../mediaServer/react/podcast_browser.js",
+                pdf_4th_bundle: "../mediaServer/react/pdf_browser.js",
             },
             output: {
                 path: path.join(__dirname, "js"),
@@ -65,7 +77,7 @@ gulp.task('BUNDLE_rsd_bundle', function () {
             },
             plugins: [
                 new webpack.optimize.CommonsChunkPlugin({
-                    names: ["rsd_2nd_bundle", "media_1st_bundle" ],
+                    names: [ "pdf_4th_bundle", "podcast_3rd_bundle", "rsd_2nd_bundle", "media_1st_bundle" ],
                     minChunks: Infinity
                 }),
             ]
@@ -104,6 +116,7 @@ gulp.task('JSX_start', function(callback) {
 gulp.task('JSX_change_watch', function () {
     gulp.watch('../mediaServer/react/jsx/**/*.jsx', ['JSX_start'])
     gulp.watch('../mediaServer/react/rsd_browser.js', ['JSX_start'])
+    gulp.watch('../mediaServer/react/podcast_browser.js', ['JSX_start'])
     gulp.watch('../mediaServer/react/sharedConstants.js', ['JSX_start'])
     gulp.watch('../mediaServer/react/sharedMethods.js', ['JSX_start'])
 })

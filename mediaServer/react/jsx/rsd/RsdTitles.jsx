@@ -61,31 +61,26 @@ class RsdTitles extends React.Component {
         this.setState({'current_titles': this.current_titles})
     }
 
-
     render() {
         var rsd_sort_css = {cursor: 'pointer', padding: 0, margin: 3}
-
         var dark_blue = react_constants.SFF_DARK_BLUE
         var light_blue = react_constants.SFF_LIGHT_BLUE
-
         var sort_hover_css = ` .rsd-sort { color: #${light_blue}; font-size:1em }
                      .rsd-sort:hover { color: #${dark_blue} }          `
-
-        var {'episode_number': title_episode_number,
+          var {'episode_number': title_episode_number,
             'book author_': title_book_author,
             'book title_': title_book_title,
             'hh:mm:ss': title_hh_mm_ss } = this.current_titles
         return (
-
             <div >
                 <style scoped dangerouslySetInnerHTML={{__html: sort_hover_css}}/>
-                <button className="EPISODE-SORT rsd-sort" id='episode-number' onClick={this.clickEpisodeNumber}
+                <button className="EPISODE-SORT rsd-sort" onClick={this.clickEpisodeNumber}
                         style={rsd_sort_css}>{title_episode_number}</button>
-                <button className="TIME-SORT rsd-sort" id='hh-mm-ss' onClick={this.clickHhMmSs}
+                <button className="TIME-SORT rsd-sort" onClick={this.clickHhMmSs}
                         style={rsd_sort_css}>{title_hh_mm_ss}</button>
-                <button className="TITLE-SORT rsd-sort" id='book-title' onClick={this.clickBookTitle}
+                <button className="TITLE-SORT rsd-sort" onClick={this.clickBookTitle}
                         style={rsd_sort_css}>{title_book_title}</button>
-                <button className="AUTHOR-SORT rsd-sort" id='book-author' onClick={this.clickBookAuthor}
+                <button className="AUTHOR-SORT rsd-sort" onClick={this.clickBookAuthor}
                         style={rsd_sort_css}>{title_book_author}</button>
             </div>
         )

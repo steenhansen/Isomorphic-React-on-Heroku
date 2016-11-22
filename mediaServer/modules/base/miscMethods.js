@@ -1,21 +1,78 @@
 'use strict'
 
-var Q = require('q')
-var request = require('request')
-var fs = require('fs')
 var validUrl = require('valid-url')
 var zlib = require('zlib')
 var moment = require('moment-timezone')
 var swig = require('swig')
 var basicAuth = require('basic-auth')
 var mongoose = require('mongoose')
-mongoose.Promise = require('bluebird')
-
+var request = require('request')
 var fsAccess = require('fs-access')
+var PrettyError = require('pretty-error')
+
+var Promise = require('bluebird')
+mongoose.Promise = require('bluebird')
+var fsAsync = Promise.promisifyAll(require("fs"))
+
 var media_constants = require('./MediaConstants')
 var config_environment = rootAppRequire('configEnvironment')
 
+
 var miscMethods = {
+
+
+    shortError: function (e) {
+        const html_message = 'Error:' + e.message
+        var pretty_error = new PrettyError()
+        pretty_error.skipPackage('bluebird', 'mongoose', 'mquery', 'swig', 'react')
+        pretty_error.skipPath('internal/process/next_tick.js', 'timers.js', '_stream_writable.js', '_stream_transform.js', 'fs.js'
+        , 'module.js', 'internal/module.js')
+        const console_message = pretty_error.render(e)
+        pretty_error.withoutColors()
+        const log_message_breaks = pretty_error.render(e)
+        const log_message = log_message_breaks.replace(/(\r\n|\n|\r)/gm, "")
+        return {
+            console_message: console_message
+            , log_message: log_message
+            , html_message: html_message
+        }
+    },
+
+    serverError: function (e, res) {
+        var short_error = miscMethods.shortError(e)
+        console.log(short_error.console_message)
+        global.Method_logger.chronicle('error', 'serverError', '', 'e', short_error.log_message)
+        if (res) {
+            res.send(media_constants.SERVER_ERROR)
+        }
+    },
+
+    errorOnMissingFile: function (file_pathname) {
+        return new Promise(function (fulfill, reject) {
+            fsAccess(file_pathname, function (e) {
+                if (e) {
+                    reject(e)
+                }
+                fulfill()
+            })
+        })
+    },
+
+
+    readLocalFile: function (file_pathname) {
+        // file_pathname = 'exception test'
+        return miscMethods.errorOnMissingFile(file_pathname)
+            .then(function () {
+                return fsAsync.readFileAsync(file_pathname, 'utf8')
+            })
+            .then(function (file_data) {
+                return file_data
+            })
+            .catch(function (e) {
+                throw e
+            })
+    },
+
 
     serveGzipContent: function (req, res, content_type, html_xml_content) {
 
@@ -75,50 +132,19 @@ var miscMethods = {
         return page_html
     },
 
-    readLocalFile: function (file_pathname) {
-        var deferred = Q.defer()
-        miscMethods.errorOnMissingFile(file_pathname).then(
-            function onFulfilled() {
-                fs.readFile(file_pathname, 'utf8', function (err_cond, file_data) {
-                    if (err_cond) {
-                        err_cond.location = 'miscMethods.readLocalFile'
-                        deferred.reject(err_cond)
-                    }
-                    deferred.resolve(file_data)
-                })
-            },
-            function onRejected(err_cond) {
-                deferred.reject(err_cond)
-            }
-        ).catch(function (error) {
-            miscMethods.serverError(error)
-        })
-        return deferred.promise
-    },
-
-    errorOnMissingFile: function (file_pathname) {
-        var deferred = Q.defer()
-        fsAccess(file_pathname, function (err_cond) {
-            if (err_cond) {
-                deferred.reject(err_cond)
-            }
-            deferred.resolve()
-        })
-        return deferred.promise
-    },
-
 
     die: function (text) {
-        console.log('DIE ' + text)
+        console.log('DIE ')
+        console.log(text)
         process.exit()
     },
 
     connectToMongoose: function (mongoose_connect_name, port_number) {
         if (!mongoose.connection.db) {
             console.log('Connecting to ' + mongoose_connect_name + ' ...')
-            mongoose.connect(mongoose_connect_name, function (err_cond) {
-                if (err_cond) {
-                    throw err_cond
+            mongoose.connect(mongoose_connect_name, function (e) {
+                if (e) {
+                    throw e
                 }
                 console.log('Connected on port ' + port_number + ' ...')
             })
@@ -142,84 +168,16 @@ var miscMethods = {
         }
     },
 
-    copyFromTo: function (from_path, to_path) {
-        var deferred = Q.defer()
-        fs.unlink(to_path, function (err_cond) {
-            if (err_cond) {
-                deferred.reject(err_cond)
-            }
-            fs.rename(from_path, to_path, function (err_cond) {
-                if (err_cond) {
-                    deferred.reject(err_cond)
-                } else {
-                    deferred.resolve()
-                }
-            })
-
-        })
-        return deferred.promise
-    },
-
-    readGzipToBuffer: function (file_pathname) {
-        var deferred = Q.defer()
-        fs.readFile(file_pathname, function (err_cond, data_buffer) {
-            if (err_cond) {
-                deferred.reject(err_cond)
-            }
-            deferred.resolve(data_buffer)
-        })
-        return deferred.promise
-    },
-
     serveGzipString: function (res, compress_string) {
         var buf = new Buffer(compress_string, 'utf-8')
-        zlib.gzip(buf, function (err_cond, gzipped_data) {
-            if (err_cond) {
-                deferred.reject(err_cond)
+        zlib.gzip(buf, function (e, gzipped_data) {
+            //var e = new Error ('exception test - serveGzipString') 
+            if (e) {
+                throw e
             }
-
             res.end(gzipped_data)
 
         })
-    },
-
-    gzipLocalFile: function (file_pathname) {
-        var deferred = Q.defer()
-        miscMethods.readLocalFile(file_pathname).then(
-            function onFulfilled(local_file_data) {
-                var buf = new Buffer(local_file_data, 'utf-8')
-                zlib.gzip(buf, function (err_cond, gzipped_data) {
-                    if (err_cond) {
-                        deferred.reject(err_cond)
-                    }
-                    var gzip_rss_pathname = file_pathname + '.gz'
-                    var buf2 = new Buffer(gzipped_data)
-                    fs.writeFile(gzip_rss_pathname, buf2, function (err_cond) {
-                        if (err_cond) {
-                            deferred.reject(err_cond)
-                        }
-                        deferred.resolve()
-                    })
-                })
-            },
-            function onRejected(err_cond) {
-                deferred.reject(err_cond)
-            }
-        ).catch(function (error) {
-            miscMethods.serverError(error)
-        })
-        return deferred.promise
-    },
-
-    serverError: function (error, res) {
-        if (error.stack) {
-            global.Method_logger.chronicle('error', 'try-catch', '', 'error.stack', error.stack)
-        }else {
-            global.Method_logger.chronicle('error', 'try-catch', '', 'error', error)
-        }
-        if (res) {
-            res.send(media_constants.SERVER_ERROR)
-        }
     },
 
     testingUncaughtException: function () {
@@ -230,15 +188,20 @@ var miscMethods = {
     },
 
     saveLocalFile: function (file_pathname, file_data) {
-        var deferred = Q.defer()
-        fs.writeFile(file_pathname, file_data, function (err_cond) {
-            if (err_cond) {
-                deferred.reject(err_cond)
-            }
-            deferred.resolve()
-        })
-        return deferred.promise
+        return fsAsync.writeFileAsync(file_pathname, file_data)
+            .catch(function (e) {
+                throw e
+            })
     },
+
+    isUrlFileName: function (file_name) {
+        if ((file_name.startsWith('http://')) || (file_name.startsWith('https://'))) {
+            return true
+        } else {
+            return false
+        }
+    },
+
 
     basicHttpAuth: function (req, res, next) {
         function unauthorized(res) {
@@ -324,21 +287,22 @@ var miscMethods = {
 
 
     readUrlFile: function (file_url) {
-        var deferred = Q.defer()
-        if (validUrl.isUri(file_url)) {
-            request.get(file_url, function (err_cond, response, body) {
-                if (err_cond) {
-                    deferred.reject(err_cond)
-                } else if (response.statusCode !== 200) {
-                    deferred.reject(response.statusCode)
-                } else {
-                    deferred.resolve(body)
-                }
-            })
-        } else {
-            deferred.reject(file_url)
-        }
-        return deferred.promise
+        return new Promise(function (fulfill, reject) {
+
+            if (validUrl.isUri(file_url)) {
+                request.get(file_url, function (e, response, body) {
+                    if (e) {
+                        reject(e)
+                    } else if (response.statusCode !== 200) {
+                        reject(response.statusCode)
+                    } else {
+                        fulfill(body)
+                    }
+                })
+            } else {
+                reject(file_url)
+            }
+        })
     },
 
     convertMediaPublishDate: function (date_hour) {
@@ -389,6 +353,8 @@ var miscMethods = {
         return with_m_dash
     },
 
+
+
     returnOnlyRealData: function (req, res, next) {
         var dirty_data = res.locals.bundle
         if (dirty_data instanceof Array) {
@@ -396,6 +362,10 @@ var miscMethods = {
             for (var data_index in dirty_data) {
                 if (dirty_data.hasOwnProperty(data_index)) {
                     var data_row = dirty_data[data_index]
+                    
+                    var episode_number = data_row['episode number']
+                    console.log('returnOnlyRealData',  episode_number)
+                    
                     if (typeof data_row.real_or_test !== "undefined") {
                         if (media_constants.REAL_DATA === data_row.real_or_test) {
                             cleaned_data.push(data_row)
@@ -406,8 +376,7 @@ var miscMethods = {
             res.locals.bundle = cleaned_data
         }
         next()
-    },
-
+    }
 
 }
 

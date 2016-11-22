@@ -31,7 +31,7 @@ function _inherits(subClass, superClass) {
 }
 
 var React = require('react');
-var GenreOption = require('./GenreOption');
+var Option = require('../Option');
 
 var GenreSelect = function (_React$Component) {
     _inherits(GenreSelect, _React$Component);
@@ -49,7 +49,7 @@ var GenreSelect = function (_React$Component) {
     _createClass(GenreSelect, [{
         key: '_pass_lint_',
         value: function _pass_lint_() {
-            GenreOption;
+            Option;
         }
     }, {
         key: 'selectByGenre',
@@ -63,14 +63,14 @@ var GenreSelect = function (_React$Component) {
             var select_class_name = this.className;
             return React.createElement('select', { onChange: this.selectByGenre,
                 className: select_class_name,
-                value: this.props.category_choice }, React.createElement(GenreOption, { category: 'All Genres',
+                value: this.props.category_choice }, React.createElement(Option, { category: 'All Genres',
                 hidden_category: '',
-                key: 'genre_all' }), React.createElement(GenreOption, { category: 'Poem',
+                key: 'genre_all' }), React.createElement(Option, { category: 'Poem',
                 hidden_category: 'poem',
-                key: 'genre_poem' }), React.createElement(GenreOption, { category: 'Story',
+                key: 'genre_poem' }), React.createElement(Option, { category: 'Story',
 
                 hidden_category: 'story',
-                key: 'genre_story' }), React.createElement(GenreOption, { category: 'Other',
+                key: 'genre_story' }), React.createElement(Option, { category: 'Other',
 
                 hidden_category: 'other',
                 key: 'genre_other' }));

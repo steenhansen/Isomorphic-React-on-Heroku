@@ -1,7 +1,6 @@
 'use strict'
 
 
-var Q = require('q')
 var ParserTsvText = require('./ParserTsvText')
 var miscMethods = require('./miscMethods')
 
@@ -15,20 +14,16 @@ ParserTsvFile.prototype = Object.create(ParserTsvText.prototype)
 ParserTsvFile.prototype.constructor = ParserTsvFile
 
 ParserTsvFile.prototype._getTsvText = function () {
-    var deferred = Q.defer()
-    var this_ParserTsvFile = this
-    miscMethods.readLocalFile(this._tsv_pathname).then(
-        function onFulfilled(local_file_data) {
-            this_ParserTsvFile._tsv_text = local_file_data
-            deferred.resolve(local_file_data)
-        },
-        function onRejected(err_cond) {
-            deferred.reject(err_cond)
-        }
-    ).catch(function (error) {
-        miscMethods.serverError(error)
-    })
-    return deferred.promise
+    var self = this
+    return miscMethods.readLocalFile(this._tsv_pathname)
+        .then(function (local_file_data) {
+            self._tsv_text = local_file_data
+            return local_file_data
+        })
+        .catch(function (e) {
+            miscMethods.serverError(e)
+        })
 }
+
 
 module.exports = ParserTsvFile

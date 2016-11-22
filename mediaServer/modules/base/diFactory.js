@@ -17,9 +17,10 @@ var miscMethods = require('./miscMethods')
 var media_constants = require('./MediaConstants')
 
 var PdfMedia = require('../PdfMedia')
+var PodcastMedia = require('../PodcastMedia')
 var RsdMedia = require('../RsdMedia')
 
-var variables_information = require('../variablesInformation')
+var variables_schema = require('../variablesSchema')
 
 module.exports = function (media_information) {
 
@@ -27,8 +28,9 @@ module.exports = function (media_information) {
 
         ParserTsvTextCreate: function (tsv_text) {
             var missing_methods = miscMethods.objectHasMethods(csv_parse, ['Parser'])
+         //   missing_methods = 'exception test'
             if (missing_methods) {
-                return global.Method_logger.chronicle('error', 'ParserTsvTextCreate-ERROR-1', module.filename, 'missing_methods', missing_methods)
+                 throw new Error ('ParserTsvTextCreate.missing_methods() ' + missing_methods)
             } else {
                 var parser_tsv_text = new ParserTsvText(csv_parse, tsv_text, media_constants.CSV_PARSER_OPTIONS)
                 return parser_tsv_text
@@ -37,8 +39,9 @@ module.exports = function (media_information) {
 
         ParserTsvFileCreate: function (tsv_pathname) {
             var missing_methods = miscMethods.objectHasMethods(csv_parse, ['Parser'])
+            // missing_methods = 'exception test'
             if (missing_methods) {
-                return global.Method_logger.chronicle('error', 'ParserTsvFileCreate-ERROR-1', module.filename, 'missing_methods', missing_methods)
+               throw new Error ('ParserTsvFileCreate.missing_methods() ' + missing_methods)
             } else {
                 var parser_tsv_file = new ParserTsvFile(csv_parse, tsv_pathname, media_constants.CSV_PARSER_OPTIONS)
                 return parser_tsv_file
@@ -47,26 +50,30 @@ module.exports = function (media_information) {
 
         ParserTsvUrlCreate: function (tsv_url) {
             var missing_methods = miscMethods.objectHasMethods(csv_parse, ['Parser'])
+          //  var  missing_methods = 'exception test'
             if (missing_methods) {
-                return global.Method_logger.chronicle('error', 'ParserTsvUrlCreate-ERROR-1', module.filename, 'missing_methods', missing_methods)
+                throw new Error ('ParserTsvUrlCreate.missing_methods() ' + missing_methods)
             } else {
+            //tsv_url = 'exception test'
                 if (validUrl.isUri(tsv_url)) {
                     try {
+                   // throw new Error ('exception test - ParserTsvUrlCreate') 
                         var parser_tsv_url = new ParserTsvUrl(csv_parse, tsv_url, media_constants.CSV_PARSER_OPTIONS)
-                    } catch (err) {
-                        return global.Method_logger.chronicle('error', err, module.filename, 'tsv_url', tsv_url)
+                    } catch (e) {
+                           throw e
                     }
                     return parser_tsv_url
                 } else {
-                    return global.Method_logger.chronicle('error', 'ParserTsvUrlCreate-ERROR-2', module.filename, 'tsv_url', tsv_url)
+                       throw new Error ('ParserTsvUrlCreate not uri ' + tsv_url)
                 }
             }
         },
 
         VariablesTsvTextCreate: function (tsv_text) {
             var missing_methods = miscMethods.objectHasMethods(csv_parse, ['Parser'])
+            //  var  missing_methods = 'exception test'
             if (missing_methods) {
-                return global.Method_logger.chronicle('error', 'VariablesTsvTextCreate-ERROR-1', module.filename, 'missing_methods', missing_methods)
+                throw new Error ('VariablesTsvTextCreate.missing_methods() ' + missing_methods)
             } else {
                 var variables_tsv_text = new VariablesTsvText(csv_parse, tsv_text, media_constants.CSV_PARSER_OPTIONS)
                 return variables_tsv_text
@@ -75,8 +82,9 @@ module.exports = function (media_information) {
 
         VariablesTsvFileCreate: function (tsv_pathname) {
             var missing_methods = miscMethods.objectHasMethods(csv_parse, ['Parser'])
+            //  var  missing_methods = 'exception test'
             if (missing_methods) {
-                return global.Method_logger.chronicle('error', 'VariablesTsvFileCreate-ERROR-1', module.filename, 'missing_methods', missing_methods)
+                throw new Error ('VariablesTsvFileCreate.missing_methods() ' + missing_methods)
             } else {
                 var variables_tsv_file = new VariablesTsvFile(csv_parse, tsv_pathname, media_constants.CSV_PARSER_OPTIONS)
                 return variables_tsv_file
@@ -84,24 +92,26 @@ module.exports = function (media_information) {
         },
 
         VariablesTsvUrlCreate: function (tsv_url) {
+     //tsv_url = 'exception test'
             if (validUrl.isUri(tsv_url)) {
                 var variables_tsv_url = new VariablesTsvUrl(csv_parse, tsv_url, media_constants.CSV_PARSER_OPTIONS)
                 return variables_tsv_url
             } else {
-                return global.Method_logger.chronicle('error', 'VariablesTsvUrlCreate-ERROR-1', module.filename, 'tsv_url', tsv_url)
+                 throw new Error ('VariablesTsvUrlCreate not uri ' + tsv_url)
             }
         },
 
         VerifyTsvVariablesCreate: function () {
-            var heading_vars = variables_information.heading_vars
-            var must_contain = variables_information.must_contain
-            var contain_errors = variables_information.contain_errors
-            var tsv_variables = variables_information.tsv_variables
+            var heading_vars = variables_schema.heading_vars
+            var must_contain = variables_schema.must_contain
+            var contain_errors = variables_schema.contain_errors
+            var tsv_variables = variables_schema.tsv_variables
+//            heading_vars = 'exception test'
             if ((heading_vars instanceof Array) && (must_contain instanceof Object) && (contain_errors instanceof Object) && (tsv_variables instanceof Array)) {
                 var verify_vars_tsv = new VerifyTsv(heading_vars, must_contain, contain_errors, tsv_variables)
                 return verify_vars_tsv
             } else {
-                return global.Method_logger.chronicle('error', 'VerifyTsvVariablesCreate-ERROR-1', module.filename)
+             throw new Error ('VerifyTsvVariablesCreate error')
             }
         },
 
@@ -110,19 +120,29 @@ module.exports = function (media_information) {
             var must_contain = media_information.must_contain
             var contain_errors = media_information.contain_errors
             var tsv_variables = media_information.tsv_variables
+           //         heading_vars = 'exception test'
             if ((heading_vars instanceof Array) && (must_contain instanceof Object) && (contain_errors instanceof Object) && (tsv_variables instanceof Array)) {
                 var verify_tsv = new VerifyTsv(heading_vars, must_contain, contain_errors, tsv_variables)
                 return verify_tsv
             } else {
-                return global.Method_logger.chronicle('error', 'VerifyTsvDataRowsCreate-ERROR-1', module.filename)
+               throw new Error ('VerifyTsvDataRowsCreate error')
             }
         },
 
         PdfMediaCreate: function () {
             var media_index_field = media_information.media_index_field
             var media_type = media_information.media_type
+
             var pdf_storage = new PdfMedia(media_index_field, media_constants.TEST_ID_PREFIX, media_type)
             return pdf_storage
+        },
+
+        PodcastMediaCreate: function () {
+            var media_index_field = media_information.media_index_field
+            var media_type = media_information.media_type
+
+            var podcast_storage = new PodcastMedia(media_index_field, media_constants.TEST_ID_PREFIX, media_type)
+            return podcast_storage
         },
 
         RsdMediaCreate: function () {
@@ -134,10 +154,11 @@ module.exports = function (media_information) {
 
         VersionStorageCreate: function (current_media, media_description_text) {  // PdfMedia or RsdMedia
             var media_methods = ['getTsvVariables', 'deleteItems', 'databaseItem',
-                'deriveData', '_itemTemplateVars', '_pageTemplateVars']
+                'deriveDate', '_itemTemplateVars', '_pageTemplateVars']
             var missing_methods = miscMethods.objectHasMethods(current_media, media_methods)
+              //var  missing_methods = 'exception test'
             if (missing_methods) {
-                return global.Method_logger.chronicle('error', 'VersionStorageCreate-ERROR-1', module.filename, 'missing_methods', missing_methods)
+                throw new Error ('VersionStorageCreate.missing_methods() ' + missing_methods)
             } else {
                 var version_storage = new VersionStorage(current_media, media_description_text)
                 return version_storage

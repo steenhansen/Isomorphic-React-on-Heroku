@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>{{ feed_media_title }}</title>
+    <link>{{ feed_media_link }}</link>
+    <description>{{ feed_media_description }}</description>
+    <copyright>{{ feed_media_copyright }}</copyright>
+    <language>en-US</language>
+    <atom:link href="https://podcasts-readingshortdeep.rhcloud.com/pdf/rss" rel="self" type="application/rss+xml" />
+    <itunes:category text="{{ itunes_category }}">
+      <itunes:category text="{{ itunes_sub_category }}" />
+    </itunes:category>
+    <itunes:explicit>{{ itunes_explicit }}</itunes:explicit>
+    <itunes:image href="{{ itunes_image }}" />
+      <itunes:owner>
+          <itunes:name>{{ itunes_name }}</itunes:name>
+          <itunes:email>{{ itunes_email }}</itunes:email>
+      </itunes:owner>
+    <itunes:author>{{ itunes_name }}</itunes:author>
+    <itunes:summary>{{ itunes_summary }}</itunes:summary>
+
+    {% autoescape false %} {{ rssItem_html }} {% endautoescape %}
+
+  </channel>
+</rss>

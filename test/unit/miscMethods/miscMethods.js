@@ -5,7 +5,7 @@ var miscMethods = rootAppRequire('mediaServer/modules/base/miscMethods')
 
 describe('test/unit/miscMethods/miscMethods.js', function () {
 
-    describe('trimString()', function () {
+    context('[xerox xerces] trimString()', function () {
 
         it('should not trim numbers', function () {
             var number_var_trimmed = miscMethods.trimString(14)
@@ -17,13 +17,13 @@ describe('test/unit/miscMethods/miscMethods.js', function () {
             expect(number_var_trimmed).toBe(14)
         })
 
-        it('should trim blanks', function () {
+        it(' should trim blanks', function () {
             var str_trimmed = miscMethods.trimString('  word  ')
             expect(str_trimmed).toBe('word')
         })
 
     })
-    describe('objectHasMethods()', function () {
+    context('[happy hippos]objectHasMethods()', function () {
 
         it('should match same', function () {
             function An_object() {
@@ -68,7 +68,7 @@ describe('test/unit/miscMethods/miscMethods.js', function () {
             expect(missing_methods).toBe('method2')
         })
     })
-    describe('firstInSecond() ', function () {
+    context('[jinxed jallopy] firstInSecond() ', function () {
         it('same should match', function () {
             var small_array = [1]
             var large_array = [1]
@@ -104,29 +104,28 @@ describe('test/unit/miscMethods/miscMethods.js', function () {
             expect(small_in_large).toBe(true)
         })
     })
-    describe('readLocalFile()', function () {
+    context('[kinky kill] readLocalFile()', function () {
         it('should fail on non-existant file', function () {
-            miscMethods.readLocalFile('x:/does_not_exist').then(
-                function onFulfilled() {
+            miscMethods.readLocalFile('x:/does_not_exist')
+                .then(function () {
                     expect(false)
-                },
-                function onRejected() {
+                })
+                .catch(function (e) {
                     expect(true)
-                }
-            )
+                })
+
         })
     })
-    describe('readUrlFile()', function () {
+    context('[lame limerick] readUrlFile()', function () {
         it('should fail on bad url', function () {
-            miscMethods.readUrlFile('httx:').then(
-                function onFulfilled(value) {
-                    console.log('s value', value)
+            miscMethods.readUrlFile('httx:')
+            .then( function (value) {
                     expect(false)
-                },
-                function onRejected(value) {
+                })
+                .catch(function (e) {
                     expect(true)
-                }
-            )
+                })
+
         })
 
 

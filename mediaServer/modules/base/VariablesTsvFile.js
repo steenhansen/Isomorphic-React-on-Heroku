@@ -1,6 +1,5 @@
 'use strict'
 
-var Q = require('q')
 var VariablesTsvText = require('./VariablesTsvText')
 var miscMethods = require('./miscMethods')
 
@@ -16,19 +15,17 @@ VariablesTsvFile.prototype = Object.create(VariablesTsvText.prototype)
 VariablesTsvFile.prototype.constructor = VariablesTsvFile
 
 VariablesTsvFile.prototype._getTsvText = function () {
-    var deferred = Q.defer()
-    var this_VariablesTsvFile = this
-    miscMethods.readLocalFile(this._tsv_pathname).then(
-        function onFulfilled(local_file_data) {
-            this_VariablesTsvFile._tsv_text = local_file_data
-            deferred.resolve(local_file_data)
-        }, function onRejected(err_cond) {
-            deferred.reject(err_cond)
-        }
-    ).catch(function (error) {
-        miscMethods.serverError(error)
-    })
-    return deferred.promise
+    var self = this
+    return miscMethods.readLocalFile(this._tsv_pathname)
+        .then( function (local_file_data) {
+            self._tsv_text = local_file_data
+            return local_file_data
+        })
+        .catch(function (e) {
+            miscMethods.serverError(e)
+        })
+
 }
+
 
 module.exports = VariablesTsvFile

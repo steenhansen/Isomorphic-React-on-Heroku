@@ -9,7 +9,7 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 var React = require('react');
-var GenreOption = require('./GenreOption');
+var Option = require('../Option');
 
 var GenreSelect = function (_React$Component) {
     _inherits(GenreSelect, _React$Component);
@@ -27,7 +27,7 @@ var GenreSelect = function (_React$Component) {
     _createClass(GenreSelect, [{
         key: '_pass_lint_',
         value: function _pass_lint_() {
-            GenreOption;
+            Option;
         }
     }, {
         key: 'selectByGenre',
@@ -44,17 +44,17 @@ var GenreSelect = function (_React$Component) {
                 { onChange: this.selectByGenre,
                     className: select_class_name,
                     value: this.props.category_choice },
-                React.createElement(GenreOption, { category: 'All Genres',
+                React.createElement(Option, { category: 'All Genres',
                     hidden_category: '',
                     key: 'genre_all' }),
-                React.createElement(GenreOption, { category: 'Poem',
+                React.createElement(Option, { category: 'Poem',
                     hidden_category: 'poem',
                     key: 'genre_poem' }),
-                React.createElement(GenreOption, { category: 'Story',
+                React.createElement(Option, { category: 'Story',
 
                     hidden_category: 'story',
                     key: 'genre_story' }),
-                React.createElement(GenreOption, { category: 'Other',
+                React.createElement(Option, { category: 'Other',
 
                     hidden_category: 'other',
                     key: 'genre_other' })

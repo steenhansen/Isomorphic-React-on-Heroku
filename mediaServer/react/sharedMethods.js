@@ -1,5 +1,4 @@
 'use strict'
-//var shared_constants = require('./sharedConstants')
 
 var shared_methods = {
 

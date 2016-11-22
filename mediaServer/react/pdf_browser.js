@@ -1,14 +1,25 @@
 'use strict'
 
-var ReactDOM = require('react-dom')
-var React = require('react')
+window.onerror = function (msg, url, lineNo, columnNo, error) {
+    var message = ['Message: ' + msg,
+        'URL: ' + url,
+        'Line: ' + lineNo,
+        'Column: ' + columnNo,
+        'Error object: ' + JSON.stringify(error)
+    ].join(' - ')
+    console.log(message)
+    return true
+}
 
-var MediaComponent = require('./js/DataList')
-var media_component = React.createFactory(MediaComponent)
-//var create_media_table = require('./js/createMediaComponent')
-//
-//var pdf_media_component = create_media_table.createMediaComponent('pdf')
-//
-//var div_name = create_media_table.div_name  // content_x ==> media_content_div
-var div_name ='react-container'
-ReactDOM.render(pdf_media_component(window.MEDIA_PROPS_SCRIPT), document.getElementById(div_name))
+var React = require('react')
+var shared_constants = require('./sharedConstants')
+var ReactDOM = require('react-dom')
+var browser_MediaComponent = require('./js/pdf/PdfComponent')
+var browser_media_factory = React.createFactory(browser_MediaComponent)
+var pdf_props = window.PDF_MEDIA_PROPS_SCRIPT
+var browser_pdf_component = browser_media_factory(pdf_props)
+var pdf_div_name = shared_constants.PDF_REACT_CONTAINTER
+var react_element_container = document.getElementById(pdf_div_name)
+
+ReactDOM.render(browser_pdf_component, react_element_container)
+

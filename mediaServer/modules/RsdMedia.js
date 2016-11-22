@@ -1,12 +1,9 @@
 'use strict'
 
 var shared_methods = require('../react/sharedMethods')
-
-
-var moment = require('moment-timezone')
-var Q = require('q')
+//var media_constants = require('./base/mediaConstants')
 var media_constants = require('./base/MediaConstants')
-var miscMethods = require('./base/miscMethods')
+
 var BaseMedia = require('./base/BaseMedia')
 var rsd_items_db = require('../models/rsdItemsDb')
 
@@ -15,18 +12,20 @@ if (rsd_items_db.modelName !== 'RsdItems') {
 }
 
 var RsdMedia = function (index_field, test_id_prefix, media_type) {
-    this._media_type = media_type
-    this._media_directory_url = media_constants.RSD_DIRECTORY_NOT_READ_IN_YET
-    BaseMedia.call(this, index_field, test_id_prefix)
+    BaseMedia.call(this, index_field, test_id_prefix, media_type)
     this._class_name = 'RsdMedia'
 }
 
 RsdMedia.prototype = Object.create(BaseMedia.prototype)
 RsdMedia.prototype.constructor = RsdMedia
 
+RsdMedia.prototype.rssFeed = function (data_rows, tsv_variable_information, item_template, page_template_file, itunes_summary, host_url) {
+const rss_episodes_range = media_constants.RSD_RSS_EPISODE_RANGE
+    return BaseMedia.prototype.rssFeed.call(this, data_rows, tsv_variable_information, item_template, page_template_file, itunes_summary, rss_episodes_range, host_url)
+}
+
 RsdMedia.prototype.saveXmlRss = function (rss_xml, real_or_test) {
-    var rss_value = BaseMedia.prototype.upsertDocument.call(this, rsd_items_db, 'rss_document', 'all_rss_xml', rss_xml, real_or_test)
-    return rss_value
+    return BaseMedia.prototype.upsertDocument.call(this, rsd_items_db, 'rss_document', 'all_rss_xml', rss_xml, real_or_test)
 }
 
 RsdMedia.prototype.getDocument = function (document_id, field_id, real_or_test) {
@@ -37,25 +36,30 @@ RsdMedia.prototype.dropCollection = function () {
     BaseMedia.prototype.dropCollection.call(this, rsd_items_db)
 }
 
-RsdMedia.prototype.collectionAsString = function () {
-    return BaseMedia.prototype.collectionAsString.call(this, rsd_items_db)
+RsdMedia.prototype.collectionAsString_test = function () {
+    return BaseMedia.prototype.collectionAsString_test.call(this, rsd_items_db)
 }
 
 RsdMedia.prototype.deleteItems = function (real_or_test) {
     return BaseMedia.prototype.deleteItems.call(this, rsd_items_db, real_or_test)
 }
 
-RsdMedia.prototype.deleteDocument = function (document_name) {
-    return BaseMedia.prototype.deleteDocument.call(this, rsd_items_db, document_name)
+RsdMedia.prototype.deleteDocument = function (document_name, real_or_test/*:string*/) {
+    return BaseMedia.prototype.deleteDocument.call(this, rsd_items_db, document_name, real_or_test)
 }
+
 
 RsdMedia.prototype.upsertDocument = function (document_name, variable_name, the_value, real_or_test) {
     return BaseMedia.prototype.upsertDocument.call(this, rsd_items_db, document_name, variable_name, the_value, real_or_test)
 }
 
+
+
+
+
+
 RsdMedia.prototype.saveDescription = function (description_text, real_or_test) {
-    var save_res = BaseMedia.prototype.saveDescription.call(this, rsd_items_db, description_text, real_or_test)
-    return save_res
+    return BaseMedia.prototype.saveDescription.call(this, rsd_items_db, description_text, real_or_test)
 }
 
 RsdMedia.prototype.getTsvVariables = function (tsv_variable_information) {
@@ -64,26 +68,25 @@ RsdMedia.prototype.getTsvVariables = function (tsv_variable_information) {
 
 
 RsdMedia.prototype.databaseItem = function (data_columns) {
-    var rsd_item = rsd_items_db.mediaFactory(data_columns)
-    return rsd_item
+    return rsd_items_db.mediaFactory(data_columns)
 }
 
 RsdMedia.prototype.deriveData = function (data_columns, offset_minutes) {
-    if (media_constants.RSD_DIRECTORY_NOT_READ_IN_YET === this._media_directory_url) {
-        global.Method_logger.chronicle('error', 'deriveData-ERROR-1', module.filename)
-        return new Error("RsdMedia._media_directory_url has not been set, call RsdMedia.getTsvVariables first")
-    } else {
-        data_columns = BaseMedia.prototype.deriveData.call(this, data_columns)
-        data_columns['mp3_url'] = this._media_directory_url + data_columns["file name"]
-        var byte_size_commas = data_columns['byte size']
-        var byte_size_integer = byte_size_commas.replace(/,/g, "")
-        data_columns['byte_size'] = byte_size_integer
-        var show_date = moment(data_columns['publish date'], "YYYY-MM-DD HH:mm")
-        show_date.subtract(offset_minutes, 'minutes')
-        data_columns['publish date'] = show_date.format("YYYY-MM-DD HH:mm")
-        return data_columns
-    }
+       var data_sized = BaseMedia.prototype.deriveSize.call(this, data_columns)
+       var data_filed = BaseMedia.prototype.deriveFileNames.call(this, data_sized)
+       var data_dated = BaseMedia.prototype.deriveDate.call(this, data_filed, offset_minutes)
+        return data_dated
 }
+RsdMedia.prototype.splitVersions = function (data_rows_compact, offset_minutes, tsv_variables) {
+    for (const row_index in data_rows_compact) {
+        var start_row = data_rows_compact[row_index]
+        var data_derived = this.deriveData(start_row, offset_minutes, tsv_variables)
+        data_rows_compact[row_index] = data_derived
+    }
+    return data_rows_compact
+}
+
+
 
 RsdMedia.prototype._itemTemplateVars = function (data_row, rsd_episode_digits) {
     var episode_number = data_row['episode number']
@@ -92,6 +95,8 @@ RsdMedia.prototype._itemTemplateVars = function (data_row, rsd_episode_digits) {
         media_item_title: episode_digit + ' ' + data_row['book title'] + ' by ' + data_row['book author'],
         media_item_link: data_row['mp3_url'],
         media_item_description: data_row['podcast description'],
+        
+            episode_number: episode_number,
         media_byte_size: data_row['byte_size'],
         media_post_link: data_row['post link'],
         itunes_pubDate: data_row['itunes_pubDate'],
@@ -102,69 +107,16 @@ RsdMedia.prototype._itemTemplateVars = function (data_row, rsd_episode_digits) {
     return item_template_vars
 }
 
-RsdMedia.prototype._pageTemplateVars = function (rsd_items_html, tsv_variable_information, itunes_summary) {
-    var page_template_vars = {
-        rssItem_html: rsd_items_html,
-
-        feed_media_link: tsv_variable_information.media_web_page,
-        feed_media_title: tsv_variable_information.media_title,
-        feed_media_description: tsv_variable_information.media_description,
-        feed_media_copyright: tsv_variable_information.media_copyright,
-
-        itunes_category: tsv_variable_information.itunes_category,
-        itunes_sub_category: tsv_variable_information.itunes_sub_category,
-        itunes_explicit: tsv_variable_information.itunes_explicit,
-        itunes_image: tsv_variable_information.itunes_image,
-        itunes_name: tsv_variable_information.itunes_name,
-        itunes_email: tsv_variable_information.itunes_email,
-        itunes_summary: itunes_summary
-    }
-    return page_template_vars
+RsdMedia.prototype._pageTemplateVars = function (rsd_items_html, tsv_variable_information, itunes_summary, host_url) {
+    return BaseMedia.prototype._pageTemplateVars.call(this, rsd_items_html, tsv_variable_information, itunes_summary, host_url)
 }
 
 RsdMedia.prototype.playerTemplateVars = function (data_row) {
-    var number_bytes = data_row['byte_size']
-    var number_mbs = Math.floor(number_bytes / 1000000)
-    var id_digits = data_row['_id']
-    var player_template_vars = {
-        rsd_id: data_row['_id'],
-        id_3_digits: id_digits,
-        mp3_url: data_row.mp3_url,
-        podcast_description: data_row['podcast description'],
-        book_title: data_row['book title'],
-        book_author: data_row['book author'],
-        hh_mm_ss_length: data_row['hh:mm:ss'],
-        mb_size: number_mbs
-    }
-    return player_template_vars
+    return BaseMedia.prototype.playerTemplateVars.call(this, data_row)
 }
 
-
 RsdMedia.prototype.currentList = function (max_records) {
-    var deferred = Q.defer()
-    var now_yyyy_mm_dd_hh_mm = miscMethods.serverYYYYMMDDHHmm()
-    var valid_episodes = {
-        "episode number": {$exists: true},
-        "real_or_test": "real",
-        "publish date": {$lt: now_yyyy_mm_dd_hh_mm}
-    }
-    rsd_items_db.collection.find(valid_episodes, function (err, cursor) {
-        if (max_records>0){
-            cursor.sort({'episode number': -1}).limit(max_records)        // Mobile cannot handle big datasets until Facebook fixes fixed-data-table
-        }else{
-            cursor.sort({'episode number': -1})
-        }
-        cursor.toArray().then(
-            function onFulfilled(collection_arr) {
-                deferred.resolve(collection_arr)
-            }, function onRejected(err_cond) {
-                deferred.reject(err_cond)
-            }
-        ).catch(function (error) {
-            miscMethods.serverError(error)
-        })
-    })
-    return deferred.promise
+    return BaseMedia.prototype.currentList.call(this, max_records, rsd_items_db)
 }
 
 module.exports = RsdMedia

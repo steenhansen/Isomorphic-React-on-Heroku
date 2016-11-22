@@ -1,160 +1,58 @@
 'use strict'
 
-var Q = require('q')
 var miscMethods = require('./miscMethods')
 var media_constants = require('./MediaConstants')
 
-module.exports = function (save_rss, media_url_dirs) {
+module.exports = function (save_rss_items, media_url_dirs) {
 
     var screenOutput = {
-        html_saveTestToDb_P1: function (variables_tsv, parser_tsv, the_media, real_or_test, the_information,media_file_loc) {
-            var deferred = Q.defer()
-            save_rss.saveXmlToDb(variables_tsv, parser_tsv, the_media, real_or_test, the_information).then(
-                function onFulfilled(num_records_saved) {
+
+        html_saveTestToDb_P1: function (variables_tsv, parser_tsv, the_media, the_information, media_file_loc) {
+            return save_rss_items.saveItemsToDb(variables_tsv, parser_tsv, the_media, media_constants.TEST_DATA)
+                .then(function (num_records_saved) {
+                 //                   throw new Error ('exception test - html_saveTestToDb_P1')
                     var save_test_to_db_html = media_file_loc.htmlFiles(media_url_dirs.ADMIN_saveTestToDb_P1)
+                    
+                    
                     var page_html = miscMethods.getFillSwig(save_test_to_db_html, {
                         records_saved: num_records_saved,
-                        link_to_next_save_test_rss: media_url_dirs.ADMIN_saveTestToRss_P2,
-                        link_back_to_change: media_url_dirs.CHANGE_PAGE
+                        link_back_to_change: media_url_dirs.CHANGE_PAGE,
+                        link_to_next_save_test_rss: media_url_dirs.ADMIN_saveTestToRss_P2
                     })
-                    deferred.resolve(page_html)
-                },
-                function onRejected(err_cond) {
+                    return page_html
+                })
+                .catch(function (e) {
+                    var html_error = global.Method_logger.exception('html_saveTestToDb_P1', module.filename, e)  // goodexception
                     var save_test_to_db_html = media_file_loc.htmlFiles('saveTestToDb_fail')
                     var page_html = miscMethods.getFillSwig(save_test_to_db_html, {
-                        error_message: err_cond
+                        error_message: html_error
                     })
-                    deferred.reject(page_html)
-                }
-            ).catch(function (error) {
-                miscMethods.serverError(error)
-            })
-            return deferred.promise
+                    throw page_html
+                })
         },
 
 
-        html_saveTestToRss_P2: function (variables_tsv, parser_tsv, the_media, real_or_test, the_information, media_file_loc) {
-            var deferred = Q.defer()
-            save_rss.saveXmlToRss(variables_tsv, parser_tsv, the_media, real_or_test, the_information, media_file_loc).then(
-                function onFulfilled() {
-                    var save_test_to_db_html = media_file_loc.htmlFiles(media_url_dirs.ADMIN_saveTestToRss_P2)
-                    var page_html = miscMethods.getFillSwig(save_test_to_db_html, {
+        html_saveTestToRss_P2: function (variables_tsv, parser_tsv, the_media, media_file_loc, host_url) {
+            return save_rss_items.saveRssToDb(variables_tsv, parser_tsv, the_media, media_constants.TEST_DATA, media_file_loc, host_url)
+                .then(function () {
+                //                   throw new Error ('exception test - html_saveTestToRss_P2')
+                    var save_test_rss_data = media_file_loc.htmlFiles(media_url_dirs.ADMIN_saveTestToRss_P2)
+                    var page_html = miscMethods.getFillSwig(save_test_rss_data, {
                         link_to_next_view_test_rss: media_url_dirs.ADMIN_viewTestRss_P3,
                         link_back_to_change: media_url_dirs.CHANGE_PAGE
                     })
-                    deferred.resolve(page_html)
-                },
-                function onRejected(err_cond) {
+                    return page_html
+                })
+                .catch(function (e) {
+                    var html_error = global.Method_logger.exception('html_saveTestToDb_P1', module.filename, e)  // goodexception
                     var save_test_to_db_html = media_file_loc.htmlFiles('saveTestToDb_fail')
                     var page_html = miscMethods.getFillSwig(save_test_to_db_html, {
-                        error_message: err_cond
+                        error_message: html_error
                     })
-                    deferred.reject(page_html)
-                }
-            ).catch(function (error) {
-                miscMethods.serverError(error)
-            })
-            return deferred.promise
-        },
-
-        html_saveRealToDb_P4: function (variables_tsv, parser_tsv, the_media, real_or_test, the_information, media_file_loc) {
-            var deferred = Q.defer()
-            save_rss.saveXmlToDb(variables_tsv, parser_tsv, the_media, real_or_test, the_information).then(
-                function onFulfilled(num_records_saved) {
-                    var save_real_rss_data_html = media_file_loc.htmlFiles(media_url_dirs.ADMIN_saveRealToDb_P4)
-                    var page_html = miscMethods.getFillSwig(save_real_rss_data_html, {
-                        records_saved: num_records_saved,
-                        link_back_to_change: media_url_dirs.CHANGE_PAGE,
-                        link__next_to_save_real_rss: media_url_dirs.ADMIN_saveRealToRss_P5
-                    })
-                    deferred.resolve(page_html)
-                },
-                function onRejected(err_cond) {
-                    console.log('screenOutput.html_saveRealToDb_P4() ', err_cond)
-                    deferred.reject(page_html)
-                }
-            ).catch(function (error) {
-                miscMethods.serverError(error)
-            })
-            return deferred.promise
-        },
-        html_saveRealToRss_P5: function (variables_tsv, parser_tsv, the_media, real_or_test, the_information, media_file_loc) {
-            var deferred = Q.defer()
-            save_rss.saveXmlToRss(variables_tsv, parser_tsv, the_media, real_or_test, the_information, media_file_loc).then(
-                function onFulfilled() {
-                    var save_real_rss_data_html = media_file_loc.htmlFiles(media_url_dirs.ADMIN_saveRealToRss_P5)
-                    var page_html = miscMethods.getFillSwig(save_real_rss_data_html, {
-                        link_to_view_current_rss: media_url_dirs.ADMIN_IFRAME_rss_P5,
-                        link_back_to_change: media_url_dirs.CHANGE_PAGE
-                    })
-                    deferred.resolve(page_html)
-                },
-                function onRejected(err_cond) {
-                    console.log('screenOutput.html_saveRealToDb_P4() ', err_cond)
-                    deferred.reject(page_html)
-                }
-            ).catch(function (error) {
-                miscMethods.serverError(error)
-            })
-            return deferred.promise
-        },
-
-        htmlPublicShowPlayer: function (id, the_media, the_information, media_file_loc) {
-            var deferred = Q.defer()
-
-            var podpress_html = media_file_loc.htmlFiles(media_url_dirs.PUBLIC_SHOW_PLAYER)
-            if (miscMethods.isInteger(id)) {
-                the_media.getDocument(id, media_constants.ENTIRE_DOCUMENT, media_constants.REAL_DATA).then(
-                    function onFulfilled(media_data) {
-                        if (media_data === null) {
-                            deferred.reject('no such media id')
-                        }
-                        var player_template_vars = the_media.playerTemplateVars(media_data)
-                        var page_html = miscMethods.getFillSwig(podpress_html, player_template_vars)
-                        deferred.resolve(page_html)
-                    },
-                    function onRejected(err_cond) {
-                        console.log('screenOutput.htmlPublicShowPlayer() ', err_cond)
-                        deferred.reject(page_html)
-                    }
-                ).catch(function (error) {
-                    miscMethods.serverError(error)
+                    throw page_html
                 })
-            } else {
-                deferred.reject('get id value is not integer')
-            }
-            return deferred.promise
         },
 
-        xmlAdminViewRealIframeP3: function (the_media) {
-            var deferred = Q.defer()
-            the_media.getDocument('rss_document', 'all_rss_xml', media_constants.REAL_DATA).then(
-                function onFulfilled(the_rss_xml) {
-                    deferred.resolve(the_rss_xml)
-                },
-                function onRejected(err_cond) {
-                    deferred.reject(err_cond)
-                }
-            ).catch(function (error) {
-                miscMethods.serverError(error)
-            })
-            return deferred.promise
-        },
-
-        xmlAdminViewTestIframeP2: function (the_media) {
-            var deferred = Q.defer()
-            the_media.getDocument('rss_document', 'all_rss_xml', media_constants.TEST_DATA).then(
-                function onFulfilled(the_rss_xml) {
-                    deferred.resolve(the_rss_xml)
-                },
-                function onRejected(err_cond) {
-                    deferred.reject(err_cond)
-                }
-            ).catch(function (error) {
-                miscMethods.serverError(error)
-            })
-            return deferred.promise
-        },
 
         html_viewTestRss_P3: function (the_information, media_file_loc) {
             var view_test_rss_html = media_file_loc.htmlFiles(media_url_dirs.ADMIN_viewTestRss_P3)
@@ -164,6 +62,59 @@ module.exports = function (save_rss, media_url_dirs) {
                 link_back_to_change: media_url_dirs.CHANGE_PAGE
             })
             return page_html
+        },
+
+        html_saveRealToDb_P4: function (variables_tsv, parser_tsv, the_media, the_information, media_file_loc) {
+            return save_rss_items.saveItemsToDb(variables_tsv, parser_tsv, the_media, media_constants.REAL_DATA)
+                .then(function (num_records_saved) {
+                  //                   throw new Error ('exception test - html_saveRealToDb_P4')
+                    var save_real_rss_data_html = media_file_loc.htmlFiles(media_url_dirs.ADMIN_saveRealToDb_P4)
+                    var page_html = miscMethods.getFillSwig(save_real_rss_data_html, {
+                        records_saved: num_records_saved,
+                        link_back_to_change: media_url_dirs.CHANGE_PAGE,
+                        link_next_to_save_real_rss: media_url_dirs.ADMIN_saveRealToRss_P5
+                    })
+                    return page_html
+                })
+                .catch(function (e) {
+                    var html_error = global.Method_logger.exception('html_saveRealToDb_P4', module.filename, e)
+                    return html_error
+                })
+        },
+
+        html_saveRealToRss_P5: function (variables_tsv, parser_tsv, the_media, media_file_loc, host_url) {
+            return save_rss_items.saveRssToDb(variables_tsv, parser_tsv, the_media, media_constants.REAL_DATA, media_file_loc, host_url)
+                .then(function () {
+                    //                   throw new Error ('exception test - html_saveRealToRss_P5')
+                    var save_real_rss_data_html = media_file_loc.htmlFiles(media_url_dirs.ADMIN_saveRealToRss_P5)
+                    var page_html = miscMethods.getFillSwig(save_real_rss_data_html, {
+                        link_to_view_current_rss: media_url_dirs.ADMIN_IFRAME_rss_P5,
+                        link_back_to_change: media_url_dirs.CHANGE_PAGE
+                    })
+                    return page_html
+                })
+                .catch(function (e) {
+                    var html_error = global.Method_logger.exception('html_saveRealToDb_P4', module.filename, e)
+                    return html_error
+                })
+        },
+
+        htmlPublicShowPlayer: function (id, the_media, the_information, media_file_loc) {
+            return the_media.getDocument(id, media_constants.ENTIRE_DOCUMENT, media_constants.REAL_DATA)
+                .then(function (media_data) {
+          //                   throw new Error ('exception test - htmlPublicShowPlayer')
+                        if (media_data === null) {
+                            return 'no such media id'
+                        }
+                        var podpress_html = media_file_loc.htmlFiles(media_url_dirs.PUBLIC_SHOW_PLAYER)
+                        var player_template_vars = the_media.playerTemplateVars(media_data)
+                        var page_html = miscMethods.getFillSwig(podpress_html, player_template_vars)
+                        return page_html
+                    }
+                ).catch(function (e) {
+                    global.Method_logger.exception('htmlPublicShowPlayer', module.filename, e)
+                    return 'Invalid document'
+                })
         },
 
         htmlAdminShowAll: function (the_information, media_file_loc, host_url) {

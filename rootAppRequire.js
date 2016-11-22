@@ -12,8 +12,9 @@ global.fromAppRoot = function (abs_filepath) {
 
 global.rootWorkingDir = function () {
     try {
+        //throw new Error ('exception test - global.rootWorkingDir') 
         process.chdir(__dirname)      // Swig module needs this
-    } catch (err) {
-        global.Method_logger.chronicle('error', 'chdir', module.filename, 'directory', directory, 'err', err)
+    } catch (e) {
+        throw e
     }
 }

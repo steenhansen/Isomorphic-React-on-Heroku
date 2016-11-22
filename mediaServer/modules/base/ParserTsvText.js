@@ -1,6 +1,6 @@
 'use strict'
 
-var Q = require('q')
+var Promise = require('bluebird')
 var miscMethods = require('./miscMethods')
 
 var ParserTsvText = function (csv_parse, tsv_text, csv_parser_options) {
@@ -11,6 +11,7 @@ var ParserTsvText = function (csv_parse, tsv_text, csv_parser_options) {
 }
 
 ParserTsvText.prototype._firstRow = function (output_array) {
+    //  output_array = 'exception test'
     if (output_array instanceof Array) {
         var output_first = output_array.slice(0, 1)
         var title_array = output_first.shift()
@@ -25,31 +26,36 @@ ParserTsvText.prototype._firstRow = function (output_array) {
         }
         return title_array
     } else {
-        global.Method_logger.chronicle('error', '_firstRow-ERROR-1', module.filename, 'output_array', output_array)
-        return new Error("output_array parameter is not an array")
+        throw new Error('exception test - ParserTsvText.prototype._firstRow')
     }
 }
 
-ParserTsvText.prototype._getTsvText = function () {
-    return _tsv_text
-}
 
 ParserTsvText.prototype.getTitles = function () {
-    var deferred = Q.defer()
-    var this_ParserTsvText = this
-    this._csv_parse(this._tsv_text, this._parser_options, function (err_cond, output_array) {
-        if (err_cond) {
-            console.log(err_cond)
-            deferred.reject(err_cond)
-        }
-        var title_array = this_ParserTsvText._firstRow(output_array)
-        if (title_array instanceof Error) {
-            deferred.reject(title_array)
-        }
-        deferred.resolve(title_array)
+    var self = this
+    return new Promise(function (fulfill, reject) {
+        self._csv_parse(self._tsv_text, self._parser_options, function (e, output_array) {
+            if (e) {
+                reject(e)
+            }
+            try {
+                let first_line = output_array.slice(1, 2)
+                let second_line = first_line.shift()
+                let first_column = second_line.shift()
+                if (first_column.startsWith('<!DOCTYPE html>')) {
+                    e = new Error('HTML in download as permissions not given')
+                    reject(e)
+                }
+                var title_array = self._firstRow(output_array)          
+            } catch (e) {
+                reject(e)
+            }
+            fulfill(title_array)
+
+        })
     })
-    return deferred.promise
 }
+
 
 // [a,b]+[c,d] => [a->c, b->d]
 ParserTsvText.prototype._arrayToObj = function (title_array, current_row) {
@@ -76,54 +82,55 @@ ParserTsvText.prototype._dataRows = function (title_array, data_rows) {
 }
 
 ParserTsvText.prototype._getData = function () {
-    var deferred = Q.defer()
-    var this_ParserTsvText = this
-    this._csv_parse(this._tsv_text, this._parser_options, function (err_cond, output_array) {
-        if (err_cond) {
-            deferred.reject(err_cond)
-        }
-        var title_array = this_ParserTsvText._firstRow(output_array)
-        if (title_array instanceof Error) {
-            deferred.reject(title_array)
-        }
-        var data_rows = output_array.slice(1)
-        var keyed_rows = this_ParserTsvText._dataRows(title_array, data_rows)
-        deferred.resolve(keyed_rows)
+    var self = this
+    return new Promise(function (fulfill, reject) {
+        self._csv_parse(self._tsv_text, self._parser_options, function (e, output_array) {
+            if (e) {
+                reject(e)
+            }
+            var title_array = self._firstRow(output_array)
+            if (title_array instanceof Error) {
+                reject(title_array)
+            }
+            var data_rows = output_array.slice(1)
+            var keyed_rows = self._dataRows(title_array, data_rows)
+            fulfill(keyed_rows)
+        })
     })
-    return deferred.promise
+}
+ParserTsvText.prototype._getTsvText = function () {
+    return Promise.resolve(this._tsv_text)
 }
 
 ParserTsvText.prototype.allRows = function (verify_tsv) {
-    var deferred = Q.defer()
-    var this_ParserTsvText = this
-    this._getTsvText().then(
-        function onFulfilled() {
-            this_ParserTsvText.getTitles().then(
-                function onSucces(the_titles) {
-                    if (typeof verify_tsv === 'object') {
-                            if (!verify_tsv.headersMatch(the_titles)) {
-                            var err_cond = new Error("error_1000 Spreadsheet Headers don't match database")
-                            err_cond.information = 'the_titles = ' + the_titles
-                            deferred.reject(err_cond)
-                        }
-                    }
-                    this_ParserTsvText._getData().then(
-                        function onSucces(the_rows) {
-                            deferred.resolve(the_rows)
-                        }, function onRejected(err_cond) {
-                            deferred.reject(err_cond)
-                        }).catch(function (error) {
-                        miscMethods.serverError(error)
-                        })
-                }, function onRejected(err_cond) {
-                    deferred.reject(err_cond)
-                })
-        }, function onRejected(err_cond) {
-            deferred.reject(err_cond)
-        }).catch(function (error) {
-        miscMethods.serverError(error)
-    })
-    return deferred.promise
+    var self = this
+    return this._getTsvText()
+        .then(
+            function () {
+                return self.getTitles()
+            }
+        )
+        .then(function (the_titles) {
+            if (typeof verify_tsv === 'object') {
+                if (!verify_tsv.headersMatch(the_titles)) {
+                    var e = new Error("error_1000 Spreadsheet Headers don't match database")
+                    e.information = 'the_titles = ' + the_titles
+                    throw e
+                }
+            }
+            return Promise.resolve('')
+        })
+        .then(function () {
+            return self._getData()
+        })
+        .then(function (the_rows) {
+            return the_rows
+        })
+        .catch(function (e) {
+            miscMethods.serverError(e)
+            return e
+        })
 }
+
 
 module.exports = ParserTsvText

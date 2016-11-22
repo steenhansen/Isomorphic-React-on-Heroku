@@ -10,11 +10,11 @@ var media_type = process.argv[2]
 
 if (media_type) {
     if (media_type === 'rsd') {
-        var the_information = rootAppRequire('mediaServer/modules/rsdInformation')
+        var the_information = rootAppRequire('mediaServer/modules/rsdSchema')
         var di_factory = rootAppRequire('mediaServer/modules/base/diFactory')(the_information)
         var the_media = di_factory.RsdMediaCreate()
     } else if (media_type === 'pdf') {
-        var the_information = rootAppRequire('mediaServer/modules/pdfInformation')
+        var the_information = rootAppRequire('mediaServer/modules/pdfSchema')
         var di_factory = rootAppRequire('mediaServer/modules/base/diFactory')(the_information)
         var the_media = di_factory.PdfMediaCreate()
     }

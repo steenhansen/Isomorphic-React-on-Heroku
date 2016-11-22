@@ -16,3 +16,4 @@ global.document = jsdom.jsdom("<!doctype html><html><body></body></html>")
 global.window = document.defaultView
 global.navigator = window.navigator
 
+global.window.innerHeight =123456          // make sure ephemeral server test window is large

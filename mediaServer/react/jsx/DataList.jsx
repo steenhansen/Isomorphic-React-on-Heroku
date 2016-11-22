@@ -1,5 +1,6 @@
 'use strict'
 
+// jsx to ensure es6 to js compile, even though no ui
 
 class DataList {
     constructor(props, search_columns) {
@@ -76,9 +77,18 @@ class DataList {
             var row_search_index_accum = 0
             var column_matches = {}
             for (let search_column of this.search_columns) {
-                var search_index = media_object[search_column].toLowerCase().indexOf(search_for)
-                column_matches[search_column] = search_index
-                row_search_index_accum += search_index
+                if (media_object[search_column]) {
+                    var column_value = media_object[search_column]
+                    if (typeof column_value === 'number') {
+                        var column_value = column_value.toString()
+                    }
+                    const column_lowercase = column_value.toLowerCase()
+                    var search_index = column_lowercase.indexOf(search_for)
+                    column_matches[search_column] = search_index
+                    row_search_index_accum += search_index
+                } else {
+                    row_search_index_accum += -1 // not found
+                }
             }
             if (row_search_index_accum !== this.search_not_found_accum) {
                 filteredIndexes.push(row_number)

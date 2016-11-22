@@ -1,0 +1,14 @@
+:media_title:Reading, Short and Deep:
+:media_web_page:https://podcasts-readingshortdeep.rhcloud.com/rsd/rss:
+:media_directory_url:http://www.canadianquotations.ca/rsd/:
+:media_description:Two friends discovering together the subtle riches of stories and poems.:
+:media_copyright:2016 SFFaudio:
+:itunes_category:Arts:
+:itunes_sub_category:Literature:
+:itunes_explicit:no:
+:itunes_image:http://www.sffaudio.com/images/ReadingShortAndDeepLogoREDO1700X1700C1.jpg:
+:itunes_name:Eric S. Rabkin and Jesse Willis:
+:itunes_email:jessewillis@yahoo.com:
+:itunes_description:Share the joys-and sharpen the skills-of deep reading. In each weekly half-hour podcast, Eric Rabkin and Jesse Willis mine together the riches of another marvelous short story, poem, or video.  Each work, freely available on the RSD website, can be read in half an hour or less, and discussed for hours.:
+:hours_offset:-2:
+:post_early_min_rss:10:

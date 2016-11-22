@@ -1,7 +1,7 @@
 'use strict'
 /* @flow */
 
-var Q = require('q')
+var Promise = require('bluebird')
 
 var VersionStorage = function (current_media/*:BaseMedia*/, media_description_text/*:string*/) {
     this._current_media = current_media
@@ -10,43 +10,40 @@ var VersionStorage = function (current_media/*:BaseMedia*/, media_description_te
 }
 
 VersionStorage.prototype.saveNewVersion = function (media_rows/*:Array<MediaRows>*/, real_or_test/*:string*/) {
-    var deferred = Q.defer()
-    var this_versionStorage = this
-    this._current_media.deleteItems(real_or_test).then(
-        function onSucces() {
-            this_versionStorage._insertRows(media_rows, real_or_test).then(
-                function onSucces(media_item) {
-                    deferred.resolve(media_item)
-                }, function onRejected(err_cond) {
-                    deferred.reject(err_cond)
-                }
-            )
-        }, function onRejected(err_cond) {
-            deferred.reject(err_cond)
-        }
-    ).catch(function (error) {
-        miscMethods.serverError(error)
-    })
-    return deferred.promise
+    var self = this
+    return this._current_media.deleteItems(real_or_test)
+        .then(function () {
+            return self._current_media.deleteDocument('description', real_or_test)
+        })
+        .then(function () {
+            return self._current_media.saveDocument('description', 'itunes_summary', self._media_description_text, real_or_test)
+        })
+        .then(function () {
+            var promise_inserted_rows = self._insertRows(media_rows, real_or_test)
+            return promise_inserted_rows
+        })
+        .then(
+            function (promise_inserted_rows) {
+                return promise_inserted_rows.length
+            }
+        )
+        .catch(function (e) {
+            throw e
+        })
+}
+
+VersionStorage.prototype.rowsPromised = function (media_row, real_or_test/*:string*/) {
+    return this._current_media.saveItem(media_row, real_or_test, media_row)
 }
 
 VersionStorage.prototype._insertRows = function (media_rows/*:Array<MediaRows>*/, real_or_test/*:string*/) {
-    var deferred = Q.defer()
-    var this_versionStorage = this
-    this._current_media.saveDescription(this._media_description_text, real_or_test).then(
-        function onFulfilled() {
-            var number_rows = media_rows.length
-            for (var i = 0; i < number_rows; i++) {
-                this_versionStorage._current_media.saveItem(media_rows[i], real_or_test)
-            }
-            deferred.resolve(number_rows)
-        }, function onRejected(err_cond) {
-            deferred.reject(err_cond)
-        }
-    ).catch(function (error) {
-        miscMethods.serverError(error)
-    })
-    return deferred.promise
+    var promises_arr = []
+    for (var i = media_rows.length - 1; i >= 0; i--) {
+        var row_promise = this.rowsPromised(media_rows[i], real_or_test)
+        promises_arr.push(row_promise)
+    }
+    return Promise.all(promises_arr)
 }
+
 
 module.exports = VersionStorage

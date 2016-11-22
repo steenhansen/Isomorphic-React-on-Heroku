@@ -1,7 +1,7 @@
 "use strict"
 
 var React = require('react')
-var GenreOption = require('./GenreOption')
+var Option = require('../Option')
 
 
 class GenreSelect extends React.Component {
@@ -12,7 +12,7 @@ class GenreSelect extends React.Component {
     }
 
     _pass_lint_() {
-        GenreOption
+        Option
     }
 
     selectByGenre(event) {
@@ -26,17 +26,17 @@ class GenreSelect extends React.Component {
             <select onChange={this.selectByGenre}
                     className={select_class_name}
                     value={this.props.category_choice}>
-                <GenreOption category="All Genres"
+                <Option category="All Genres"
                              hidden_category=""
                              key="genre_all"/>
-                <GenreOption category="Poem"
+                <Option category="Poem"
                              hidden_category="poem"
                              key="genre_poem"/>
-                <GenreOption category="Story"
+                <Option category="Story"
 
                              hidden_category="story"
                              key="genre_story"/>
-                <GenreOption category="Other"
+                <Option category="Other"
 
                              hidden_category="other"
                              key="genre_other"/>
