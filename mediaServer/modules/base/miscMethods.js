@@ -17,16 +17,20 @@ var fsAsync = Promise.promisifyAll(require("fs"))
 var media_constants = require('./MediaConstants')
 var config_environment = rootAppRequire('configEnvironment')
 
-
 var miscMethods = {
 
+    memoryPrint(where_in_code){
+        let {heapTotal} = process.memoryUsage()
+        let total_heap = heapTotal.toLocaleString()
+        console.log(where_in_code, total_heap)
+    },
 
     shortError: function (e) {
         const html_message = 'Error:' + e.message
         var pretty_error = new PrettyError()
         pretty_error.skipPackage('bluebird', 'mongoose', 'mquery', 'swig', 'react')
         pretty_error.skipPath('internal/process/next_tick.js', 'timers.js', '_stream_writable.js', '_stream_transform.js', 'fs.js'
-        , 'module.js', 'internal/module.js')
+            , 'module.js', 'internal/module.js')
         const console_message = pretty_error.render(e)
         pretty_error.withoutColors()
         const log_message_breaks = pretty_error.render(e)
@@ -354,7 +358,6 @@ var miscMethods = {
     },
 
 
-
     returnOnlyRealData: function (req, res, next) {
         var dirty_data = res.locals.bundle
         if (dirty_data instanceof Array) {
@@ -362,10 +365,7 @@ var miscMethods = {
             for (var data_index in dirty_data) {
                 if (dirty_data.hasOwnProperty(data_index)) {
                     var data_row = dirty_data[data_index]
-                    
                     var episode_number = data_row['episode number']
-                    console.log('returnOnlyRealData',  episode_number)
-                    
                     if (typeof data_row.real_or_test !== "undefined") {
                         if (media_constants.REAL_DATA === data_row.real_or_test) {
                             cleaned_data.push(data_row)

@@ -13,7 +13,6 @@ gulp.task('ALL_build', function (callback) {
         , 'test'
         , 'flow'
         , 'lint'
-        , 'mocha'
         , 'css'
         , 'img'
         , 'ugly'

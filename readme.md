@@ -8,7 +8,9 @@ Build:
     $ gulp all
 
 Test:
-    $ gulp verify
+    $ gulp test
+    $ gulp jsx
+    $ mocha
 
 Launch:
     $ npm start

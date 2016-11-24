@@ -1,4 +1,5 @@
 
 --require test/initDomBeforeReact.js
+--expose-gc                                       
 
 

@@ -93,7 +93,7 @@ ParserTsvText.prototype._getData = function () {
                 reject(title_array)
             }
             var data_rows = output_array.slice(1)
-            var keyed_rows = self._dataRows(title_array, data_rows)
+            var keyed_rows = self._dataRows(title_array, data_rows) 
             fulfill(keyed_rows)
         })
     })
@@ -121,10 +121,8 @@ ParserTsvText.prototype.allRows = function (verify_tsv) {
             return Promise.resolve('')
         })
         .then(function () {
-            return self._getData()
-        })
-        .then(function (the_rows) {
-            return the_rows
+            let object_rows = self._getData()
+            return object_rows
         })
         .catch(function (e) {
             miscMethods.serverError(e)

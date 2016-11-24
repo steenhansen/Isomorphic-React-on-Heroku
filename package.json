@@ -7,7 +7,7 @@
   },
   "main": "media-server.js",
   "scripts": {
-    "start": "node media-server.js ",
+    "start": "node --expose-gc media-server.js ",
     "prestart": "node-version-check \">=6.9.1\" "
   },
   "description": "",

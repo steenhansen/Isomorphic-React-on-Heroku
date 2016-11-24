@@ -8,7 +8,7 @@ Javascript was not completely compiled errors
     Check configEnvironment.js
         NODE_DATABASE: 'mongodb://localhost/media_server_db'
 
-    $ gulp verify
+    $ mocha
     $ gulp all
 
 ------ local dev ------

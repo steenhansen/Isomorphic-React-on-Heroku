@@ -56,12 +56,8 @@ VerifyTsv.prototype._mustContainColumn = function (data_row, line_number) {
     for (var field_name in this._must_contain) {
         if (this._must_contain.hasOwnProperty(field_name)) {
             var verify_reg_ex = this._must_contain[field_name]
-            
-         
-            
             var tsv_regex = new RegExp(verify_reg_ex)
             var data_value = data_row[field_name]
-            
             var lower_data = data_value.toLowerCase()
             if (!tsv_regex.test(lower_data)) {
                 var error_mess = this._contain_errors[field_name]
