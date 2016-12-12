@@ -231,10 +231,10 @@ BaseMedia.prototype._pageTemplateVars = function (media_items_html, tsv_variable
 BaseMedia.prototype.playerTemplateVars = function (data_row) {
     var number_bytes = data_row['byte_size']
     var number_mbs = Math.floor(number_bytes / 1000000)
-    var id_digits = data_row['_id']
+    var id_3_digits = shared_methods.leadingZerosDigits(3, data_row['_id'])
     var player_template_vars = {
         rsd_id: data_row['_id'],
-        id_3_digits: id_digits,
+        id_3_digits: id_3_digits,
         mp3_url: data_row.mp3_url,
         podcast_description: data_row['podcast description'],
         book_title: data_row['book title'],

@@ -14,7 +14,7 @@ var react_constants = {
     UP_ARROW_CHAR: String.fromCharCode(8593),
     DOWN_ARROW_CHAR: String.fromCharCode(8595),
 
-    START_UI_LINE_HEIGHT: 36,
+    TABLE_UI_LINE_HEIGHT: 36,
 
     REACT_UPDATE_DELAY: 16,
     VERTICAL_TABLE_MARGIN: 100,

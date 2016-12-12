@@ -366,6 +366,8 @@ var miscMethods = {
                 if (dirty_data.hasOwnProperty(data_index)) {
                     var data_row = dirty_data[data_index]
                     var episode_number = data_row['episode number']
+                    console.log('returnOnlyRealData', episode_number)
+
                     if (typeof data_row.real_or_test !== "undefined") {
                         if (media_constants.REAL_DATA === data_row.real_or_test) {
                             cleaned_data.push(data_row)

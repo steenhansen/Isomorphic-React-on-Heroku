@@ -5,6 +5,7 @@ var FixedDataTable = require('fixed-data-table-2')
 const {Column, Table} = FixedDataTable
 var PodcastIdCell = require('./PodcastIdCell')
 var PodcastTextCell = require('./PodcastTextCell')
+var react_constants = require('../reactConstants')
 
 class PodcastTable extends MediaTable {
     constructor(props) {
@@ -38,16 +39,17 @@ class PodcastTable extends MediaTable {
             var number_rows = 5
             var id_cell_width = 45
         }
+        this.number_rows = number_rows
         return {number_rows, id_cell_width}
     }
 
     render() {
-        var {init_discarded_row_height, row_count, table_width, table_height, id_cell_width, text_cell_width } = this.state
+        var {row_count, table_width, table_height, id_cell_width, text_cell_width } = this.state
         var row_count = this.props.data.getSize()
-
+        var row_height = react_constants.TABLE_UI_LINE_HEIGHT*this.number_rows
         return (
             <div>
-                <Table rowHeight={init_discarded_row_height}
+                <Table rowHeight={row_height}
                        rowsCount={row_count}
                        headerHeight={0}
                        touchScrollEnabled={true}      

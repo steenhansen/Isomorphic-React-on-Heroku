@@ -14,10 +14,9 @@ class MediaTable extends React.Component {
         this.search_matches = props.search_matches
         this.search_columns = props.search_columns
         this.displayed_columns = props.displayed_columns
-        this.calced_row_height = react_constants.START_UI_LINE_HEIGHT
+        this.calced_row_height = react_constants.TABLE_UI_LINE_HEIGHT
         this.sort_column = props.sort_column
         this.state = {
-            init_discarded_row_height: react_constants.START_UI_LINE_HEIGHT,
             row_count: this.data.getSize(),
             table_width: 1,
             table_height: 1,
@@ -60,7 +59,6 @@ class MediaTable extends React.Component {
 
         var table_height = window.innerHeight -react_constants.VERTICAL_TABLE_MARGIN
         this.setState({
-            init_discarded_row_height: react_constants.START_UI_LINE_HEIGHT,
             row_count: this.data.getSize(),
             table_width: table_width,
             table_height: table_height,

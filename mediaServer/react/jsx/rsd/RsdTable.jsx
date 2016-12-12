@@ -5,6 +5,7 @@ var FixedDataTable = require('fixed-data-table-2')
 const {Column, Table} = FixedDataTable
 var RsdIdCell = require('./RsdIdCell')
 var RsdTextCell = require('./RsdTextCell')
+var react_constants = require('../reactConstants')
 
 class RsdTable extends MediaTable {
     constructor(props) {
@@ -26,20 +27,22 @@ class RsdTable extends MediaTable {
             var id_cell_width = 110
         } else if (table_width > 340) {                          // podcast check #4
             var number_rows = 2
-            var id_cell_width = 66   //70
+            var id_cell_width = 66   
         } else {
             var number_rows = 3
-            var id_cell_width = 45 //48
+            var id_cell_width = 45 
         }
+          this.number_rows = number_rows
         return {number_rows, id_cell_width}
     }
 
     render() {
-        var {init_discarded_row_height, row_count, table_width, table_height, id_cell_width, text_cell_width } = this.state
+        var {row_count, table_width, table_height, id_cell_width, text_cell_width } = this.state
         var row_count = this.props.data.getSize()
+                var row_height = react_constants.TABLE_UI_LINE_HEIGHT*this.number_rows
         return (
             <div>
-                <Table rowHeight={init_discarded_row_height}
+                <Table rowHeight={row_height}
                        rowsCount={row_count}
                        headerHeight={0}
                        touchScrollEnabled={true}

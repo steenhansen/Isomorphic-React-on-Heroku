@@ -26,10 +26,9 @@ var MediaTable = function (_React$Component) {
         _this.search_matches = props.search_matches;
         _this.search_columns = props.search_columns;
         _this.displayed_columns = props.displayed_columns;
-        _this.calced_row_height = react_constants.START_UI_LINE_HEIGHT;
+        _this.calced_row_height = react_constants.TABLE_UI_LINE_HEIGHT;
         _this.sort_column = props.sort_column;
         _this.state = {
-            init_discarded_row_height: react_constants.START_UI_LINE_HEIGHT,
             row_count: _this.data.getSize(),
             table_width: 1,
             table_height: 1,
@@ -80,7 +79,6 @@ var MediaTable = function (_React$Component) {
 
             var table_height = window.innerHeight - react_constants.VERTICAL_TABLE_MARGIN;
             this.setState({
-                init_discarded_row_height: react_constants.START_UI_LINE_HEIGHT,
                 row_count: this.data.getSize(),
                 table_width: table_width,
                 table_height: table_height,

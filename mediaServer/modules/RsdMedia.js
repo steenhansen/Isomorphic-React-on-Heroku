@@ -95,7 +95,6 @@ RsdMedia.prototype._itemTemplateVars = function (data_row, rsd_episode_digits) {
         media_item_title: episode_digit + ' ' + data_row['book title'] + ' by ' + data_row['book author'],
         media_item_link: data_row['mp3_url'],
         media_item_description: data_row['podcast description'],
-        
             episode_number: episode_number,
         media_byte_size: data_row['byte_size'],
         media_post_link: data_row['post link'],

@@ -5,6 +5,7 @@ var FixedDataTable = require('fixed-data-table-2')
 const {Column, Table} = FixedDataTable
 
 var PdfTextCell = require('./PdfTextCell')
+var react_constants = require('../reactConstants')
 
 class PdfTable extends MediaTable {
     constructor(props) {
@@ -24,17 +25,18 @@ class PdfTable extends MediaTable {
     rowsMainCellWidth() {
         var id_cell_width = 0
         var number_rows = 5
+         this.number_rows = number_rows
         return {number_rows, id_cell_width}
     }
 
 
     render() {
-        var {init_discarded_row_height, row_count, table_width, table_height, text_cell_width } = this.state
+        var {row_count, table_width, table_height, text_cell_width } = this.state
         var row_count = this.props.data.getSize()
-
+         var row_height = react_constants.TABLE_UI_LINE_HEIGHT*this.number_rows
         return (
             <div>
-                <Table rowHeight={init_discarded_row_height}
+                <Table rowHeight={row_height}
                        rowsCount={row_count}
                        headerHeight={0}
                        touchScrollEnabled={true}

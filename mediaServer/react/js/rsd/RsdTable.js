@@ -48,6 +48,7 @@ var Table = FixedDataTable.Table;
 
 var RsdIdCell = require('./RsdIdCell');
 var RsdTextCell = require('./RsdTextCell');
+var react_constants = require('../reactConstants');
 
 var RsdTable = function (_MediaTable) {
     _inherits(RsdTable, _MediaTable);
@@ -79,18 +80,18 @@ var RsdTable = function (_MediaTable) {
             } else if (table_width > 340) {
                 // podcast check #4
                 var number_rows = 2;
-                var id_cell_width = 66; //70
+                var id_cell_width = 66;
             } else {
                 var number_rows = 3;
-                var id_cell_width = 45; //48
+                var id_cell_width = 45;
             }
+            this.number_rows = number_rows;
             return { number_rows: number_rows, id_cell_width: id_cell_width };
         }
     }, {
         key: 'render',
         value: function render() {
             var _state = this.state;
-            var init_discarded_row_height = _state.init_discarded_row_height;
             var row_count = _state.row_count;
             var table_width = _state.table_width;
             var table_height = _state.table_height;
@@ -98,7 +99,8 @@ var RsdTable = function (_MediaTable) {
             var text_cell_width = _state.text_cell_width;
 
             var row_count = this.props.data.getSize();
-            return React.createElement('div', null, React.createElement(Table, _extends({ rowHeight: init_discarded_row_height,
+            var row_height = react_constants.TABLE_UI_LINE_HEIGHT * this.number_rows;
+            return React.createElement('div', null, React.createElement(Table, _extends({ rowHeight: row_height,
                 rowsCount: row_count,
                 headerHeight: 0,
                 touchScrollEnabled: true,
