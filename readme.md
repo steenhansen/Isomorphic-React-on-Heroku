@@ -1,6 +1,9 @@
 
-Isomorphic React on Heroku for http://www.sffaudio.com/reading-short-and-deep/
-
+Isomorphic React on Heroku for: 
+    http://www.sffaudio.com/reading-short-and-deep/
+    http://www.sffaudio.com/the-sffaudio-podcast/
+    http://www.sffaudio.com/public-domain-pdf-page/
+    
 Install:
     $ npm install
 
@@ -25,6 +28,6 @@ View:
     http://localhost:5000/rsd/mobile === https://sffaudio.herokuapp.com/rsd/mobile
 
 Examples:
-    https://calm-dusk-45367.herokuapp.com/rsd/table          // 10,000 test records
-    https://sffaudio.herokuapp.com/rsd/table                 // 35 real records
-
+    https://sffaudio.herokuapp.com/rsd/table       // 44 records
+    https://sffaudio.herokuapp.com/pdf/table       // 3919 records
+    https://sffaudio.herokuapp.com/podcast/table   // 399 records
