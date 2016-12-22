@@ -2,10 +2,13 @@
 Isomorphic React on Heroku for: 
 
     http://www.sffaudio.com/reading-short-and-deep/
+    https://sffaudio.herokuapp.com/rsd/table
 
     http://www.sffaudio.com/the-sffaudio-podcast/
+    https://sffaudio.herokuapp.com/podcast/table
 
     http://www.sffaudio.com/public-domain-pdf-page/
+    https://sffaudio.herokuapp.com/pdf/table
     
 Install:
 
