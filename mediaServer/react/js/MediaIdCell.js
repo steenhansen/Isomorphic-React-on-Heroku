@@ -1,6 +1,6 @@
 "use strict";
 
-var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj; };
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
 var _createClass = function () {
     function defineProperties(target, props) {
@@ -97,11 +97,11 @@ var MediaIdCell = function (_React$Component) {
     }, {
         key: 'deriveEpisodeM3MmSS',
         value: function deriveEpisodeM3MmSS() {
-            var _props = this.props;
-            var rowIndex = _props.rowIndex;
-            var data = _props.data;
-            var displayed_columns = _props.displayed_columns;
-            var sort_column = _props.sort_column;
+            var _props = this.props,
+                rowIndex = _props.rowIndex,
+                data = _props.data,
+                displayed_columns = _props.displayed_columns,
+                sort_column = _props.sort_column;
             var _iteratorNormalCompletion2 = true;
             var _didIteratorError2 = false;
             var _iteratorError2 = undefined;
@@ -131,10 +131,10 @@ var MediaIdCell = function (_React$Component) {
                 this.colorSortedText(displayed_columns, sort_column);
             }
 
-            var _displayed_data = this.displayed_data;
-            var episode_number = _displayed_data.episode_number;
-            var hh_mm = _displayed_data.hh_mm;
-            var mp3_url = _displayed_data.mp3_url;
+            var _displayed_data = this.displayed_data,
+                episode_number = _displayed_data.episode_number,
+                hh_mm = _displayed_data.hh_mm,
+                mp3_url = _displayed_data.mp3_url;
 
             var mp3_link = this.mp3Link(mp3_url);
             var my_visible_text = ' #' + episode_number + ' ' + mp3_link + ' ' + hh_mm + ' ';

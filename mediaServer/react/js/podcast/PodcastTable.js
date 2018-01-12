@@ -1,6 +1,6 @@
 "use strict";
 
-var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj; };
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
 var _extends = Object.assign || function (target) {
     for (var i = 1; i < arguments.length; i++) {
@@ -43,8 +43,8 @@ function _inherits(subClass, superClass) {
 var React = require('react');
 var MediaTable = require('../MediaTable');
 var FixedDataTable = require('fixed-data-table-2');
-var Column = FixedDataTable.Column;
-var Table = FixedDataTable.Table;
+var Column = FixedDataTable.Column,
+    Table = FixedDataTable.Table;
 
 var PodcastIdCell = require('./PodcastIdCell');
 var PodcastTextCell = require('./PodcastTextCell');
@@ -99,12 +99,12 @@ var PodcastTable = function (_MediaTable) {
     }, {
         key: 'render',
         value: function render() {
-            var _state = this.state;
-            var row_count = _state.row_count;
-            var table_width = _state.table_width;
-            var table_height = _state.table_height;
-            var id_cell_width = _state.id_cell_width;
-            var text_cell_width = _state.text_cell_width;
+            var _state = this.state,
+                row_count = _state.row_count,
+                table_width = _state.table_width,
+                table_height = _state.table_height,
+                id_cell_width = _state.id_cell_width,
+                text_cell_width = _state.text_cell_width;
 
             var row_count = this.props.data.getSize();
             var row_height = react_constants.TABLE_UI_LINE_HEIGHT * this.number_rows;

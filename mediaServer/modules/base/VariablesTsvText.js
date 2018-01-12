@@ -19,7 +19,7 @@ VariablesTsvText.prototype.capturedVariables = function () {
 VariablesTsvText.prototype.deriveAll = function (the_rows, current_media, tsv_variables, offset_minutes) {
     current_media.getTsvVariables(tsv_variables)
     var multiple_rows = current_media.splitVersions(the_rows, offset_minutes, tsv_variables)
-    global.gc()
+//    global.gc()
     return multiple_rows
 }
 

@@ -62,7 +62,7 @@ var pdf_schema = {
         "publish date": "\\d\\d\\d\\d-\\d+-\\d+ \\d+",        // 2016-12-31 23
         "book title": ".{2,}",
         "book author": ".{2,}",
-        "pdf link 1": "\\.(pdf|can)$",
+        "pdf link 1": ".*",
         "pdf page count 1": "\\d+",
         "pdf info 1": ".*"
     },

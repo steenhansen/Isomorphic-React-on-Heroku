@@ -32,13 +32,13 @@ var PodcastTextCell = function (_MediaTextCell) {
     }, {
         key: 'description_kind',
         value: function description_kind() {
-            var _displayed_data = this.displayed_data;
-            var about = _displayed_data.about;
-            var narrator = _displayed_data.narrator;
-            var participants = _displayed_data.participants;
-            var kind = _displayed_data.kind;
-            var book_author = _displayed_data["book author"];
-            var book_title = _displayed_data["book title"];
+            var _displayed_data = this.displayed_data,
+                about = _displayed_data.about,
+                narrator = _displayed_data.narrator,
+                participants = _displayed_data.participants,
+                kind = _displayed_data.kind,
+                book_author = _displayed_data["book author"],
+                book_title = _displayed_data["book title"];
 
 
             switch (kind) {

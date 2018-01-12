@@ -48,7 +48,7 @@ var send_table = {
     },
 
     marshallServerHtml: function marshallServerHtml(media_type, props_array, desk_mobile_template, host_url, media_information) {
-        var media_options = arguments.length <= 5 || arguments[5] === undefined ? {} : arguments[5];
+        var media_options = arguments.length > 5 && arguments[5] !== undefined ? arguments[5] : {};
 
         var DOM = React.DOM;
         var div = DOM.div;

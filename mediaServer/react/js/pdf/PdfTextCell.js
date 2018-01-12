@@ -1,6 +1,6 @@
 "use strict";
 
-var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj; };
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
 var _createClass = function () {
     function defineProperties(target, props) {
@@ -58,11 +58,11 @@ var PdfTextCell = function (_MediaTextCell) {
         key: 'render',
         value: function render() {
             this.fixTheText();
-            var _displayed_data = this.displayed_data;
-            var wikipedia_story = _displayed_data['story link on wikipedia'];
-            var wikipedia_author = _displayed_data['author wikipedia entry'];
-            var book_author = _displayed_data["book author"];
-            var book_title = _displayed_data["book title"];
+            var _displayed_data = this.displayed_data,
+                wikipedia_story = _displayed_data['story link on wikipedia'],
+                wikipedia_author = _displayed_data['author wikipedia entry'],
+                book_author = _displayed_data["book author"],
+                book_title = _displayed_data["book title"];
 
             if (wikipedia_story) {
                 var story_link = '   <a href="' + wikipedia_story + '" target="_blank" >' + book_title + '</a> ';

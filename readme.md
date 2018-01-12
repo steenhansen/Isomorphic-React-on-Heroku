@@ -1,16 +1,14 @@
 
-#Isomorphic React on Heroku for:   
-### RSD Podcasts
-[http://www.sffaudio.com/reading-short-and-deep/](http://www.sffaudio.com/reading-short-and-deep/)  
-[https://sffaudio.herokuapp.com/rsd/table](https://sffaudio.herokuapp.com/rsd/table)
-     
-### SffAudio Podcasts
-[http://www.sffaudio.com/the-sffaudio-podcast/](http://www.sffaudio.com/the-sffaudio-podcast/)
-[https://sffaudio.herokuapp.com/podcast/table](https://sffaudio.herokuapp.com/podcast/table)
+Isomorphic React on Heroku for: 
 
-### SffAudio Public Domain PDFs
-[http://www.sffaudio.com/public-domain-pdf-page/](http://www.sffaudio.com/public-domain-pdf-page/)
-[https://sffaudio.herokuapp.com/pdf/table](https://sffaudio.herokuapp.com/pdf/table)
+    http://www.sffaudio.com/reading-short-and-deep/
+    https://sffaudio.herokuapp.com/rsd/table
+
+    http://www.sffaudio.com/the-sffaudio-podcast/
+    https://sffaudio.herokuapp.com/podcast/table
+
+    http://www.sffaudio.com/public-domain-pdf-page/
+    https://sffaudio.herokuapp.com/pdf/table
     
 Install:
 
@@ -46,3 +44,10 @@ View:
 
     http://localhost:5000/rsd/mobile === https://sffaudio.herokuapp.com/rsd/mobile
 
+Examples:
+
+    https://sffaudio.herokuapp.com/rsd/table       // 44 records
+
+    https://sffaudio.herokuapp.com/pdf/table       // 3919 records
+
+    https://sffaudio.herokuapp.com/podcast/table   // 399 records

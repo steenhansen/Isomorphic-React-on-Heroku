@@ -67,6 +67,7 @@ module.exports = function (public_static_files, localhost_port) {
             next_page_save_test_to_db: media_url_dirs.ADMIN_saveTestToDb_P1,
             show_current_db_status: media_url_dirs.SHOW_STATUS_PAGE,
             show_all_output: media_url_dirs.ADMIN_SHOW_ALL_OUTPUT,
+            show_cron_results:  media_url_dirs.ADMIN_checkItemsForCron_P0,
         })
         res.send(page_html)
     })

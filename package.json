@@ -1,14 +1,13 @@
 {
   "name": "sffaudio-rsd",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "engines": {
-    "node": "6.9.1",
+    "node": "6.11.1",
     "npm": "3.8.6"
   },
   "main": "media-server.js",
   "scripts": {
-    "start": "node --expose-gc media-server.js ",
-    "prestart": "node-version-check \">=6.9.1\" "
+    "start": "node --expose-gc media-server.js "
   },
   "description": "",
   "author": "steen hansen",

@@ -5,6 +5,11 @@ module.exports = function (media_dir_type) {
     var media_url_dirs = {
         CHANGE_PAGE: 'change',
 
+
+        ADMIN_checkItemsForCron_P0: 'checkItemsForCron_0',          // q*bert
+
+
+
         ADMIN_saveTestToDb_P1: 'saveTestToDb_1',
         ADMIN_saveTestToRss_P2: 'saveTestToRss_2',
 
@@ -27,6 +32,11 @@ module.exports = function (media_dir_type) {
     }
 
     var slashed_media_dir_type = '/' + media_dir_type + '/'
+
+
+    media_url_dirs.URL_HTML_ADMIN_checkItemsForCron_P0 = slashed_media_dir_type + media_url_dirs.ADMIN_checkItemsForCron_P0
+
+
     media_url_dirs.URL_HTML_ADMIN_saveTestToDb_P1 = slashed_media_dir_type + media_url_dirs.ADMIN_saveTestToDb_P1
     media_url_dirs.URL_HTML_ADMIN_saveTestToRss_P2 = slashed_media_dir_type + media_url_dirs.ADMIN_saveTestToRss_P2
 

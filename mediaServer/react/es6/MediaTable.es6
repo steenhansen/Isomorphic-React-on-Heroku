@@ -69,10 +69,9 @@ var MediaTable = function (_React$Component) {
                 var table_width = media_container.parentElement.clientWidth - this.EXTRA_WIDTH_STOP_SCROLL;
             }
 
-            var _rowsMainCellWidth = this.rowsMainCellWidth(table_width);
-
-            var number_rows = _rowsMainCellWidth.number_rows;
-            var id_cell_width = _rowsMainCellWidth.id_cell_width;
+            var _rowsMainCellWidth = this.rowsMainCellWidth(table_width),
+                number_rows = _rowsMainCellWidth.number_rows,
+                id_cell_width = _rowsMainCellWidth.id_cell_width;
 
             this.calced_row_height = number_rows * 36;
             var text_cell_width = table_width - id_cell_width;

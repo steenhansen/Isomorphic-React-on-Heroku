@@ -1,6 +1,6 @@
 "use strict";
 
-var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj; };
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
 var _createClass = function () {
     function defineProperties(target, props) {
@@ -108,11 +108,11 @@ var PodacstTitles = function (_React$Component) {
             var dark_blue = react_constants.SFF_DARK_BLUE;
             var light_blue = react_constants.SFF_LIGHT_BLUE;
             var sort_hover_css = ' .podcast-sort { color: #' + light_blue + '; font-size:1em }\n                     .podcast-sort:hover { color: #' + dark_blue + ' }          ';
-            var _current_titles = this.current_titles;
-            var title_episode_number = _current_titles['episode_number'];
-            var title_book_author = _current_titles['book author_'];
-            var title_book_title = _current_titles['book title_'];
-            var title_hh_mm_ss = _current_titles['hh:mm:ss'];
+            var _current_titles = this.current_titles,
+                title_episode_number = _current_titles['episode_number'],
+                title_book_author = _current_titles['book author_'],
+                title_book_title = _current_titles['book title_'],
+                title_hh_mm_ss = _current_titles['hh:mm:ss'];
 
             return React.createElement('div', null, React.createElement('style', { scoped: true, dangerouslySetInnerHTML: { __html: sort_hover_css } }), React.createElement('button', { className: 'EPISODE-SORT podcast-sort', onClick: this.clickEpisodeNumber,
                 style: podcast_sort_css }, title_episode_number), React.createElement('button', { className: 'TIME-SORT podcast-sort', onClick: this.clickHhMmSs,

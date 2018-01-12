@@ -64,10 +64,9 @@ var RsdComponent = function (_MediaComponent) {
             if (this.filter_text === '') {
                 this.search_matches = {};
             } else {
-                var _rsd_list$filterDataS = this.rsd_list.filterDataSet(this.filter_text, sortIndexes);
-
-                var filteredIndexes = _rsd_list$filterDataS.filteredIndexes;
-                var search_matches = _rsd_list$filterDataS.search_matches;
+                var _rsd_list$filterDataS = this.rsd_list.filterDataSet(this.filter_text, sortIndexes),
+                    filteredIndexes = _rsd_list$filterDataS.filteredIndexes,
+                    search_matches = _rsd_list$filterDataS.search_matches;
 
                 sortIndexes = filteredIndexes;
                 this.search_matches = search_matches;
@@ -167,11 +166,10 @@ var RsdComponent = function (_MediaComponent) {
     }, {
         key: 'render',
         value: function render() {
-            var _generateCss = this.generateCss();
-
-            var rsd_clear_css = _generateCss.rsd_clear_css;
-            var clear_hover_css = _generateCss.clear_hover_css;
-            var column_sort_css = _generateCss.column_sort_css;
+            var _generateCss = this.generateCss(),
+                rsd_clear_css = _generateCss.rsd_clear_css,
+                clear_hover_css = _generateCss.clear_hover_css,
+                column_sort_css = _generateCss.column_sort_css;
 
             var my_searches = this.search_matches;
             var match_message = this.numberMatchesShort();

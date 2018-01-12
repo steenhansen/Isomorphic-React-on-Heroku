@@ -1,6 +1,6 @@
 "use strict";
 
-var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj; };
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
 var _createClass = function () {
     function defineProperties(target, props) {
@@ -144,14 +144,14 @@ var MediaTextCell = function (_React$Component) {
     }, {
         key: 'fixTheText',
         value: function fixTheText() {
-            var _props = this.props;
-            var rowIndex = _props.rowIndex;
-            var data = _props.data;
-            var displayed_columns = _props.displayed_columns;
-            var sort_column = _props.sort_column;
-            var filter_text = _props.filter_text;
-            var search_columns = _props.search_columns;
-            var search_matches = _props.search_matches;
+            var _props = this.props,
+                rowIndex = _props.rowIndex,
+                data = _props.data,
+                displayed_columns = _props.displayed_columns,
+                sort_column = _props.sort_column,
+                filter_text = _props.filter_text,
+                search_columns = _props.search_columns,
+                search_matches = _props.search_matches;
             var _iteratorNormalCompletion3 = true;
             var _didIteratorError3 = false;
             var _iteratorError3 = undefined;

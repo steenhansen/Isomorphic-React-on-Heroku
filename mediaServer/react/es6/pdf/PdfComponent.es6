@@ -60,10 +60,9 @@ var PdfComponent = function (_MediaComponent) {
             if (this.filter_text === '') {
                 this.search_matches = {};
             } else {
-                var _pdf_list$filterDataS = this.pdf_list.filterDataSet(this.filter_text, sortIndexes);
-
-                var filteredIndexes = _pdf_list$filterDataS.filteredIndexes;
-                var search_matches = _pdf_list$filterDataS.search_matches;
+                var _pdf_list$filterDataS = this.pdf_list.filterDataSet(this.filter_text, sortIndexes),
+                    filteredIndexes = _pdf_list$filterDataS.filteredIndexes,
+                    search_matches = _pdf_list$filterDataS.search_matches;
 
                 sortIndexes = filteredIndexes;
                 this.search_matches = search_matches;
@@ -151,11 +150,10 @@ var PdfComponent = function (_MediaComponent) {
     }, {
         key: 'render',
         value: function render() {
-            var _generateCss = this.generateCss();
-
-            var pdf_clear_css = _generateCss.pdf_clear_css;
-            var clear_hover_css = _generateCss.clear_hover_css;
-            var column_sort_css = _generateCss.column_sort_css;
+            var _generateCss = this.generateCss(),
+                pdf_clear_css = _generateCss.pdf_clear_css,
+                clear_hover_css = _generateCss.clear_hover_css,
+                column_sort_css = _generateCss.column_sort_css;
 
             var my_searches = this.search_matches;
             var match_message = this.numberMatchesLong();

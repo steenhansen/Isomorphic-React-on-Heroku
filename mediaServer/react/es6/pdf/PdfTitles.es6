@@ -86,11 +86,11 @@ var PdfTitles = function (_React$Component) {
             var dark_blue = react_constants.SFF_DARK_BLUE;
             var light_blue = react_constants.SFF_LIGHT_BLUE;
             var sort_hover_css = ' .pdf-sort { color: #' + light_blue + '; font-size:1em }\n                     .pdf-sort:hover { color: #' + dark_blue + ' }          ';
-            var _current_titles = this.current_titles;
-            var title_episode_number = _current_titles['episode_number'];
-            var title_book_author = _current_titles['book author_'];
-            var title_book_title = _current_titles['book title_'];
-            var title_page_count = _current_titles['pdf page count 1'];
+            var _current_titles = this.current_titles,
+                title_episode_number = _current_titles['episode_number'],
+                title_book_author = _current_titles['book author_'],
+                title_book_title = _current_titles['book title_'],
+                title_page_count = _current_titles['pdf page count 1'];
 
             return React.createElement(
                 'div',

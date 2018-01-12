@@ -23,6 +23,26 @@ module.exports = function (app) {
         return pdf_media
     }
 
+
+    app.get(media_url_dirs.URL_HTML_ADMIN_checkItemsForCron_P0, basic_http_auth, function (req, res) {
+        if (parser_tsv instanceof Error) {
+            var check_for_cron_html = media_file_loc.htmlFiles('checkItemsForCron_fail')
+            var page_html = miscMethods.getFillSwig(check_for_cron_html, {
+                error_message: parser_tsv
+            })
+            res.send(page_html)
+        } else {
+            var the_media = createMedia()
+            screenOutput.html_checkItemsForCron_P0(variables_tsv, parser_tsv, the_media, pdf_information, media_file_loc)
+                .then(function (page_html) {
+                        res.send(page_html)
+                    }
+                ).catch(function (e_page_html) {
+                res.send(e_page_html)
+            })
+        }
+    })
+
     app.get(media_url_dirs.URL_HTML_ADMIN_saveTestToDb_P1, basic_http_auth, function (req, res) {
         if (parser_tsv instanceof Error) {
             var save_test_to_db_html = media_file_loc.htmlFiles('saveTestToDb_fail')

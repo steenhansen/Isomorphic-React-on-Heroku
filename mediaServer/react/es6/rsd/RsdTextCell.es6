@@ -48,11 +48,11 @@ var RsdTextCell = function (_MediaTextCell) {
         value: function render() {
             this.fixTheText();
             var pdf_link = this.storyLink();
-            var _displayed_data = this.displayed_data;
-            var book_author = _displayed_data["book author"];
-            var book_title = _displayed_data["book title"];
-            var genre_type = _displayed_data["genre type"];
-            var post_url = _displayed_data['post link'];
+            var _displayed_data = this.displayed_data,
+                book_author = _displayed_data["book author"],
+                book_title = _displayed_data["book title"],
+                genre_type = _displayed_data["genre type"],
+                post_url = _displayed_data['post link'];
 
             if (genre_type === 'Story') {
                 var genre_clip = ', a  story,';

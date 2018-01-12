@@ -72,10 +72,9 @@ var PodcastComponent = function (_MediaComponent) {
             if (this.filter_text === '') {
                 this.search_matches = {};
             } else {
-                var _podcast_list$filterD = this.podcast_list.filterDataSet(this.filter_text, sortIndexes);
-
-                var filteredIndexes = _podcast_list$filterD.filteredIndexes;
-                var search_matches = _podcast_list$filterD.search_matches;
+                var _podcast_list$filterD = this.podcast_list.filterDataSet(this.filter_text, sortIndexes),
+                    filteredIndexes = _podcast_list$filterD.filteredIndexes,
+                    search_matches = _podcast_list$filterD.search_matches;
 
                 sortIndexes = filteredIndexes;
                 this.search_matches = search_matches;
@@ -180,11 +179,10 @@ var PodcastComponent = function (_MediaComponent) {
     }, {
         key: 'render',
         value: function render() {
-            var _generateCss = this.generateCss();
-
-            var podcast_clear_css = _generateCss.podcast_clear_css;
-            var clear_hover_css = _generateCss.clear_hover_css;
-            var column_sort_css = _generateCss.column_sort_css;
+            var _generateCss = this.generateCss(),
+                podcast_clear_css = _generateCss.podcast_clear_css,
+                clear_hover_css = _generateCss.clear_hover_css,
+                column_sort_css = _generateCss.column_sort_css;
 
             var my_searches = this.search_matches;
             var match_message = this.numberMatchesShort();

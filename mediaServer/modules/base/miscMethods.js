@@ -146,7 +146,7 @@ var miscMethods = {
     connectToMongoose: function (mongoose_connect_name, port_number) {
         if (!mongoose.connection.db) {
             console.log('Connecting to ' + mongoose_connect_name + ' ...')
-            mongoose.connect(mongoose_connect_name, function (e) {
+            mongoose.connect(mongoose_connect_name, {useMongoClient: true}, function (e) {
                 if (e) {
                     throw e
                 }
@@ -365,6 +365,7 @@ var miscMethods = {
             for (var data_index in dirty_data) {
                 if (dirty_data.hasOwnProperty(data_index)) {
                     var data_row = dirty_data[data_index]
+
                     var episode_number = data_row['episode number']
                     console.log('returnOnlyRealData', episode_number)
 

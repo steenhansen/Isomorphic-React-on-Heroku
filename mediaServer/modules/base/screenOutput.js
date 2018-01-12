@@ -7,6 +7,44 @@ module.exports = function (save_rss_items, media_url_dirs) {
 
     var screenOutput = {
 
+
+
+
+
+
+
+
+
+
+
+       html_checkItemsForCron_P0: function (variables_tsv, parser_tsv, the_media, the_information, media_file_loc) {       // q*bert
+            return save_rss_items.checkItemsForCron(variables_tsv, parser_tsv, the_media, media_constants.TEST_DATA)
+                .then(function (num_records_saved) {
+                   var {first_pdf, second_pdf, penultimate_pdf, last_pdf, number_pdfs} = num_records_saved
+                    var save_test_to_db_html = media_file_loc.htmlFiles(media_url_dirs.ADMIN_checkItemsForCron_P0)
+                    var page_html = miscMethods.getFillSwig(save_test_to_db_html, {
+                        first_pdf,
+                        second_pdf,
+                        penultimate_pdf,
+                        last_pdf,
+                        number_pdfs,
+                        link_back_to_change: media_url_dirs.CHANGE_PAGE
+                    })
+                    return page_html
+                })
+                .catch(function (e) {
+                    var html_error = global.Method_logger.exception('html_checkItemsForCron_P0', module.filename, e) 
+                    var save_test_to_db_html = media_file_loc.htmlFiles('checkItemsForCron_fail')
+                    var page_html = miscMethods.getFillSwig(save_test_to_db_html, {
+                        error_message: html_error
+                    })
+                    throw page_html
+                })
+        },
+
+
+
+
         html_saveTestToDb_P1: function (variables_tsv, parser_tsv, the_media, the_information, media_file_loc) {
             return save_rss_items.saveItemsToDb(variables_tsv, parser_tsv, the_media, media_constants.TEST_DATA)
                 .then(function (num_records_saved) {
