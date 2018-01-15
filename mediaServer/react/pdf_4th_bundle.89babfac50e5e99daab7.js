@@ -1,7 +1,7 @@
 webpackJsonp([1],{
 
 /***/ 0:
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	'use strict'
 
@@ -17,9 +17,9 @@ webpackJsonp([1],{
 	}
 
 	var React = __webpack_require__(5)
-	var shared_constants = __webpack_require__(231)
-	var ReactDOM = __webpack_require__(54)
-	var browser_MediaComponent = __webpack_require__(232)
+	var shared_constants = __webpack_require__(237)
+	var ReactDOM = __webpack_require__(52)
+	var browser_MediaComponent = __webpack_require__(238)
 	var browser_media_factory = React.createFactory(browser_MediaComponent)
 	var pdf_props = window.PDF_MEDIA_PROPS_SCRIPT
 	var browser_pdf_component = browser_media_factory(pdf_props)
@@ -30,14 +30,14 @@ webpackJsonp([1],{
 
 
 
-/***/ },
+/***/ }),
 
-/***/ 232:
-/***/ function(module, exports, __webpack_require__) {
+/***/ 238:
+/***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
 
-	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj; };
+	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
 	var _createClass = function () {
 	    function defineProperties(target, props) {
@@ -67,13 +67,13 @@ webpackJsonp([1],{
 	    }subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } });if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass;
 	}
 
-	var react_constants = __webpack_require__(223);
-	var PdfTable = __webpack_require__(233);
-	var PdfList = __webpack_require__(235);
+	var react_constants = __webpack_require__(229);
+	var PdfTable = __webpack_require__(239);
+	var PdfList = __webpack_require__(241);
 	var React = __webpack_require__(5);
-	var MediaComponent = __webpack_require__(222);
-	var PdfTitles = __webpack_require__(236);
-	var PdfDescription = __webpack_require__(237);
+	var MediaComponent = __webpack_require__(228);
+	var PdfTitles = __webpack_require__(242);
+	var PdfDescription = __webpack_require__(243);
 
 	var PdfComponent = function (_MediaComponent) {
 	    _inherits(PdfComponent, _MediaComponent);
@@ -119,10 +119,9 @@ webpackJsonp([1],{
 	            if (this.filter_text === '') {
 	                this.search_matches = {};
 	            } else {
-	                var _pdf_list$filterDataS = this.pdf_list.filterDataSet(this.filter_text, sortIndexes);
-
-	                var filteredIndexes = _pdf_list$filterDataS.filteredIndexes;
-	                var search_matches = _pdf_list$filterDataS.search_matches;
+	                var _pdf_list$filterDataS = this.pdf_list.filterDataSet(this.filter_text, sortIndexes),
+	                    filteredIndexes = _pdf_list$filterDataS.filteredIndexes,
+	                    search_matches = _pdf_list$filterDataS.search_matches;
 
 	                sortIndexes = filteredIndexes;
 	                this.search_matches = search_matches;
@@ -210,11 +209,10 @@ webpackJsonp([1],{
 	    }, {
 	        key: 'render',
 	        value: function render() {
-	            var _generateCss = this.generateCss();
-
-	            var pdf_clear_css = _generateCss.pdf_clear_css;
-	            var clear_hover_css = _generateCss.clear_hover_css;
-	            var column_sort_css = _generateCss.column_sort_css;
+	            var _generateCss = this.generateCss(),
+	                pdf_clear_css = _generateCss.pdf_clear_css,
+	                clear_hover_css = _generateCss.clear_hover_css,
+	                column_sort_css = _generateCss.column_sort_css;
 
 	            var my_searches = this.search_matches;
 	            var match_message = this.numberMatchesLong();
@@ -244,14 +242,14 @@ webpackJsonp([1],{
 
 	module.exports = PdfComponent;
 
-/***/ },
+/***/ }),
 
-/***/ 233:
-/***/ function(module, exports, __webpack_require__) {
+/***/ 239:
+/***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
 
-	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj; };
+	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
 	var _extends = Object.assign || function (target) {
 	    for (var i = 1; i < arguments.length; i++) {
@@ -292,12 +290,13 @@ webpackJsonp([1],{
 	}
 
 	var React = __webpack_require__(5);
-	var MediaTable = __webpack_require__(229);
+	var MediaTable = __webpack_require__(235);
 	var FixedDataTable = __webpack_require__(1);
-	var Column = FixedDataTable.Column;
-	var Table = FixedDataTable.Table;
+	var Column = FixedDataTable.Column,
+	    Table = FixedDataTable.Table;
 
-	var PdfTextCell = __webpack_require__(234);
+	var PdfTextCell = __webpack_require__(240);
+	var react_constants = __webpack_require__(229);
 
 	var PdfTable = function (_MediaTable) {
 	    _inherits(PdfTable, _MediaTable);
@@ -326,21 +325,21 @@ webpackJsonp([1],{
 	        value: function rowsMainCellWidth() {
 	            var id_cell_width = 0;
 	            var number_rows = 5;
+	            this.number_rows = number_rows;
 	            return { number_rows: number_rows, id_cell_width: id_cell_width };
 	        }
 	    }, {
 	        key: 'render',
 	        value: function render() {
-	            var _state = this.state;
-	            var init_discarded_row_height = _state.init_discarded_row_height;
-	            var row_count = _state.row_count;
-	            var table_width = _state.table_width;
-	            var table_height = _state.table_height;
-	            var text_cell_width = _state.text_cell_width;
+	            var _state = this.state,
+	                row_count = _state.row_count,
+	                table_width = _state.table_width,
+	                table_height = _state.table_height,
+	                text_cell_width = _state.text_cell_width;
 
 	            var row_count = this.props.data.getSize();
-
-	            return React.createElement('div', null, React.createElement(Table, _extends({ rowHeight: init_discarded_row_height,
+	            var row_height = react_constants.TABLE_UI_LINE_HEIGHT * this.number_rows;
+	            return React.createElement('div', null, React.createElement(Table, _extends({ rowHeight: row_height,
 	                rowsCount: row_count,
 	                headerHeight: 0,
 	                touchScrollEnabled: true,
@@ -365,14 +364,14 @@ webpackJsonp([1],{
 
 	module.exports = PdfTable;
 
-/***/ },
+/***/ }),
 
-/***/ 234:
-/***/ function(module, exports, __webpack_require__) {
+/***/ 240:
+/***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
 
-	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj; };
+	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
 	var _createClass = function () {
 	    function defineProperties(target, props) {
@@ -405,7 +404,7 @@ webpackJsonp([1],{
 	var FixedDataTable = __webpack_require__(1);
 	var Cell = FixedDataTable.Cell;
 
-	var MediaTextCell = __webpack_require__(226);
+	var MediaTextCell = __webpack_require__(232);
 	var React = __webpack_require__(5);
 
 	var PdfTextCell = function (_MediaTextCell) {
@@ -430,11 +429,11 @@ webpackJsonp([1],{
 	        key: 'render',
 	        value: function render() {
 	            this.fixTheText();
-	            var _displayed_data = this.displayed_data;
-	            var wikipedia_story = _displayed_data['story link on wikipedia'];
-	            var wikipedia_author = _displayed_data['author wikipedia entry'];
-	            var book_author = _displayed_data["book author"];
-	            var book_title = _displayed_data["book title"];
+	            var _displayed_data = this.displayed_data,
+	                wikipedia_story = _displayed_data['story link on wikipedia'],
+	                wikipedia_author = _displayed_data['author wikipedia entry'],
+	                book_author = _displayed_data["book author"],
+	                book_title = _displayed_data["book title"];
 
 	            if (wikipedia_story) {
 	                var story_link = '   <a href="' + wikipedia_story + '" target="_blank" >' + book_title + '</a> ';
@@ -490,14 +489,14 @@ webpackJsonp([1],{
 
 	module.exports = PdfTextCell;
 
-/***/ },
+/***/ }),
 
-/***/ 235:
-/***/ function(module, exports, __webpack_require__) {
+/***/ 241:
+/***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj; };
+	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
 	function _classCallCheck(instance, Constructor) {
 	    if (!(instance instanceof Constructor)) {
@@ -517,7 +516,7 @@ webpackJsonp([1],{
 	    }subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } });if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass;
 	}
 
-	var MediaList = __webpack_require__(227);
+	var MediaList = __webpack_require__(233);
 
 	var PdfList = function (_MediaList) {
 	    _inherits(PdfList, _MediaList);
@@ -533,14 +532,14 @@ webpackJsonp([1],{
 
 	module.exports = PdfList;
 
-/***/ },
+/***/ }),
 
-/***/ 236:
-/***/ function(module, exports, __webpack_require__) {
+/***/ 242:
+/***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
 
-	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj; };
+	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
 	var _createClass = function () {
 	    function defineProperties(target, props) {
@@ -570,7 +569,7 @@ webpackJsonp([1],{
 	    }subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } });if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass;
 	}
 
-	var react_constants = __webpack_require__(223);
+	var react_constants = __webpack_require__(229);
 	var React = __webpack_require__(5);
 
 	var PdfTitles = function (_React$Component) {
@@ -648,11 +647,11 @@ webpackJsonp([1],{
 	            var dark_blue = react_constants.SFF_DARK_BLUE;
 	            var light_blue = react_constants.SFF_LIGHT_BLUE;
 	            var sort_hover_css = ' .pdf-sort { color: #' + light_blue + '; font-size:1em }\n                     .pdf-sort:hover { color: #' + dark_blue + ' }          ';
-	            var _current_titles = this.current_titles;
-	            var title_episode_number = _current_titles['episode_number'];
-	            var title_book_author = _current_titles['book author_'];
-	            var title_book_title = _current_titles['book title_'];
-	            var title_page_count = _current_titles['pdf page count 1'];
+	            var _current_titles = this.current_titles,
+	                title_episode_number = _current_titles['episode_number'],
+	                title_book_author = _current_titles['book author_'],
+	                title_book_title = _current_titles['book title_'],
+	                title_page_count = _current_titles['pdf page count 1'];
 
 	            return React.createElement('div', null, React.createElement('style', { scoped: true, dangerouslySetInnerHTML: { __html: sort_hover_css } }), React.createElement('button', { className: 'EPISODE-SORT pdf-sort', onClick: this.clickEpisodeNumber,
 	                style: pdf_sort_css }, title_episode_number), React.createElement('button', { className: 'TITLE-SORT pdf-sort', onClick: this.clickBookTitle,
@@ -668,14 +667,14 @@ webpackJsonp([1],{
 
 	module.exports = PdfTitles;
 
-/***/ },
+/***/ }),
 
-/***/ 237:
-/***/ function(module, exports, __webpack_require__) {
+/***/ 243:
+/***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
 
-	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj; };
+	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
 	function _classCallCheck(instance, Constructor) {
 	    if (!(instance instanceof Constructor)) {
@@ -695,7 +694,7 @@ webpackJsonp([1],{
 	    }subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } });if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass;
 	}
 
-	var MediaDescription = __webpack_require__(224);
+	var MediaDescription = __webpack_require__(230);
 
 	var PdfDescription = function (_MediaDescription) {
 	    _inherits(PdfDescription, _MediaDescription);
@@ -714,6 +713,6 @@ webpackJsonp([1],{
 
 	module.exports = PdfDescription;
 
-/***/ }
+/***/ })
 
 });
