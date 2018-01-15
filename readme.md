@@ -10,6 +10,8 @@ Isomorphic React on Heroku for:
     http://www.sffaudio.com/public-domain-pdf-page/
     https://sffaudio.herokuapp.com/pdf/table
     
+![visual explanation](https://nyc3.digitaloceanspaces.com/steen/isometric-react.png)
+
 Install:
 
     $ npm install
