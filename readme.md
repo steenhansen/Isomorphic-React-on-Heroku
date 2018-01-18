@@ -1,14 +1,14 @@
 
-Isomorphic React on Heroku for: 
+Isomorphic-React-on-Heroku takes a [Google Sheet](https://docs.google.com/spreadsheets/d/17TwPecDRNw5JS9_WT6t3cl40e5M46z8ALwnvFalHDZc)
+ and saves the data in a MongoDB database to produce [isomorphic Html/JavaScript](https://sffaudio.herokuapp.com/pdf/table) via Node.js which is then injected into a non-cached [WordPress page](http://www.sffaudio.com/public-domain-pdf-page/).
 
-    http://www.sffaudio.com/reading-short-and-deep/
-    https://sffaudio.herokuapp.com/rsd/table
+Here are all three media types: 
 
-    http://www.sffaudio.com/the-sffaudio-podcast/
-    https://sffaudio.herokuapp.com/podcast/table
+PDF [WordPress page](http://www.sffaudio.com/public-domain-pdf-page/) with injected [HTML/JavaScript](https://sffaudio.herokuapp.com/pdf/table)
 
-    http://www.sffaudio.com/public-domain-pdf-page/
-    https://sffaudio.herokuapp.com/pdf/table
+RSD [WordPress page](http://www.sffaudio.com/reading-short-and-deep/) with injected [HTML/JavaScript](https://sffaudio.herokuapp.com/rsd/table)
+
+Podcast [WordPress page](http://www.sffaudio.com/the-sffaudio-podcast/)  with injected [HTML/JavaScript](https://sffaudio.herokuapp.com/podcast/table)
     
 ![visual explanation](https://nyc3.digitaloceanspaces.com/steen/isometric-react.png)
 
