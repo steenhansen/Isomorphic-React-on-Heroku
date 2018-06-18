@@ -79,12 +79,12 @@ module.exports = function (_di_factory) {
         },
 
         bookTitleAuthor: function(the_rows, book_index) {
-            var the_row = the_rows[book_index];
+            var the_row = the_rows[book_index]
             var title_author = the_row['episode number'] + ' - ' +the_row['book title'] + ' - ' + the_row['book author']
             return title_author
         },
 
-        checkItemsForCron: function (variables_tsv, parser_tsv, the_media, real_or_test) {             // q*bert
+        checkItemsForCron: function (variables_tsv, parser_tsv, the_media) {             // q*bert
             var verify_tsv = di_factory.VerifyTsvDataRowsCreate()
             var verify_tsv_variables = di_factory.VerifyTsvVariablesCreate()
             var promise_tsv_variables = variables_tsv.allVariables(verify_tsv_variables)
@@ -103,8 +103,6 @@ module.exports = function (_di_factory) {
                 if (test_values_regex !== '') {
                     throw new Error(test_values_regex)
                 } else {
-                    var offset_minutes = 60 * tsv_variables.hours_offset + 1 * tsv_variables.post_early_min_rss
-                    var derived_rows = variables_tsv.deriveAll(the_rows, the_media, tsv_variables, offset_minutes)
                     var itunes_description_em_dash = miscMethods.replace2withMdash(variables_tsv._captured_variables.itunes_description)
                     var version_storage = di_factory.VersionStorageCreate(the_media, itunes_description_em_dash)
                     // var version_storage = new Error ('exception test - checkItemsForCron - 3') 
@@ -125,7 +123,7 @@ module.exports = function (_di_factory) {
         },
 
         checkEpisodeNumbers: function(the_rows) {
-            var last_row = the_rows[0];
+            var last_row = the_rows[0]
             var last_episode_number = last_row['episode number'] 
             var biggest_episode = parseInt(last_episode_number, 10)
             if (biggest_episode !== the_rows.length) {

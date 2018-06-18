@@ -3,9 +3,9 @@ var config_environment = rootAppRequire('configEnvironment')
 
 module.exports = function (the_information, di_factory, the_media) {
 
-    function exitCallback() {
-        process.exit()
-    }
+  //  function exitCallback() {
+    //    process.exit()
+   // }
 
     function callMediaCron(variables_tsv, parser_tsv, host_url) {
         var process_port = process.env.process_port || 5000

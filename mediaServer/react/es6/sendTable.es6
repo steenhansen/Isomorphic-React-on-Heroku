@@ -4,6 +4,9 @@ var React = require('react');
 var ReactDOMServer = require('react-dom/server');
 var miscMethods = rootAppRequire('mediaServer/modules/base/miscMethods');
 var jsonfile = require('jsonfile');
+var shared_constants = require('../sharedConstants');
+
+var font_awesome_cdn = shared_constants.FONT_AWESOME_CDN;
 
 var send_table = {
     chunkhashUrl: function chunkhashUrl(js_file_parts, bundle_name, host_url) {
@@ -15,7 +18,7 @@ var send_table = {
         var rev_css_chunks = fromAppRoot('rev-manifest_css.json');
         var css_file_parts = jsonfile.readFileSync(rev_css_chunks);
         var chunkhash_css_url = '//' + host_url + '/' + css_file_parts['styles.min.css'];
-        var head_html = '<link rel="stylesheet" href="https://opensource.keycdn.com/fontawesome/4.6.3/font-awesome.min.css">\n                         <link rel="stylesheet" href="' + chunkhash_css_url + '">';
+        var head_html = '<link rel="stylesheet" href="' + font_awesome_cdn + '">\n                         <link rel="stylesheet" href="' + chunkhash_css_url + '">';
         var webpack_js_chunks = fromAppRoot('webpack_js_chunks.json');
         var js_file_parts = jsonfile.readFileSync(webpack_js_chunks);
         var media_1st_bundle = this.chunkhashUrl(js_file_parts, 'media_1st_bundle', host_url);
@@ -33,7 +36,7 @@ var send_table = {
         var rev_css_chunks = fromAppRoot('rev-manifest_css.json');
         var css_file_parts = jsonfile.readFileSync(rev_css_chunks);
         var chunkhash_css_url = '//' + host_url + '/' + css_file_parts['styles.min.css'];
-        var head_html = '<link rel="stylesheet" href="https://opensource.keycdn.com/fontawesome/4.6.3/font-awesome.min.css">\n                         <link rel="stylesheet" href="' + chunkhash_css_url + '">';
+        var head_html = '<link rel="stylesheet" href="' + font_awesome_cdn + '">\n                         <link rel="stylesheet" href="' + chunkhash_css_url + '">';
         var webpack_js_chunks = fromAppRoot('webpack_js_chunks.json');
         var js_file_parts = jsonfile.readFileSync(webpack_js_chunks);
 
