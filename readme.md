@@ -10,7 +10,7 @@ RSD [WordPress page](http://www.sffaudio.com/reading-short-and-deep/) with injec
 
 Podcast [WordPress page](http://www.sffaudio.com/the-sffaudio-podcast/)  with injected [HTML/JavaScript](https://sffaudio.herokuapp.com/podcast/table)
     
-![visual explanation](https://nyc3.digitaloceanspaces.com/steen/isometric-react.png)
+ ![visual explanation](https://github.com/steenhansen/Isomorphic-React-on-Heroku/master//isometric-react.png)
 
 Install:
 
