@@ -5,7 +5,6 @@ var ReactDOMServer = require('react-dom/server');
 var miscMethods = rootAppRequire('mediaServer/modules/base/miscMethods');
 var jsonfile = require('jsonfile');
 var shared_constants = require('../sharedConstants');
-
 var font_awesome_cdn = shared_constants.FONT_AWESOME_CDN;
 
 var send_table = {
