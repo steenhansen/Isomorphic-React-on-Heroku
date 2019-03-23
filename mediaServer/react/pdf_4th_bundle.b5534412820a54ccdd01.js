@@ -324,7 +324,7 @@ webpackJsonp([1],{
 	        key: 'rowsMainCellWidth',
 	        value: function rowsMainCellWidth() {
 	            var id_cell_width = 0;
-	            var number_rows = 5;
+	            var number_rows = 3.7222; // 5  was too tall for even 'The Doom Of London' which should be perfect
 	            this.number_rows = number_rows;
 	            return { number_rows: number_rows, id_cell_width: id_cell_width };
 	        }

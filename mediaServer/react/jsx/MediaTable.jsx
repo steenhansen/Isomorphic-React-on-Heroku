@@ -52,9 +52,8 @@ class MediaTable extends React.Component {
         } else {
             var table_width = media_container.parentElement.clientWidth - this.EXTRA_WIDTH_STOP_SCROLL
         }
-
         var {number_rows, id_cell_width} = this.rowsMainCellWidth(table_width)
-        this.calced_row_height = number_rows * 36
+        this.calced_row_height = number_rows * 36 
         var text_cell_width = table_width - id_cell_width
 
         var table_height = window.innerHeight -react_constants.VERTICAL_TABLE_MARGIN
