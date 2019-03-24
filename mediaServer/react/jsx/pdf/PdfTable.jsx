@@ -24,7 +24,7 @@ class PdfTable extends MediaTable {
 
     rowsMainCellWidth() {
         var id_cell_width = 0
-        var number_rows = 3.7222                  // 5  was too tall for even 'The Doom Of London' which should be perfect
+        var number_rows = 3.7                  // 5  was too tall for even 'The Doom Of London' which should be perfect
          this.number_rows = number_rows
         return {number_rows, id_cell_width}
     }
