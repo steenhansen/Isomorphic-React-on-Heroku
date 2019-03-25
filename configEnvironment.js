@@ -3,7 +3,6 @@
 
 // local 26 records config
 
-
 if (process.env.MONGODB_URI) {
     var node_database = process.env.MONGODB_URI
 } else {
@@ -35,7 +34,7 @@ var config_environment = {
     RSD_GOOGLE_VARIABLES: "https://docs.google.com/spreadsheets/d/1VFMgWy6wmTkFIpeNW-NkZdWmpz5iZcuULgMpjn8_QgU/export?format=tsv&gid=1799638635",       // test rsd
 
     PODCAST_GOOGLE_DATA: "https://docs.google.com/spreadsheets/d/1cWtA1AaY83cBuU_6vt64adDeR-dfT-X1U5VgvCRVMAg/export?format=tsv",
-    PODCAST_GOOGLE_VARIABLES: "https://docs.google.com/spreadsheets/d/1cWtA1AaY83cBuU_6vt64adDeR-dfT-X1U5VgvCRVMAg/export?format=tsv&gid=607409390",   // test podcast
+    PODCAST_GOOGLE_VARIABLES: "https://docs.google.com/spreadsheets/d/1cWtA1AaY83cBuU_6vt64adDeR-dfT-X1U5VgvCRVMAg/export?format=tsv&gid=450982271",   // test podcast
 
     PDF_GOOGLE_DATA: "https://docs.google.com/spreadsheets/d/1sbQ8NR7hvcm4EjSlyhmte0rYtI_G3vnc1o5KLPAW2lc/export?format=tsv",
     PDF_GOOGLE_VARIABLES: "https://docs.google.com/spreadsheets/d/1sbQ8NR7hvcm4EjSlyhmte0rYtI_G3vnc1o5KLPAW2lc/export?format=tsv&gid=1750187409"    // test pdf
