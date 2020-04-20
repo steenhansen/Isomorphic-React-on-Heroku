@@ -74,7 +74,7 @@
     "forever-agent": "^0.6.1",
     "form-data": "^1.0.0-rc4",
     "forwarded": "^0.1.0",
-    "fresh": "^0.3.0",
+    "fresh": "^0.5.2",
     "fs-access": "^1.0.0",
     "function-bind": "^1.1.0",
     "generate-function": "^2.0.0",
