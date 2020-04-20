@@ -33,7 +33,7 @@
     "boom": "^3.2.2",
     "browser-pack": "^6.0.1",
     "browser-resolve": "^1.11.1",
-    "bson": "^0.5.2",
+    "bson": "^1.1.4",
     "buffer": "^4.6.0",
     "buffer-shims": "^1.0.0",
     "bytes": "^2.3.0",
