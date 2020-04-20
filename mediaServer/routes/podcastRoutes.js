@@ -166,7 +166,7 @@ function createMedia(){
                 //throw new Error ('exception test - URL_HTML_PUBLIC_TABLE')
                
                 var table_html = send_table.marshallServerHtml('podcast', props_array, media_url_dirs.PUBLIC_SHOW_EXPLAIN, req.headers.host, podcast_information)
-                var page_html = send_table.encaseTable('podcast_3rd_bundle', table_html, req.headers.host, 'desktop_device')
+                var page_html = send_table.encaseTable('podcast_3rd_bundle', table_html, req.headers.host, 'desktop_device', 'The SFFaudio Podcast - SFFaudio')
                 miscMethods.serveGzipContent(req, res, "text/html; charset=utf-8", page_html)
             })
             .catch(function (e) {
@@ -184,7 +184,7 @@ function createMedia(){
                     //  throw new Error ('exception test - URL_HTML_MOBILE_TABLE')
                      
                     var table_html = send_table.marshallServerHtml('podcast', props_array, media_url_dirs.MOBILE_EXPLAIN, req.headers.host, podcast_information)
-                    var page_html = send_table.encaseTable('podcast_3rd_bundle', table_html, req.headers.host, 'mobile_device')
+                    var page_html = send_table.encaseTable('podcast_3rd_bundle', table_html, req.headers.host, 'mobile_device', 'The SFFaudio Podcast : SFFaudio')
                     miscMethods.serveGzipContent(req, res, "text/html; charset=utf-8", page_html)
                 }
             )

@@ -144,7 +144,7 @@ module.exports = function (app) {
             .then(function (props_array) {
                 //throw new Error ('exception test - URL_HTML_PUBLIC_TABLE')
                 var table_html = send_table.marshallServerHtml('rsd', props_array, media_url_dirs.PUBLIC_SHOW_EXPLAIN, req.headers.host, rsd_information)
-                var page_html = send_table.encaseTable('rsd_2nd_bundle', table_html, req.headers.host, 'desktop_device')
+                var page_html = send_table.encaseTable('rsd_2nd_bundle', table_html, req.headers.host, 'desktop_device', 'Reading, Short and Deep - SFFaudio')
                 miscMethods.serveGzipContent(req, res, "text/html; charset=utf-8", page_html)
             })
             .catch(function (e) {
@@ -160,7 +160,7 @@ module.exports = function (app) {
             .then(function (props_array) {
                     //  throw new Error ('exception test - URL_HTML_MOBILE_TABLE')
                     var table_html = send_table.marshallServerHtml('rsd', props_array, media_url_dirs.MOBILE_EXPLAIN, req.headers.host, rsd_information)
-                    var page_html = send_table.encaseTable('rsd_2nd_bundle', table_html, req.headers.host, 'mobile_device')
+                    var page_html = send_table.encaseTable('rsd_2nd_bundle', table_html, req.headers.host, 'mobile_device', 'Reading, Short and Deep : SFFaudio')
                     miscMethods.serveGzipContent(req, res, "text/html; charset=utf-8", page_html)
                 }
             )

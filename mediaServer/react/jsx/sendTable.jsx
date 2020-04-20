@@ -13,7 +13,7 @@ var send_table = {
         return chunkhash_url
     },
 
-    encaseTable: function (type_bundle, table_html, host_url, device_type) {
+    encaseTable: function (type_bundle, table_html, host_url, device_type, page_title) {
         var rev_css_chunks = fromAppRoot('rev-manifest_css.json')
         var css_file_parts = jsonfile.readFileSync(rev_css_chunks)
         var chunkhash_css_url = '//' + host_url + '/' + css_file_parts['styles.min.css']
@@ -38,7 +38,7 @@ var send_table = {
                                 <head>
                                      <link rel="Shortcut Icon" href="/favicon.ico"/>
                                      <meta charset="utf-8">
-                                     <title>Reading, Short and Deep : SFFaudio</title>
+                                     <title>${page_title}</title>
                                      <meta name=viewport content="width=device-width, initial-scale=1">
                                      ${head_html}
                                 </head>

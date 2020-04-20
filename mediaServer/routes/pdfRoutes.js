@@ -158,7 +158,7 @@ module.exports = function (app) {
                 }
                 //throw new Error ('exception test - URL_HTML_PUBLIC_TABLE')
                 var table_html = send_table.marshallServerHtml('pdf', pdf_items, media_url_dirs.PUBLIC_SHOW_EXPLAIN, req.headers.host, pdf_information, media_options)
-                var page_html = send_table.encaseTable('pdf_4th_bundle', table_html, req.headers.host, 'desktop_device')
+                var page_html = send_table.encaseTable('pdf_4th_bundle', table_html, req.headers.host, 'desktop_device', 'Public Domain PDFs - SFFaudio')
                 miscMethods.serveGzipContent(req, res, "text/html; charset=utf-8", page_html)
             })
             .catch(function (e) {
@@ -178,7 +178,7 @@ module.exports = function (app) {
                     }
                     //  throw new Error ('exception test - URL_HTML_MOBILE_TABLE')
                     var table_html = send_table.marshallServerHtml('pdf', pdf_items, media_url_dirs.MOBILE_EXPLAIN, req.headers.host, pdf_information, media_options)
-                    var page_html = send_table.encaseTable('pdf_4th_bundle', table_html, req.headers.host, 'mobile_device')
+                    var page_html = send_table.encaseTable('pdf_4th_bundle', table_html, req.headers.host, 'mobile_device', 'Public Domain PDFs : SFFaudio')
                     miscMethods.serveGzipContent(req, res, "text/html; charset=utf-8", page_html)
                 }
             )
