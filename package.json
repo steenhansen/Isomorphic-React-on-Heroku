@@ -118,7 +118,7 @@
     "moment-timezone": "^0.5.4",
     "mongodb": "^2.1.18",
     "mongodb-core": "^2.0.7",
-    "mongoose": "^4.4.16",
+    "mongoose": "^5.7.5",
     "mpath": "^0.2.1",
     "mpromise": "^0.5.5",
     "ms": "^0.7.1",
