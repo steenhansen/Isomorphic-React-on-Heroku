@@ -115,5 +115,5 @@ var props_array =
     'pdf country 3': 'Canada',
     'pdf info 3': 'Weird Tales, November 1932',
     real_or_test: 'real',
-    __v: 0 } ]
+    __v: 0 } ];
 module.exports = props_array;

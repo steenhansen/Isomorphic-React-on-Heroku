@@ -330,7 +330,7 @@ var props_array =
             byte_size: '32972064',
             real_or_test: 'real',
             __v: 0
-        }]
+        }];
 
 
 module.exports = props_array;

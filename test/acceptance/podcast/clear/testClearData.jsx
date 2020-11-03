@@ -134,5 +134,5 @@ var props_array =
     itunes_pubDate: 'Wed, 17 Aug 2016 21:12:00 MDT',
     post_link: 'http://www.sffaudio.com/?p=55727',
     real_or_test: 'real',
-    __v: 0 } ]
+    __v: 0 } ];
 module.exports = props_array;

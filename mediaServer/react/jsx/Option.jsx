@@ -1,20 +1,20 @@
-"use strict"
+"use strict";
 
-var React = require('react')
+var React = require('react');
 
 class Option extends React.Component {
     constructor(props) {
-        super(props)
+        super(props);
     }
 
     render() {
-        var visible_text = this.props.category
-        var hidden_value = this.props.hidden_category
+        var visible_text = this.props.category;
+        var hidden_value = this.props.hidden_category;
         return (
             <option value={hidden_value}>{visible_text}</option>
-        )
+        );
     }
 }
 
 
-module.exports = Option
+module.exports = Option;

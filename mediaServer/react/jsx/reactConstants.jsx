@@ -1,4 +1,4 @@
-'use strict'
+'use strict';
 
 var react_constants = {
     SFF_DARK_BLUE: '1a4e88'
@@ -21,6 +21,6 @@ var react_constants = {
     , VERTICAL_TABLE_MARGIN: 100
     , HORIZONTAL_TABLE_MARGIN: 20
 
-}
+};
 
-module.exports = react_constants
+module.exports = react_constants;

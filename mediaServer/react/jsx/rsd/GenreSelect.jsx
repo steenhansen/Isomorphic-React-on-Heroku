@@ -1,27 +1,27 @@
-"use strict"
+"use strict";
 
-var React = require('react')
-var Option = require('../Option')
+var React = require('react');
+var Option = require('../Option');
 
 
 class GenreSelect extends React.Component {
     constructor(props) {
-        super(props)
-        this.className = this.props.className
-        this.selectByGenre = this.selectByGenre.bind(this)   // <select onChange={this.selectByGenre}
+        super(props);
+        this.className = this.props.className;
+        this.selectByGenre = this.selectByGenre.bind(this);   // <select onChange={this.selectByGenre}
     }
 
     _pass_lint_() {
-        Option
+        Option;
     }
 
     selectByGenre(event) {
-        var select_text = event.target.value
-        this.props.cb_RsdComponent_filterByGenre(select_text)
+        var select_text = event.target.value;
+        this.props.cb_RsdComponent_filterByGenre(select_text);
     }
 
     render() {
-        var select_class_name = this.className
+        var select_class_name = this.className;
         return (
             <select onChange={this.selectByGenre}
                     className={select_class_name}
@@ -41,9 +41,9 @@ class GenreSelect extends React.Component {
                              hidden_category="other"
                              key="genre_other"/>
             </select>
-        )
+        );
     }
 }
 
 
-module.exports = GenreSelect
+module.exports = GenreSelect;

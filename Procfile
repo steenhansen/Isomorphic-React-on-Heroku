@@ -1,1 +1,1 @@
-web: node --expose-gc media-server.js
+web: node --expose-gc run-media-server.js

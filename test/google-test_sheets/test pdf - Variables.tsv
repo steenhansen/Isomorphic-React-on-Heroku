@@ -1,0 +1,16 @@
+Variables	Values	Explanations	
+media_title	The SFFaudio Public Domain PDF Page		
+media_web_page	https://sffaudio.herokuapp.com/pdf/rss		
+media_directory_url	http://www.sffaudio.com/public-domain-pdf-page/	Where the MP3s are stored	
+media_description	Public domain PDFs.		
+media_copyright	2016 SFFaudio		
+itunes_category	Arts		
+itunes_sub_category	Literature		
+itunes_explicit	no		
+itunes_image	http://sffaudio.herokuapp.com/PDFPage160x120b.jpg		
+itunes_name	SffAudio with Jesse Willis		http://lists.apple.com/archives/syndication-dev/2005/Nov/msg00002.html
+itunes_email	jessewillis@yahoo.com		http://www.feedforall.com/itune-tutorial-tags.htm
+itunes_description 	Public domain PDFs.		https://validator.w3.org/feed/check.cgi
+post_early_min_rss	10		So SffAudio can read data when stories are auto-posted
+hours_offset	-6		as Heroku has gmt0, and sffAudio is Utah, there is -6 hours difference
+canadian_dir_url	http://www.coquitlamwebsolutions.ca/sffaudio_can_pdfs/		so if a publish date is '2016-8-17 21:15 then the entry becomes alive

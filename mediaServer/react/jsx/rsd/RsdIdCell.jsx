@@ -1,28 +1,28 @@
-"use strict"
+"use strict";
 
-var FixedDataTable = require('fixed-data-table-2')
-var MediaIdCell = require('../MediaIdCell')
-const {Cell} = FixedDataTable
-var React = require('react')
+var FixedDataTable = require('fixed-data-table-2');
+var MediaIdCell = require('../MediaIdCell');
+const {Cell} = FixedDataTable;
+var React = require('react');
 class RsdIdCell extends MediaIdCell {
 
     constructor(props) {
-        super(props)
+        super(props);
     }
 
     _pass_lint_() {
-        Cell
-        React
+        Cell;
+        React;
     }
 
     render() {
-        let  my_visible_text= this.deriveEpisodeM3MmSS()
+        let  my_visible_text= this.deriveEpisodeM3MmSS();
         return (
-            <Cell className="RSD-EPISODE">
+            <Cell className="RSD-EPISODE" onMouseEnter={this.props.tableGetsFocus}>
                 <div dangerouslySetInnerHTML={{__html: my_visible_text}}/>
             </Cell>
-        )
+        );
     }
 }
 
-module.exports = RsdIdCell
+module.exports = RsdIdCell;

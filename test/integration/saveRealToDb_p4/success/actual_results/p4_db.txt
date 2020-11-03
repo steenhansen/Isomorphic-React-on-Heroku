@@ -1,5 +1,5 @@
 {
-	"_id": "25",
+	"_id": "__25",
 	"episode number": 25,
 	"publish date": "2016-07-27 14:24",
 	"post link": "http://www.sffaudio.com/reading-short-and-deep-025-dr-heideggers-experiment-by-nathaniel-hawthorne/",
@@ -16,10 +16,10 @@
 	"byte_size": "29210250",
 	"mp3_url": "http://www.canadianquotations.ca/rsd/rsd025DrHeideggersExperiment.mp3",
 	"itunes_pubDate": "Wed, 27 Jul 2016 12:34:00 MDT",
-	"real_or_test": "real",
+	"real_or_test": "test",
 	"__v": 0
 }{
-	"_id": "24",
+	"_id": "__24",
 	"episode number": 24,
 	"publish date": "2016-07-20 02:24",
 	"post link": "http://www.sffaudio.com/reading-short-and-deep-024-living-space-by-isaac-asimov",
@@ -36,10 +36,10 @@
 	"byte_size": "33002058",
 	"mp3_url": "http://www.canadianquotations.ca/rsd/rsd024LivingSpace.mp3",
 	"itunes_pubDate": "Wed, 20 Jul 2016 00:34:00 MDT",
-	"real_or_test": "real",
+	"real_or_test": "test",
 	"__v": 0
 }{
-	"_id": "23",
+	"_id": "__23",
 	"episode number": 23,
 	"publish date": "2016-07-13 02:24",
 	"post link": "http://www.sffaudio.com/reading-short-and-deep-023-elys-automatic-housemaid-by-elizabeth-w-bellamy/",
@@ -56,10 +56,10 @@
 	"byte_size": "30401994",
 	"mp3_url": "http://www.canadianquotations.ca/rsd/rsd023ElysAutomaticHousemaid.mp3",
 	"itunes_pubDate": "Wed, 13 Jul 2016 00:34:00 MDT",
-	"real_or_test": "real",
+	"real_or_test": "test",
 	"__v": 0
 }{
-	"_id": "22",
+	"_id": "__22",
 	"episode number": 22,
 	"publish date": "2016-07-06 02:24",
 	"post link": "http://www.sffaudio.com/reading-short-and-deep-022-hymn-to-beauty-by-charles-baudelaire/",
@@ -76,10 +76,10 @@
 	"byte_size": "40141578",
 	"mp3_url": "http://www.canadianquotations.ca/rsd/rsd022HymnToBeauty.mp3",
 	"itunes_pubDate": "Wed, 6 Jul 2016 00:34:00 MDT",
-	"real_or_test": "real",
+	"real_or_test": "test",
 	"__v": 0
 }{
-	"_id": "21",
+	"_id": "__21",
 	"episode number": 21,
 	"publish date": "2016-06-29 02:24",
 	"post link": "http://www.sffaudio.com/reading-short-and-deep-021-moon-face-by-jack-london/",
@@ -96,10 +96,10 @@
 	"byte_size": "29744778",
 	"mp3_url": "http://www.canadianquotations.ca/rsd/rsd021MoonFace.mp3",
 	"itunes_pubDate": "Wed, 29 Jun 2016 00:34:00 MDT",
-	"real_or_test": "real",
+	"real_or_test": "test",
 	"__v": 0
 }{
-	"_id": "20",
+	"_id": "__20",
 	"episode number": 20,
 	"publish date": "2016-06-22 02:24",
 	"post link": "http://www.sffaudio.com/reading-short-and-deep-020-strange-exodus-by-robert-abernathy/",
@@ -116,10 +116,10 @@
 	"byte_size": "31363872",
 	"mp3_url": "http://www.canadianquotations.ca/rsd/rsd020StrangeExodus.mp3",
 	"itunes_pubDate": "Wed, 22 Jun 2016 00:34:00 MDT",
-	"real_or_test": "real",
+	"real_or_test": "test",
 	"__v": 0
 }{
-	"_id": "19",
+	"_id": "__19",
 	"episode number": 19,
 	"publish date": "2016-06-15 02:24",
 	"post link": "http://www.sffaudio.com/reading-short-and-deep-019-the-false-rhyme-by-mary-shelley/",
@@ -136,10 +136,10 @@
 	"byte_size": "31962912",
 	"mp3_url": "http://www.canadianquotations.ca/rsd/rsd019TheFalseRhyme.mp3",
 	"itunes_pubDate": "Wed, 15 Jun 2016 00:34:00 MDT",
-	"real_or_test": "real",
+	"real_or_test": "test",
 	"__v": 0
 }{
-	"_id": "18",
+	"_id": "__18",
 	"episode number": 18,
 	"publish date": "2016-06-08 02:24",
 	"post link": "http://www.sffaudio.com/reading-short-and-deep-018-a-pail-of-air-by-fritz-leiber/",
@@ -156,10 +156,10 @@
 	"byte_size": "32226144",
 	"mp3_url": "http://www.canadianquotations.ca/rsd/rsd018APailOfAir.mp3",
 	"itunes_pubDate": "Wed, 8 Jun 2016 00:34:00 MDT",
-	"real_or_test": "real",
+	"real_or_test": "test",
 	"__v": 0
 }{
-	"_id": "17",
+	"_id": "__17",
 	"episode number": 17,
 	"publish date": "2016-06-01 02:24",
 	"post link": "http://www.sffaudio.com/reading-short-and-deep-017-the-wolf-by-guy-de-maupassant/",
@@ -176,10 +176,10 @@
 	"byte_size": "29531040",
 	"mp3_url": "http://www.canadianquotations.ca/rsd/rsd017TheWolf.mp3",
 	"itunes_pubDate": "Wed, 1 Jun 2016 00:34:00 MDT",
-	"real_or_test": "real",
+	"real_or_test": "test",
 	"__v": 0
 }{
-	"_id": "16",
+	"_id": "__16",
 	"episode number": 16,
 	"publish date": "2016-05-25 02:24",
 	"post link": "http://www.sffaudio.com/reading-short-and-deep-016-the-house-by-fredric-brown/",
@@ -196,10 +196,10 @@
 	"byte_size": "28930848",
 	"mp3_url": "http://www.canadianquotations.ca/rsd/rsd016TheHouse.mp3",
 	"itunes_pubDate": "Wed, 25 May 2016 00:34:00 MDT",
-	"real_or_test": "real",
+	"real_or_test": "test",
 	"__v": 0
 }{
-	"_id": "15",
+	"_id": "__15",
 	"episode number": 15,
 	"publish date": "2016-05-18 02:24",
 	"post link": "http://www.sffaudio.com/reading-short-and-deep-015-the-mirrors-of-tuzun-thune-by-robert-e-howard/",
@@ -216,10 +216,10 @@
 	"byte_size": "34059552",
 	"mp3_url": "http://www.canadianquotations.ca/rsd/rsd015TheMirrorsOfTuzunThune.mp3",
 	"itunes_pubDate": "Wed, 18 May 2016 00:34:00 MDT",
-	"real_or_test": "real",
+	"real_or_test": "test",
 	"__v": 0
 }{
-	"_id": "14",
+	"_id": "__14",
 	"episode number": 14,
 	"publish date": "2016-05-11 02:24",
 	"post link": "http://www.sffaudio.com/reading-short-and-deep-014-the-library-of-babel-by-jorge-luis-borges/",
@@ -236,10 +236,10 @@
 	"byte_size": "49193451",
 	"mp3_url": "http://www.canadianquotations.ca/rsd/rsd014TheLibraryOfBabel.mp3",
 	"itunes_pubDate": "Wed, 11 May 2016 00:34:00 MDT",
-	"real_or_test": "real",
+	"real_or_test": "test",
 	"__v": 0
 }{
-	"_id": "13",
+	"_id": "__13",
 	"episode number": 13,
 	"publish date": "2016-05-04 02:24",
 	"post link": "http://www.sffaudio.com/reading-short-and-deep-013-the-dog-and-the-horse-by-voltaire/",
@@ -256,10 +256,10 @@
 	"byte_size": "30352416",
 	"mp3_url": "http://www.canadianquotations.ca/rsd/rsd013TheDogAndTheHorse.mp3",
 	"itunes_pubDate": "Wed, 4 May 2016 00:34:00 MDT",
-	"real_or_test": "real",
+	"real_or_test": "test",
 	"__v": 0
 }{
-	"_id": "12",
+	"_id": "__12",
 	"episode number": 12,
 	"publish date": "2016-04-27 02:24",
 	"post link": "http://www.sffaudio.com/reading-short-and-deep-012-all-cats-are-gray-by-andre-norton",
@@ -276,10 +276,10 @@
 	"byte_size": "31455456",
 	"mp3_url": "http://www.canadianquotations.ca/rsd/rsd012AllCatsAreGray.mp3",
 	"itunes_pubDate": "Wed, 27 Apr 2016 00:34:00 MDT",
-	"real_or_test": "real",
+	"real_or_test": "test",
 	"__v": 0
 }{
-	"_id": "11",
+	"_id": "__11",
 	"episode number": 11,
 	"publish date": "2016-04-20 03:24",
 	"post link": "http://www.sffaudio.com/reading-short-and-deep-011-the-roller-coaster-by-alfred-bester",
@@ -296,10 +296,10 @@
 	"byte_size": "35998944",
 	"mp3_url": "http://www.canadianquotations.ca/rsd/rsd011TheRollercoaster.mp3",
 	"itunes_pubDate": "Wed, 20 Apr 2016 01:34:00 MDT",
-	"real_or_test": "real",
+	"real_or_test": "test",
 	"__v": 0
 }{
-	"_id": "10",
+	"_id": "__10",
 	"episode number": 10,
 	"publish date": "2016-04-13 06:24",
 	"post link": "http://www.sffaudio.com/reading-short-and-deep-010-la-belle-dame-sans-merci-by-john-keats",
@@ -316,10 +316,10 @@
 	"byte_size": "29438304",
 	"mp3_url": "http://www.canadianquotations.ca/rsd/rsd010LaBelleDameSansMercy.mp3",
 	"itunes_pubDate": "Wed, 13 Apr 2016 04:34:00 MDT",
-	"real_or_test": "real",
+	"real_or_test": "test",
 	"__v": 0
 }{
-	"_id": "9",
+	"_id": "__9",
 	"episode number": 9,
 	"publish date": "2016-04-06 05:24",
 	"post link": "http://www.sffaudio.com/reading-short-and-deep-009-the-nine-billion-names-of-god-by-sir-arthur-c-clarke",
@@ -336,10 +336,10 @@
 	"byte_size": "35007329",
 	"mp3_url": "http://www.canadianquotations.ca/rsd/rsd009NineBillion.mp3",
 	"itunes_pubDate": "Wed, 6 Apr 2016 03:34:00 MDT",
-	"real_or_test": "real",
+	"real_or_test": "test",
 	"__v": 0
 }{
-	"_id": "8",
+	"_id": "__8",
 	"episode number": 8,
 	"publish date": "2016-03-30 02:24",
 	"post link": "http://www.sffaudio.com/reading-short-and-deep-008-dream-land-by-edgar-allan-poe",
@@ -356,10 +356,10 @@
 	"byte_size": "32909174",
 	"mp3_url": "http://www.canadianquotations.ca/rsd/rsd008Dreamland.mp3",
 	"itunes_pubDate": "Wed, 30 Mar 2016 00:34:00 MDT",
-	"real_or_test": "real",
+	"real_or_test": "test",
 	"__v": 0
 }{
-	"_id": "7",
+	"_id": "__7",
 	"episode number": 7,
 	"publish date": "2016-03-23 02:24",
 	"post link": "http://www.sffaudio.com/reading-short-and-deep-007-beyond-lies-the-wub-by-philip-k-dick",
@@ -376,10 +376,10 @@
 	"byte_size": "32473243",
 	"mp3_url": "http://www.canadianquotations.ca/rsd/rsd007BeyondLiesTheWub.mp3",
 	"itunes_pubDate": "Wed, 23 Mar 2016 00:34:00 MDT",
-	"real_or_test": "real",
+	"real_or_test": "test",
 	"__v": 0
 }{
-	"_id": "6",
+	"_id": "__6",
 	"episode number": 6,
 	"publish date": "2016-03-16 18:24",
 	"post link": "http://www.sffaudio.com/reading-short-and-deep-006-friend-island-by-francis-stevens",
@@ -396,10 +396,10 @@
 	"byte_size": "38811176",
 	"mp3_url": "http://www.canadianquotations.ca/rsd/rsd006FriendIsland.mp3",
 	"itunes_pubDate": "Wed, 16 Mar 2016 16:34:00 MDT",
-	"real_or_test": "real",
+	"real_or_test": "test",
 	"__v": 0
 }{
-	"_id": "5",
+	"_id": "__5",
 	"episode number": 5,
 	"publish date": "2016-03-09 02:24",
 	"post link": "http://www.sffaudio.com/reading-short-and-deep-005-the-ancient-track-by-h-p-lovecraft",
@@ -416,10 +416,10 @@
 	"byte_size": "31810320",
 	"mp3_url": "http://www.canadianquotations.ca/rsd/rsd005TheAncientTrack.mp3",
 	"itunes_pubDate": "Wed, 9 Mar 2016 00:34:00 MDT",
-	"real_or_test": "real",
+	"real_or_test": "test",
 	"__v": 0
 }{
-	"_id": "4",
+	"_id": "__4",
 	"episode number": 4,
 	"publish date": "2016-03-02 02:24",
 	"post link": "http://www.sffaudio.com/reading-short-and-deep-004-the-words-of-guru-by-c-m-kornbluth",
@@ -436,10 +436,10 @@
 	"byte_size": "34598565",
 	"mp3_url": "http://www.canadianquotations.ca/rsd/rsd004TheWordsOfGuru.mp3",
 	"itunes_pubDate": "Wed, 2 Mar 2016 00:34:00 MDT",
-	"real_or_test": "real",
+	"real_or_test": "test",
 	"__v": 0
 }{
-	"_id": "3",
+	"_id": "__3",
 	"episode number": 3,
 	"publish date": "2016-02-24 02:24",
 	"post link": "http://www.sffaudio.com/reading-short-and-deep-003-the-flowering-of-the-strange-orchid-by-h-g-wells",
@@ -456,10 +456,10 @@
 	"byte_size": "25753056",
 	"mp3_url": "http://www.canadianquotations.ca/rsd/rsd003StrangeOrchid.mp3",
 	"itunes_pubDate": "Wed, 24 Feb 2016 00:34:00 MDT",
-	"real_or_test": "real",
+	"real_or_test": "test",
 	"__v": 0
 }{
-	"_id": "2",
+	"_id": "__2",
 	"episode number": 2,
 	"publish date": "2016-02-17 03:24",
 	"post link": "http://www.sffaudio.com/reading-short-and-deep-002-rapunzel-by-the-brothers-grimm",
@@ -476,10 +476,10 @@
 	"byte_size": "29352408",
 	"mp3_url": "http://www.canadianquotations.ca/rsd/rsd002Rapunzel.mp3",
 	"itunes_pubDate": "Wed, 17 Feb 2016 01:34:00 MDT",
-	"real_or_test": "real",
+	"real_or_test": "test",
 	"__v": 0
 }{
-	"_id": "1",
+	"_id": "__1",
 	"episode number": 1,
 	"publish date": "2016-02-10 10:24",
 	"post link": "http://www.sffaudio.com/reading-short-and-deep-001-zero-hour-by-ray-bradbury",
@@ -496,11 +496,11 @@
 	"byte_size": "32972064",
 	"mp3_url": "http://www.canadianquotations.ca/rsd/rsd001ZeroHour.mp3",
 	"itunes_pubDate": "Wed, 10 Feb 2016 08:34:00 MDT",
-	"real_or_test": "real",
+	"real_or_test": "test",
 	"__v": 0
 }{
-	"_id": "description",
-	"real_or_test": "real",
+	"_id": "__description",
+	"real_or_test": "test",
 	"itunes_summary": "Share the joys-and sharpen the skills-of deep reading. In each weekly half-hour podcast, Eric Rabkin and Jesse Willis mine together the riches of another marvelous short story, poem, or video.  Each work, freely available on the RSD website, can be read in half an hour or less, and discussed for hours.",
 	"__v": 0
 }

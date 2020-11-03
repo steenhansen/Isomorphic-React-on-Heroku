@@ -1,6 +1,7 @@
 'use strict';
 
-var props_array = [{ _id: '21',
+var props_array = [{
+  _id: '21',
   'episode number': 21,
   'post id': 56717,
   'publish date': '2016-08-18 03:02',
@@ -18,7 +19,9 @@ var props_array = [{ _id: '21',
   itunes_pubDate: 'Wed, 17 Aug 2016 21:12:00 MDT',
   post_link: 'http://www.sffaudio.com/?p=56717',
   real_or_test: 'real',
-  __v: 0 }, { _id: '20',
+  __v: 0
+}, {
+  _id: '20',
   'episode number': 20,
   'post id': 56696,
   'publish date': '2016-08-18 03:02',
@@ -36,7 +39,9 @@ var props_array = [{ _id: '21',
   itunes_pubDate: 'Wed, 17 Aug 2016 21:12:00 MDT',
   post_link: 'http://www.sffaudio.com/?p=56696',
   real_or_test: 'real',
-  __v: 0 }, { _id: '19',
+  __v: 0
+}, {
+  _id: '19',
   'episode number': 19,
   'post id': 56691,
   'publish date': '2016-08-18 03:02',
@@ -54,7 +59,9 @@ var props_array = [{ _id: '21',
   itunes_pubDate: 'Wed, 17 Aug 2016 21:12:00 MDT',
   post_link: 'http://www.sffaudio.com/?p=56691',
   real_or_test: 'real',
-  __v: 0 }, { _id: '18',
+  __v: 0
+}, {
+  _id: '18',
   'episode number': 18,
   'post id': 56654,
   'publish date': '2016-08-18 03:02',
@@ -72,7 +79,9 @@ var props_array = [{ _id: '21',
   itunes_pubDate: 'Wed, 17 Aug 2016 21:12:00 MDT',
   post_link: 'http://www.sffaudio.com/?p=56654',
   real_or_test: 'real',
-  __v: 0 }, { _id: '17',
+  __v: 0
+}, {
+  _id: '17',
   'episode number': 17,
   'post id': 56638,
   'publish date': '2016-08-18 03:02',
@@ -90,7 +99,9 @@ var props_array = [{ _id: '21',
   itunes_pubDate: 'Wed, 17 Aug 2016 21:12:00 MDT',
   post_link: 'http://www.sffaudio.com/?p=56638',
   real_or_test: 'real',
-  __v: 0 }, { _id: '16',
+  __v: 0
+}, {
+  _id: '16',
   'episode number': 16,
   'post id': 56593,
   'publish date': '2016-08-18 03:02',
@@ -108,7 +119,9 @@ var props_array = [{ _id: '21',
   itunes_pubDate: 'Wed, 17 Aug 2016 21:12:00 MDT',
   post_link: 'http://www.sffaudio.com/?p=56593',
   real_or_test: 'real',
-  __v: 0 }, { _id: '15',
+  __v: 0
+}, {
+  _id: '15',
   'episode number': 15,
   'post id': 54094,
   'publish date': '2016-08-18 03:02',
@@ -126,7 +139,9 @@ var props_array = [{ _id: '21',
   itunes_pubDate: 'Wed, 17 Aug 2016 21:12:00 MDT',
   post_link: 'http://www.sffaudio.com/?p=54094',
   real_or_test: 'real',
-  __v: 0 }, { _id: '14',
+  __v: 0
+}, {
+  _id: '14',
   'episode number': 14,
   'post id': 56555,
   'publish date': '2016-08-18 03:02',
@@ -144,7 +159,9 @@ var props_array = [{ _id: '21',
   itunes_pubDate: 'Wed, 17 Aug 2016 21:12:00 MDT',
   post_link: 'http://www.sffaudio.com/?p=56555',
   real_or_test: 'real',
-  __v: 0 }, { _id: '13',
+  __v: 0
+}, {
+  _id: '13',
   'episode number': 13,
   'post id': 56547,
   'publish date': '2016-08-18 03:02',
@@ -162,7 +179,9 @@ var props_array = [{ _id: '21',
   itunes_pubDate: 'Wed, 17 Aug 2016 21:12:00 MDT',
   post_link: 'http://www.sffaudio.com/?p=56547',
   real_or_test: 'real',
-  __v: 0 }, { _id: '12',
+  __v: 0
+}, {
+  _id: '12',
   'episode number': 12,
   'post id': 56494,
   'publish date': '2016-08-18 03:02',
@@ -180,7 +199,9 @@ var props_array = [{ _id: '21',
   itunes_pubDate: 'Wed, 17 Aug 2016 21:12:00 MDT',
   post_link: 'http://www.sffaudio.com/?p=56494',
   real_or_test: 'real',
-  __v: 0 }, { _id: '11',
+  __v: 0
+}, {
+  _id: '11',
   'episode number': 11,
   'post id': 56481,
   'publish date': '2016-08-18 03:02',
@@ -198,7 +219,9 @@ var props_array = [{ _id: '21',
   itunes_pubDate: 'Wed, 17 Aug 2016 21:12:00 MDT',
   post_link: 'http://www.sffaudio.com/?p=56481',
   real_or_test: 'real',
-  __v: 0 }, { _id: '10',
+  __v: 0
+}, {
+  _id: '10',
   'episode number': 10,
   'post id': 56465,
   'publish date': '2016-08-18 03:02',
@@ -216,7 +239,9 @@ var props_array = [{ _id: '21',
   itunes_pubDate: 'Wed, 17 Aug 2016 21:12:00 MDT',
   post_link: 'http://www.sffaudio.com/?p=56465',
   real_or_test: 'real',
-  __v: 0 }, { _id: '9',
+  __v: 0
+}, {
+  _id: '9',
   'episode number': 9,
   'post id': 56423,
   'publish date': '2016-08-18 03:02',
@@ -234,7 +259,9 @@ var props_array = [{ _id: '21',
   itunes_pubDate: 'Wed, 17 Aug 2016 21:12:00 MDT',
   post_link: 'http://www.sffaudio.com/?p=56423',
   real_or_test: 'real',
-  __v: 0 }, { _id: '8',
+  __v: 0
+}, {
+  _id: '8',
   'episode number': 8,
   'post id': 56325,
   'publish date': '2016-08-18 03:02',
@@ -252,7 +279,9 @@ var props_array = [{ _id: '21',
   itunes_pubDate: 'Wed, 17 Aug 2016 21:12:00 MDT',
   post_link: 'http://www.sffaudio.com/?p=56325',
   real_or_test: 'real',
-  __v: 0 }, { _id: '7',
+  __v: 0
+}, {
+  _id: '7',
   'episode number': 7,
   'post id': 56268,
   'publish date': '2016-08-18 03:02',
@@ -270,7 +299,9 @@ var props_array = [{ _id: '21',
   itunes_pubDate: 'Wed, 17 Aug 2016 21:12:00 MDT',
   post_link: 'http://www.sffaudio.com/?p=56268',
   real_or_test: 'real',
-  __v: 0 }, { _id: '6',
+  __v: 0
+}, {
+  _id: '6',
   'episode number': 6,
   'post id': 56213,
   'publish date': '2016-08-18 03:02',
@@ -288,7 +319,9 @@ var props_array = [{ _id: '21',
   itunes_pubDate: 'Wed, 17 Aug 2016 21:12:00 MDT',
   post_link: 'http://www.sffaudio.com/?p=56213',
   real_or_test: 'real',
-  __v: 0 }, { _id: '5',
+  __v: 0
+}, {
+  _id: '5',
   'episode number': 5,
   'post id': 56192,
   'publish date': '2016-08-18 03:02',
@@ -306,7 +339,9 @@ var props_array = [{ _id: '21',
   itunes_pubDate: 'Wed, 17 Aug 2016 21:12:00 MDT',
   post_link: 'http://www.sffaudio.com/?p=56192',
   real_or_test: 'real',
-  __v: 0 }, { _id: '4',
+  __v: 0
+}, {
+  _id: '4',
   'episode number': 4,
   'post id': 56146,
   'publish date': '2016-08-18 03:02',
@@ -324,7 +359,9 @@ var props_array = [{ _id: '21',
   itunes_pubDate: 'Wed, 17 Aug 2016 21:12:00 MDT',
   post_link: 'http://www.sffaudio.com/?p=56146',
   real_or_test: 'real',
-  __v: 0 }, { _id: '3',
+  __v: 0
+}, {
+  _id: '3',
   'episode number': 3,
   'post id': 56133,
   'publish date': '2016-08-18 03:02',
@@ -342,7 +379,9 @@ var props_array = [{ _id: '21',
   itunes_pubDate: 'Wed, 17 Aug 2016 21:12:00 MDT',
   post_link: 'http://www.sffaudio.com/?p=56133',
   real_or_test: 'real',
-  __v: 0 }, { _id: '2',
+  __v: 0
+}, {
+  _id: '2',
   'episode number': 2,
   'post id': 56119,
   'publish date': '2016-08-18 03:02',
@@ -360,7 +399,9 @@ var props_array = [{ _id: '21',
   itunes_pubDate: 'Wed, 17 Aug 2016 21:12:00 MDT',
   post_link: 'http://www.sffaudio.com/?p=56119',
   real_or_test: 'real',
-  __v: 0 }, { _id: '1',
+  __v: 0
+}, {
+  _id: '1',
   'episode number': 1,
   'post id': 55727,
   'publish date': '2016-08-18 03:02',
@@ -378,5 +419,6 @@ var props_array = [{ _id: '21',
   itunes_pubDate: 'Wed, 17 Aug 2016 21:12:00 MDT',
   post_link: 'http://www.sffaudio.com/?p=55727',
   real_or_test: 'real',
-  __v: 0 }];
+  __v: 0
+}];
 module.exports = props_array;

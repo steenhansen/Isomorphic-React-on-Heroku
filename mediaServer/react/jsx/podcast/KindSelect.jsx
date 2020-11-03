@@ -1,27 +1,27 @@
-"use strict"
+"use strict";
 
-var React = require('react')
-var Option = require('../Option')
+var React = require('react');
+var Option = require('../Option');
 
 
 class KindSelect extends React.Component {
     constructor(props) {
-        super(props)
-        this.className = this.props.className
-        this.selectByKind = this.selectByKind.bind(this)   // <select onChange={this.selectByKind}
+        super(props);
+        this.className = this.props.className;
+        this.selectByKind = this.selectByKind.bind(this);   // <select onChange={this.selectByKind}
     }
 
     _pass_lint_() {
-        Option
+        Option;
     }
 
     selectByKind(event) {
-        var select_text = event.target.value
-        this.props.cb_PodcastComponent_filterByKind(select_text)
+        var select_text = event.target.value;
+        this.props.cb_PodcastComponent_filterByKind(select_text);
     }
 
     render() {
-        var select_class_name = this.className
+        var select_class_name = this.className;
         return (
             <select onChange={this.selectByKind}
                     className={select_class_name}
@@ -48,9 +48,9 @@ class KindSelect extends React.Component {
                              hidden_category="topic"
                              key="kind_topic"/>
             </select>
-        )
+        );
     }
 }
 
 
-module.exports = KindSelect
+module.exports = KindSelect;

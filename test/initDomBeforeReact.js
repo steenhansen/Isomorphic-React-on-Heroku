@@ -11,9 +11,26 @@
  React when unit testing or use ReactDOMServer.renderToString() for server rendering.
  */
 
-var jsdom = require('jsdom')
-global.document = jsdom.jsdom("<!doctype html><html><body></body></html>")
-global.window = document.defaultView
-global.navigator = window.navigator
+//var jsdom = require('jsdom');
+//global.document = jsdom.jsdom('<!doctype html><html><body></body></html>');
+//global.window = document.defaultView;
+//global.navigator = window.navigator;
 
-global.window.innerHeight =123456          // make sure ephemeral server test window is large
+//global.window.innerHeight = 123456; // make sure ephemeral server test window is large
+
+
+
+//import jsdom from 'jsdom'; 
+var jsdom = require('jsdom');
+
+
+const {JSDOM} = jsdom;  
+const {document} = (new JSDOM('<!doctype html><html><body></body></html>')).window;  
+global.document = document;  
+global.window = document.defaultView;
+
+global.window.innerHeight = 123456; // make sure ephemeral server test window is large
+
+global.navigator = window.navigator;
+
+

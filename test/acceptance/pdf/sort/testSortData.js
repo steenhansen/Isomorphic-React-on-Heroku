@@ -1,6 +1,7 @@
 'use strict';
 
-var props_array = [{ _id: '7',
+var props_array = [{
+  _id: '7',
   'episode number': 7,
   'publish date': '2016-02-10 8',
   'book title': 'The Statement Of Randolph Carter',
@@ -24,7 +25,9 @@ var props_array = [{ _id: '7',
   'pdf country 4': '',
   'pdf info 4': 'Weird Tales, August 1937',
   real_or_test: 'real',
-  __v: 0 }, { _id: '6',
+  __v: 0
+}, {
+  _id: '6',
   'episode number': 6,
   'publish date': '2016-06-24 20',
   'book title': 'The Scandal Detectives',
@@ -36,7 +39,9 @@ var props_array = [{ _id: '7',
   'pdf country 1': 'Canada',
   'pdf info 1': 'Alfred Hitchcock\'s Mystery Magazine, April 1991',
   real_or_test: 'real',
-  __v: 0 }, { _id: '5',
+  __v: 0
+}, {
+  _id: '5',
   'episode number': 5,
   'publish date': '2016-06-21 13',
   'book title': 'Scaramouche',
@@ -52,7 +57,9 @@ var props_array = [{ _id: '7',
   'pdf country 2': '',
   'pdf info 2': 'Houghton Mifflin, 1923',
   real_or_test: 'real',
-  __v: 0 }, { _id: '4',
+  __v: 0
+}, {
+  _id: '4',
   'episode number': 4,
   'publish date': '2016-06-23 13',
   'book title': 'Earth Can Be Fun',
@@ -64,7 +71,9 @@ var props_array = [{ _id: '7',
   'pdf country 1': '',
   'pdf info 1': 'Imagination, May 1953',
   real_or_test: 'real',
-  __v: 0 }, { _id: '3',
+  __v: 0
+}, {
+  _id: '3',
   'episode number': 3,
   'publish date': '2016-06-13 18',
   'book title': 'The Swine Of Ææa',
@@ -76,7 +85,9 @@ var props_array = [{ _id: '7',
   'pdf country 1': '',
   'pdf info 1': 'Weird Tales, March 1939',
   real_or_test: 'real',
-  __v: 0 }, { _id: '2',
+  __v: 0
+}, {
+  _id: '2',
   'episode number': 2,
   'publish date': '2016-05-30 13',
   'book title': 'The Case Of Charles Dexter Ward',
@@ -88,7 +99,9 @@ var props_array = [{ _id: '7',
   'pdf country 1': '',
   'pdf info 1': 'Weird Tales, May and July 1941',
   real_or_test: 'real',
-  __v: 0 }, { _id: '1',
+  __v: 0
+}, {
+  _id: '1',
   'episode number': 1,
   'publish date': '2016-02-10 8',
   'book title': 'Worms Of The Earth',
@@ -108,5 +121,6 @@ var props_array = [{ _id: '7',
   'pdf country 3': 'Canada',
   'pdf info 3': 'Weird Tales, November 1932',
   real_or_test: 'real',
-  __v: 0 }];
+  __v: 0
+}];
 module.exports = props_array;
