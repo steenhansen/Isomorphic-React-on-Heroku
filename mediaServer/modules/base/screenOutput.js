@@ -73,7 +73,7 @@ module.exports = function (save_rss_items, media_url_dirs) {
         )
         .then(function (num_records_saved) {
           //                   throw new Error ('exception test - html_saveTestToDb_P1')
-         // console.log("qbert - asfter save")
+          console.log("html_saveTestToDb_P1 - after save")
           var save_test_to_db_html = media_file_loc.htmlFiles(
             media_url_dirs.ADMIN_saveTestToDb_P1
           );
@@ -112,6 +112,8 @@ module.exports = function (save_rss_items, media_url_dirs) {
         )
         .then(function () {
           //                   throw new Error ('exception test - html_saveTestToRss_P2')
+          console.log("html_saveTestToRss_P2 - after save")
+
           var save_test_rss_data = media_file_loc.htmlFiles(
             media_url_dirs.ADMIN_saveTestToRss_P2
           );
@@ -165,6 +167,8 @@ module.exports = function (save_rss_items, media_url_dirs) {
         )
         .then(function (num_records_saved) {
           //                   throw new Error ('exception test - html_saveRealToDb_P4')
+          console.log("html_saveRealToDb_P4 - after save")
+
           var save_real_rss_data_html = media_file_loc.htmlFiles(
             media_url_dirs.ADMIN_saveRealToDb_P4
           );
@@ -203,6 +207,7 @@ module.exports = function (save_rss_items, media_url_dirs) {
         )
         .then(function () {
           //                   throw new Error ('exception test - html_saveRealToRss_P5')
+          console.log("html_saveRealToDb_P4 - after save")
           var save_real_rss_data_html = media_file_loc.htmlFiles(
             media_url_dirs.ADMIN_saveRealToRss_P5
           );

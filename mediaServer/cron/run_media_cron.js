@@ -32,6 +32,39 @@ module.exports = function (the_information, di_factory, the_media) {
       config_environment.ATLAS_MONGODB,
       process_port
     );
+
+
+//////////////////////////////////////
+ // screenOutput.html_saveRealToRss_P5(variables_tsv,
+ //                                                    parser_tsv,
+ //                                                    the_media,
+ //                                                    media_file_loc,
+ //                                                    host_url)
+ //      .then( ()=>{ console.log(the_media._class_name , 'CRON is done');
+ //                    process.exit(1); })
+ //      .catch(function (e) {
+ //        console.log('CRON EXCEPTION : ' + e.message); // heroku logs -a calm-dusk-45367
+ //      });
+
+//////////////////////////////////////
+      //   screenOutput.html_saveRealToDb_P4(variables_tsv,
+      //                                     parser_tsv,
+      //                                     the_media,
+      //                                     the_information,
+      //                                     media_file_loc)
+      // .then(() => screenOutput.html_saveRealToRss_P5(variables_tsv,
+      //                                               parser_tsv,
+      //                                               the_media,
+      //                                               media_file_loc,
+      //                                               host_url))
+      // .then( ()=>{ console.log(the_media._class_name , 'CRON is done');
+      //               process.exit(1); })
+      // .catch(function (e) {
+      //   console.log('CRON EXCEPTION : ' + e.message); // heroku logs -a calm-dusk-45367
+      // });
+
+//////////////////////////////////////
+    
     screenOutput
       .html_saveTestToDb_P1(
         variables_tsv,
@@ -73,6 +106,9 @@ module.exports = function (the_information, di_factory, the_media) {
       .catch(function (e) {
         console.log('CRON EXCEPTION : ' + e.message); // heroku logs -a calm-dusk-45367
       });
+
+//////////////////////////////////////
+
   }
   return callMediaCron;
 };
