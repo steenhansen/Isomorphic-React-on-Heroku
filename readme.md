@@ -14,7 +14,7 @@ Podcast [WordPress page](http://www.sffaudio.com/the-sffaudio-podcast/)  with in
 
 Heroku Environment Variables:
 
-![Heroku Config Variables](https://raw.githubusercontent.com/steenhansen/testiso/master/images/heroku_settings_config_vars.png)
+![Heroku Config Variables](images/heroku_settings_config_vars.png)
 
 System Setup:
 
@@ -73,7 +73,7 @@ Cron:
 
 - $ node run-cron podcast test-isomorphic-react-credentials.js
 
-![Heroku Scheduler](https://raw.githubusercontent.com/steenhansen/testiso/master/images/heroku_cron.png)
+![Heroku Scheduler](images/heroku_cron.png)
 
 
 Load db ( user/pass ):
