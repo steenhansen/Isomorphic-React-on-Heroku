@@ -1,3 +1,4 @@
+<a name="fast-start"></a>
 
 Isomorphic-React-on-Heroku takes a [Google Sheet](https://docs.google.com/spreadsheets/d/17TwPecDRNw5JS9_WT6t3cl40e5M46z8ALwnvFalHDZc)
  and saves the data in a MongoDB Atlas database to produce [isomorphic Html/JavaScript](https://sffaudio.herokuapp.com/pdf/table) via Node.js which is then injected into a non-cached [WordPress page](http://www.sffaudio.com/public-domain-pdf-page/).
