@@ -10,7 +10,7 @@ Isomorphic-React-on-Heroku takes a [Google Sheet](https://docs.google.com/spread
 
 
 
-Here are all three media types: 
+Media types: 
 
 
 RSD [HTML/JavaScript](https://sffaudio.herokuapp.com/rsd/table)
