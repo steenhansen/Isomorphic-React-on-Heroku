@@ -12,11 +12,10 @@ Isomorphic-React-on-Heroku takes a [Google Sheet](https://docs.google.com/spread
 
 Here are all three media types: 
 
-PDF [WordPress page](http://www.sffaudio.com/public-domain-pdf-page/) with injected [HTML/JavaScript](https://sffaudio.herokuapp.com/pdf/table)
 
-RSD [WordPress page](http://www.sffaudio.com/reading-short-and-deep/) with injected [HTML/JavaScript](https://sffaudio.herokuapp.com/rsd/table)
+RSD [HTML/JavaScript](https://sffaudio.herokuapp.com/rsd/table)
 
-Podcast [WordPress page](http://www.sffaudio.com/the-sffaudio-podcast/)  with injected [HTML/JavaScript](https://sffaudio.herokuapp.com/podcast/table)
+Podcast [HTML/JavaScript](https://sffaudio.herokuapp.com/podcast/table)
 
 ![Output](images/isometric-react.png)
 
